@@ -1,2 +1,0 @@
-# Disz-inventory
-
