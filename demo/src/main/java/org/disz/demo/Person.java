@@ -5,6 +5,10 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Person {
+    @ManyToOne
+    @JoinColumn(name = "book_book_id", insertable = false, updatable = false)
+    public Book book;
+
     @Id
     @GeneratedValue(
             strategy= GenerationType.AUTO,
@@ -14,18 +18,24 @@ public class Person {
             name = "native",
             strategy = "native"
     )
-    private Long id;
-
-    //protected long book.id;  =>  person-nak >=0 book.id-ja lehet
+    private Long personID;
     protected String firstName;
     protected String lastName;
     protected String email;
-    protected boolean isAdmin = false;
+    protected boolean admin = false;  //TODO hogy állítom be, hogy valaki admin-e?
     private String password;
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
     protected Person(){}
 
-    public Person(String firstName, String lastName, String email, String password){
+    public Person(String firstName, String lastName, String email, String password){ //TODO kell-e a constructorba ID?
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -41,6 +51,9 @@ public class Person {
     public String getEmail() {
         return email;
     }
+    public boolean isAdmin() {
+        return admin;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -55,14 +68,8 @@ public class Person {
         this.password = password;
     }
 
-    protected void changePassword(String oldPwd, String newPwd, String newPwd2){
-        if (oldPwd == this.password && newPwd == newPwd2){
-            this.password = newPwd;
-        }
-    }
-
     private void setId(){
-
+        //TODO
     }
 }
 
