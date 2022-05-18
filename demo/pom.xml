@@ -40,6 +40,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+<!--Az ADMINHOZ kell. Le kell még tölteni a -->
+<!--		<dependency>-->
+<!--			<groupId>de.codecentric</groupId>-->
+<!--			<artifactId>spring-boot-admin-starter-server</artifactId>-->
+<!--			<version>2.4.1</version>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<build>

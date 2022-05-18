@@ -22,7 +22,7 @@ public class Person {
     protected String firstName;
     protected String lastName;
     protected String email;
-    protected boolean admin = false;  //TODO hogy állítom be, hogy valaki admin-e?
+    protected boolean admin = false;  //TODO hogy állítom be, hogy valaki admin-e?  (Találtam egy webserveres cuccot)
     private String password;
 
     public Book getBook() {

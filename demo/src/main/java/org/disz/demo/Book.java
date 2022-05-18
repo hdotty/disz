@@ -22,12 +22,14 @@ public class Book {
     private Long bookID;
     public String author;
     public String title;
+    public static Long counter;
 
     public Book(){}
     public Book(Long bookID, String author, String title) {
         this.bookID = bookID;  //TODO kell e ide ID, vagy ezt majd megkapja külön, és nem kell a constructorba?
         this.author = author;
         this.title = title;
+        counter++;
     }
 
     public Long getBookID() {
@@ -38,6 +40,9 @@ public class Book {
     }
     public String getTitle() {
         return title;
+    }
+    public Long getCounter(){
+        return counter;
     }
 
     public void setAuthor(String author) {
