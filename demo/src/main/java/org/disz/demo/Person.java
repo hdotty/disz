@@ -35,19 +35,16 @@ public class Person {
 
     protected Person(){}
 
-    public Person(String firstName, String lastName, String email, String password){ //TODO kell-e a constructorba ID?
+    public Person(String firstName, String lastName, String email, String password){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
+    public Long getPersonID(){return personID;}
+    public String getFirstName() {return firstName;}
+    public String getLastName() {return lastName;}
     public String getEmail() {
         return email;
     }
@@ -68,8 +65,7 @@ public class Person {
         this.password = password;
     }
 
-    private void setId(){
-        //TODO
-    }
+
+
 }
 

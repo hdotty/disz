@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import java.time.LocalDate;
 
-//@Entity  //TODO Ide kell-e Entity? Neten amit láttam példát, ott oda volt írva
 public class PersonBook {
     @JoinColumn(name = "person_person_id")
     protected Long personID;
