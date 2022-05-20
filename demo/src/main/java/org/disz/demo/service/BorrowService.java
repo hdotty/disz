@@ -1,10 +1,8 @@
 package org.disz.demo.service;
 
-import org.disz.demo.Book;
-import org.disz.demo.Person;
-import org.disz.demo.PersonBook;
-import org.disz.demo.repository.BookRepository;
-import org.disz.demo.repository.PersonRepository;
+import org.disz.demo.entity.Book;
+import org.disz.demo.entity.Person;
+import org.disz.demo.entity.PersonBook;
 
 import java.time.LocalDate;
 import java.util.List;

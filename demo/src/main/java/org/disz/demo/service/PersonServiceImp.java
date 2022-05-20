@@ -1,7 +1,7 @@
 package org.disz.demo.service;
 
-import org.disz.demo.Book;
-import org.disz.demo.Person;
+import org.disz.demo.entity.Book;
+import org.disz.demo.entity.Person;
 import org.disz.demo.repository.BorrowRepository;
 import org.disz.demo.repository.PersonRepository;
 

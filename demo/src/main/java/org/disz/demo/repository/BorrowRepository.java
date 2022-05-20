@@ -1,7 +1,6 @@
 package org.disz.demo.repository;
 
-import org.disz.demo.Book;
-import org.disz.demo.PersonBook;
+import org.disz.demo.entity.PersonBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

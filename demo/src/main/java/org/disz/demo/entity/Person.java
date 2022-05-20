@@ -1,7 +1,12 @@
-package org.disz.demo;
+package org.disz.demo.entity;
 
 import javax.persistence.*;
+
+import org.disz.demo.dto.BookDto;
+import org.disz.demo.entity.Book;
 import org.hibernate.annotations.GenericGenerator;
+
+import java.util.List;
 
 @Entity
 public class Person {
@@ -9,6 +14,7 @@ public class Person {
     @JoinColumn(name = "book_book_id", insertable = false, updatable = false)
     public Book book;
 
+    // variables
     @Id
     @GeneratedValue(
             strategy= GenerationType.AUTO,
@@ -18,31 +24,25 @@ public class Person {
             name = "native",
             strategy = "native"
     )
-    private Long personID;
+    private Long personId;
     protected String firstName;
     protected String lastName;
     protected String email;
-    protected boolean admin = false;  //TODO hogy állítom be, hogy valaki admin-e?  (Találtam egy webserveres cuccot)
+    protected boolean admin = false;
     private String password;
 
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    protected Person(){}
-
-    public Person(String firstName, String lastName, String email, String password){
+    // constructor
+    public Person(){}
+    public Person(Long personId,String firstName, String lastName, String email, String password){
+        this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
 
-    public Long getPersonID(){return personID;}
+    //getters
+    public Long getPersonId(){return personId;}
     public String getFirstName() {return firstName;}
     public String getLastName() {return lastName;}
     public String getEmail() {
@@ -51,7 +51,14 @@ public class Person {
     public boolean isAdmin() {
         return admin;
     }
+    public List<BookDto> getBook() {
+        return (List<BookDto>) book;
+    }
 
+    // setters
+    public void setBook(Book book) {
+        this.book = book;
+    }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

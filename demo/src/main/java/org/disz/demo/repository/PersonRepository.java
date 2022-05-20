@@ -1,6 +1,5 @@
 package org.disz.demo.repository;
-import org.disz.demo.Book;
-import org.disz.demo.Person;
+import org.disz.demo.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +16,7 @@ public interface PersonRepository extends JpaRepository <Person, Long> {
 
 
     public abstract void createPerson(Person person);
-    public abstract void updatePerson(Long id, Person person);
+    public abstract void updatePerson(Person person, String newFirstNAme, String newLastName, String newEmail);
     public abstract void deletePerson(Long id);
 
 }

@@ -1,6 +1,6 @@
 package org.disz.demo.controller;
 
-import org.disz.demo.Person;
+import org.disz.demo.entity.Person;
 import org.disz.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,4 +36,8 @@ public class PersonController {
     public List<Person> findPerson(final @RequestParam String query) {
         return personService.find(query);
     }
+
+
+
+    //TODO jelszocsere
 }

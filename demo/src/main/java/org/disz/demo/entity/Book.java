@@ -1,15 +1,13 @@
-package org.disz.demo;
-
+package org.disz.demo.entity;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity
 public class Book {
     @OneToMany
     @JoinColumn(name="person_person_id", insertable = false, updatable = false)
-    public Person person;
-
+    public Person person; //TODO ide DTO kell?
+    // variables
     @Id
     @GeneratedValue(
             strategy= GenerationType.AUTO,
@@ -19,21 +17,23 @@ public class Book {
             name = "native",
             strategy = "native"
     )
-    private Long bookID;
+    private Long bookId;
     public String author;
     public String title;
     public static Long counter;
 
+    // constructor
     public Book(){}
-    public Book(Long bookID, String author, String title) {
-        this.bookID = bookID;  //TODO kell e ide ID, vagy ezt majd megkapja külön, és nem kell a constructorba?
+    public Book(Long bookId, String author, String title) {
+        this.bookId = bookId;
         this.author = author;
         this.title = title;
         counter++;
     }
 
-    public Long getBookID() {
-        return bookID;
+    // getters
+    public Long getBookId() {
+        return bookId;
     }
     public String getAuthor() {
         return author;
@@ -44,11 +44,14 @@ public class Book {
     public Long getCounter(){
         return counter;
     }
+    public Person getPersonDto() {return person;}
 
+    // setter
     public void setAuthor(String author) {
         this.author = author;
     }
     public void setTitle(String title) {
         this.title = title;
     }
+
 }
