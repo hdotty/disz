@@ -1,19 +1,18 @@
 package org.disz.demo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import java.time.LocalDate;
 
 public class PersonBook {
     // variables
     @JoinColumn(name = "person_person_id")
-    protected Long personID;
+    private Long personID;
     @JoinColumn(name = "book_book_id")
-    protected Long bookID;
+    private Long bookID;
 
     LocalDate startTime;
     LocalDate endTime;
+    private static Long counter;
 
     // constructors
     public PersonBook(){}
@@ -22,6 +21,7 @@ public class PersonBook {
         this.bookID = bookID;
         this.startTime = startTime;
         this.endTime = endTime;
+        counter++;
     }
 
     // getters
@@ -37,6 +37,7 @@ public class PersonBook {
     public LocalDate getEndTime() {
         return endTime;
     }
+    public Long getCounter(){return counter;}
 
     // setters
     public void setEndTime(LocalDate endTime) {

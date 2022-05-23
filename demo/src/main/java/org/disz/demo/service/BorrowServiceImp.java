@@ -1,53 +1,67 @@
 package org.disz.demo.service;
 
-import org.disz.demo.entity.Book;
-import org.disz.demo.entity.Person;
 import org.disz.demo.entity.PersonBook;
+import org.disz.demo.repository.BorrowRepository;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 public class BorrowServiceImp implements BorrowService{
-    private final PersonService personService;
-    private final BookService bookSevice;
+    private final BorrowRepository borrowRepository;
 
-    public BorrowServiceImp(final PersonService personService, BookService bookSevice) {
-        this.personService = personService;
-        this.bookSevice = bookSevice;
-    }
+    public BorrowServiceImp(final BorrowRepository borrowRepository) {
+        this.borrowRepository = borrowRepository;}
 
     @Override
-    public void addBorrow(Long personId, Long bookId) {
+    public void addBorrow(PersonBook borrow) {
         LocalDate currentDate = LocalDate.ofEpochDay(System.currentTimeMillis());
-        PersonBook borrow = new PersonBook(personId, bookId, currentDate, null); //TODO jo e?
+        borrow.setStartTime(currentDate);
+        borrowRepository.save(borrow);
     }
 
     @Override
-    public void returnBook(Long personId, Long bookId, LocalDate startDate){
+    public void returnBook(PersonBook borrow){
         LocalDate currentDate = LocalDate.ofEpochDay(System.currentTimeMillis());
-        PersonBook returned = new PersonBook(personId, bookId, startDate, currentDate); // TODO jo e?
+        borrow.setEndTime(currentDate);
     }
 
     @Override
-    public List<PersonBook> findAllBorrows() {
-        // TODO legyen borrow repository?
-        return null;
+    public List<PersonBook> findAll() { return borrowRepository.findAll();}
+
+    @Override
+    public List<PersonBook> findBorrowByBookId(Long bookId) {  // az adott könyvet kik kölcsönözték ki
+        return borrowRepository.findBorrowByBookId(bookId);
     }
 
     @Override
-    public Optional<Person> getWhoBorrowedTheBook(Long bookId) {
+    public List<PersonBook> findBorrowByPersonId(Long personId) {   // Egy Person kölcsönzéseit írjuk ki, nem a könyveket.
+        return borrowRepository.findBorrowByPersonId(personId); // Majd a frontEnd megoldja a többit
+    }
 
-        return Optional.empty();
-    } // TODO
 
     @Override
-    public Optional<Book> getWhatThePersonBorrowed(Long personId) {
-        return Optional.empty();
-    } // TODO
+    public List<PersonBook> findBorrowByStartTimeIsNotNullAndEndTimeIsNull() {
+        return borrowRepository.findBorrowByStartTimeIsNotNullAndEndTimeIsNull();}
+    @Override
+    public int nowBorrowedBooks() {
+        return borrowRepository.findBorrowByStartTimeIsNotNullAndEndTimeIsNull().size();}
+    @Override
+    public List<PersonBook> findBorrowByStartTimeAndEndTimeIsNotNull() {
+        return borrowRepository.findBorrowByStartTimeAndEndTimeIsNotNull() ;
+    }
+    @Override
+    public int returnesBorrowes() {
+        return borrowRepository.findBorrowByStartTimeAndEndTimeIsNotNull().size();}
+    @Override
+    public List<PersonBook> findBorrowByStartTimeAndEndTimeIsNull() {
+        return borrowRepository.findBorrowByStartTimeAndEndTimeIsNull();}
+    @Override
+    public int notBorrowedYet() {
+        return borrowRepository.findBorrowByStartTimeAndEndTimeIsNull().size();
+    }
+
+    @Override
+    public List<PersonBook> findByAuthorOrTitleContaining(String search) {
+        return borrowRepository.findByAuthorOrTitleContaining(search);
+    }
 }
-
-
-
-//Select * FROM PersonRepository, BookRepository
-//WHERE

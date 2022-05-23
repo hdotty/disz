@@ -2,31 +2,33 @@ package org.disz.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 public class PersonDto {
     @JsonProperty
     private Long personID;
     @JsonProperty
-    protected String firstName;
+    private String firstName;
     @JsonProperty
-    protected String lastName;
+    private String lastName;
     @JsonProperty
-    protected String email;
+    private String email;
     @JsonProperty
-    protected boolean admin = false;
+    private boolean admin = false;
     @JsonProperty
     private String password;
 
     @JsonProperty
-    private Long bookId;
+    private List<BookDto> personsBooks; //
 
-    public PersonDto(Long personID, String firstName, String lastName, String email, boolean admin, String password, Long bookId) {
+    public PersonDto(Long personID, String firstName, String lastName, String email, boolean admin, String password, List<BookDto> personsBooks) {
         this.personID = personID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.admin = admin;
         this.password = password;
-        this.bookId = bookId;
+        this.personsBooks = personsBooks;
     }
 
     public Long getPersonId() {return personID;}
@@ -41,5 +43,5 @@ public class PersonDto {
 
     public String getPassword() {return password;}
 
-    public Long getBookId() {return bookId;}
+    public List<BookDto> getBookDtos() {return personsBooks;}
 }

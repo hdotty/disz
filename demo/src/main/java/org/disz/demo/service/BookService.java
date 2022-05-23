@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BookService {
     BookDto addBook(BookDto book);
-    BookDto updateBook(BookDto book); // TODO
+    BookDto updateBook(BookDto bookDto, String author, String title);
 
     void deleteBook(Long id);
 
@@ -14,5 +14,6 @@ public interface BookService {
     BookDto getById(Long id);
     List<BookDto> find(String query);
     Long getCounter();
+    List<BookDto> findByPersonIdIsNotNull(); // azok a könyvek, amik ki vannak adva
 
 }

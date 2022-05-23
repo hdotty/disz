@@ -1,19 +1,19 @@
 package org.disz.demo.service;
 
-import org.disz.demo.entity.Book;
-import org.disz.demo.entity.Person;
-
+import org.disz.demo.dto.BookDto;
+import org.disz.demo.dto.PersonDto;
 import java.util.List;
-import java.util.Optional;
 
 public interface PersonService {
-    Person addPerson(Person person);
-    void updatePerson(Person person, String newFirstName, String newLastName, String newEmail);
+
+    void addPerson(PersonDto personDto);
+    void updatePerson(PersonDto personDto, String newFirstName, String newLastName, String newEmail);
     void deletePerson(Long id);
 
-    List<Book> myBooks(Person person);
+    List<PersonDto> findAllPerson();
+    PersonDto getById(Long id);
+    List<PersonDto> findPersonByFirstNameOrLastNameOrEmail(String query);
+    void changePsw(PersonDto personDto, String newPsw);
+    List<BookDto> personsBooks(PersonDto personDto);
 
-    List<Person> findAllPerson();
-    Optional<Person> getById(Long id);
-    List<Person> find(String query);
 }

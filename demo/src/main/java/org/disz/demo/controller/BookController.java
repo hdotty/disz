@@ -19,16 +19,15 @@ public class BookController {
     }
 
     @PostMapping("/books")
-    public BookDto addBook(final @RequestBody BookDto book) {
-        return bookService.addBook(book);
+    public void addBook(final @RequestBody BookDto book){bookService.addBook(book);
     }
 
     @PostMapping("/books")
-    public BookDto updateBook(final @RequestBody BookDto book) {return bookService.updateBook(book);} // TODO
+    public BookDto updateBook(final @RequestBody BookDto book, String author, String title) {return bookService.updateBook(book, author, title);}
 
 
     @GetMapping("/books")
-    public void deleteBook(final @PathVariable Long id) {}
+    public void deleteBook(final @PathVariable Long id) {bookService.deleteBook(id);}
     @GetMapping("/books")
     public List<BookDto> getBooks() {return bookService.findAllBooks();} //összes könyv kilistázása
     @GetMapping("/books/{id}")
@@ -41,7 +40,11 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public Long counter(){return Book.counter;}
+    public List<BookDto> findByPersonIdIsNotNull(){return bookService.findByPersonIdIsNotNull();}
+
+    //findByPersonIdIsNotNull();
+    @GetMapping("/books")
+    public Long counter(){return Book.getCounter();}
 
 
 

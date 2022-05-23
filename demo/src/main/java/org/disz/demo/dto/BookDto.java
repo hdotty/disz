@@ -14,7 +14,6 @@ public class BookDto {
     private Long personId;
 
     // constructor
-    public BookDto(){}
     public BookDto(Long bookID, String author, String title, Long personId) {
         this.bookId = bookID;
         this.author = author;

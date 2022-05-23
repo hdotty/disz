@@ -25,11 +25,12 @@ public class Person {
             strategy = "native"
     )
     private Long personId;
-    protected String firstName;
-    protected String lastName;
-    protected String email;
-    protected boolean admin = false;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private boolean admin = false;
     private String password;
+    private static Long counter;
 
     // constructor
     public Person(){}
@@ -39,10 +40,11 @@ public class Person {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        counter++;
     }
 
     //getters
-    public Long getPersonId(){return personId;}
+    public Long getPersonId(){return this.personId;}
     public String getFirstName() {return firstName;}
     public String getLastName() {return lastName;}
     public String getEmail() {
@@ -51,9 +53,12 @@ public class Person {
     public boolean isAdmin() {
         return admin;
     }
+    public String getPassword() {return password;}
+
     public List<BookDto> getBook() {
         return (List<BookDto>) book;
     }
+    public Long getCounter(){return counter;}
 
     // setters
     public void setBook(Book book) {
@@ -71,6 +76,7 @@ public class Person {
     public void setPassword(String password){
         this.password = password;
     }
+    public static void setCounter(){counter--;}
 
 
 
