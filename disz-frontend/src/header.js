@@ -13,13 +13,13 @@ import PersonPage from "./components/personPage"
 function Header(){
 
     return (
-        <div>
-            <ul>
-                <li> <Link to='/'> Home </Link></li>
-                <li> <Link to='/components/signup'> Signup </Link> </li>
-                <li> <Link to='/components/login'> Login </Link> </li>
+        <nav className="navbar navbar-expand navbar-dark bg-dark">
+            <ul className="navbar-nav mr-auto">
+                <li className="nav-item"> <Link to='/' className="nav-link"> Home </Link></li>
+                <li className="nav-item"> <Link to='/components/signup' className="nav-link"> Sign Up </Link> </li>
+                <li className="nav-item"> <Link to='/components/login' className="nav-link"> Log In </Link> </li>
             </ul>
-        </div>
+        </nav>
     )
 }
 

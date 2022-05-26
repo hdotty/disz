@@ -3,6 +3,7 @@ import {InputText} from "primereact/inputtext"
 import {Checkbox} from "primereact/checkbox"
 import {Button} from "primereact/button"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function Singup(){
@@ -17,7 +18,7 @@ function Singup(){
                     <img src="assets/images/blocks/logos/hyper.svg" alt="hyper" height={50} className="mb-3" />
                     <div className="text-900 text-3xl font-medium mb-3">Welcome!</div>
                     <span className="text-600 font-medium line-height-3">Do you already have an account?</span>
-                    <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Log In!</a>
+                    <div className="font-medium no-underline ml-2 text-blue-500 cursor-pointer"><Link to='/components/login'>  Log In! </Link> </div>
                 </div>
 
                 <div>
@@ -34,7 +35,7 @@ function Singup(){
                     <label htmlFor="password" className="block text-900 font-medium mb-2">Password</label>
                     <InputText id="password" type="password" className="w-full mb-3" />
 
-                    <label htmlFor="password2" className="block text-900 font-medium mb-2">Password Again0  </label>
+                    <label htmlFor="password2" className="block text-900 font-medium mb-2">Password Again </label>
                     <InputText id="password2" type="password" className="w-full mb-3" />
 
                     

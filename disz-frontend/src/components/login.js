@@ -22,7 +22,7 @@ function Login(){
                     <img src="assets/images/blocks/logos/hyper.svg" alt="hyper" height={50} className="mb-3" />
                     <div className="text-900 text-3xl font-medium mb-3">Welcome Back</div>
                     <span className="text-600 font-medium line-height-3">Don't have an account?</span>
-                    <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
+                    <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer"><Link to='/components/signup'>Create today!</Link></a>
 
                 </div>
 

@@ -9,13 +9,9 @@ import './App.css'
 import Login from './components/login'
 import Signup from "./components/signup";
 import PersonPage from "./components/personPage";
-//import ChangePsw from "./components/changePsw";
 import ForgotPsw from "./components/forgotPsw";
-//import BookPage from "./components/bookPage";
 import Header from "./header"
 import Home from "./components/home"
-//import { Button } from "primereact/button";
-//import { Component } from "react"
 
 import {
   BrowserRouter as Router,
@@ -28,10 +24,8 @@ function App() {
 
     return (
       <div>
-        <h1>he</h1>
-        
         <Router>
-          <Header/>
+          <Header/><br/>
           <Routes>
             <Route exact path='/' element={ <Home/> }/>
             <Route exact path='/components/signup' element={ <Signup/> }/>
