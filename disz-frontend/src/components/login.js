@@ -3,6 +3,7 @@ import {InputText} from "primereact/inputtext"
 import {Checkbox} from "primereact/checkbox"
 import {Button} from "primereact/button"
 import { useState } from "react"
+import { Link } from "react-router-dom";
 
 // import {useNavigate} from "react-router-dom"
 
@@ -33,11 +34,9 @@ function Login(){
                     <InputText id="password" type="password" className="w-full mb-3" />
 
                     <div className="flex align-items-center justify-content-between mb-6">
-                        <div className="flex align-items-center">
-                            <Checkbox id="rememberme" onChange={e => setChecked(e.checked)} checked={checked} className="mr-2" />
-                            <label htmlFor="rememberme">Remember me</label>
-                        </div>
-                        <a className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot your password?</a>
+                        
+                        
+                        <div className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"><Link to="/components/forgotPsw">Forgot your password?</Link>  </div>
                     </div>
 
                     <Button label="Sign In" icon="pi pi-user" className="w-full" />

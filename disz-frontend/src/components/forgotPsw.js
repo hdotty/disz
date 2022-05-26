@@ -19,7 +19,7 @@ function ForgotPsw(){
                 <div>
                     <label htmlFor="email" className="block text-900 font-medium mb-2">Email</label>
                     <InputText id="email" type="text" className="w-full mb-3" />
-                    <Button label="Sign In" icon="pi pi-user" className="w-full" />
+                    <Button label="Send" icon="pi pi-user" className="w-full" />
                 </div>
             </div>
         </div>
