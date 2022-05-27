@@ -3,48 +3,43 @@ package org.disz.demo.entity;
 import javax.persistence.*;
 
 import org.disz.demo.dto.BookDto;
-import org.disz.demo.entity.Book;
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.lang.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Person {
-    @ManyToOne
-    @JoinColumn(name = "book_book_id", insertable = false, updatable = false)
-    public Book book;
-
     // variables
     @Id
-    @GeneratedValue(
-            strategy= GenerationType.AUTO,
-            generator="native"
-    )
-    @GenericGenerator(
-            name = "native",
-            strategy = "native"
-    )
-    private Long personId;
+    @GeneratedValue
+    private long id;
+    @NonNull
     private String firstName;
+    @NonNull
     private String lastName;
+    @NonNull
     private String email;
-    private boolean admin = false;
+    private boolean admin;
+    @NonNull
     private String password;
-    private static Long counter;
+
+    @OneToMany(mappedBy = "person")
+    private List<Borrow> borrows = new ArrayList<>();
 
     // constructor
     public Person(){}
-    public Person(Long personId,String firstName, String lastName, String email, String password){
-        this.personId = personId;
+
+    public Person(String firstName, String lastName, String email, String password, boolean admin){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        counter++;
+        this.admin = admin;
     }
 
     //getters
-    public Long getPersonId(){return this.personId;}
+    public long getId(){return this.id;}
     public String getFirstName() {return firstName;}
     public String getLastName() {return lastName;}
     public String getEmail() {
@@ -54,16 +49,11 @@ public class Person {
         return admin;
     }
     public String getPassword() {return password;}
-
-    public List<BookDto> getBook() {
-        return (List<BookDto>) book;
+    public List<Borrow> getBorrows() {
+        return borrows;
     }
-    public Long getCounter(){return counter;}
 
     // setters
-    public void setBook(Book book) {
-        this.book = book;
-    }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -76,9 +66,5 @@ public class Person {
     public void setPassword(String password){
         this.password = password;
     }
-    public static void setCounter(){counter--;}
-
-
-
 }
 

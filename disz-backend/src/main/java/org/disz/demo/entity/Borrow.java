@@ -1,0 +1,68 @@
+package org.disz.demo.entity;
+
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
+
+@Entity
+public class Borrow {
+    // variables
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @NonNull
+    @ManyToOne
+    private Person person;
+
+    @NonNull
+    @ManyToOne
+    private Book book;
+
+    @NonNull
+    LocalDate startTime;
+
+    @Nullable
+    LocalDate endTime;
+
+    // constructors
+    public Borrow(){}
+
+    public Borrow(Person person, Book book, LocalDate startTime, LocalDate endTime) {
+        this.person = person;
+        this.book = book;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    // getters
+    public Person getPerson() {
+        return person;
+    }
+    public Book getBook() {
+        return book;
+    }
+    public LocalDate getStartTime() {
+        return startTime;
+    }
+    public LocalDate getEndTime() {
+        return endTime;
+    }
+
+    // setters
+    public void setStartTime(LocalDate startTime) {
+        this.startTime = startTime;
+    }
+    public void setEndTime(LocalDate endTime) {
+        this.endTime = endTime;
+    }
+
+    public long getId() {
+        return id;
+    }
+}

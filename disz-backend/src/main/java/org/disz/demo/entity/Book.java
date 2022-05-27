@@ -1,39 +1,38 @@
 package org.disz.demo.entity;
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Book {
-    @OneToMany
-    @JoinColumn(name="person_person_id", insertable = false, updatable = false)
-    public Person person;
     // variables
     @Id
-    @GeneratedValue(
-            strategy= GenerationType.AUTO,
-            generator="native"
-    )
-    @GenericGenerator(
-            name = "native",
-            strategy = "native"
-    )
-    private Long bookId;
+    @GeneratedValue
+    private long id;
+
+    @NonNull
     private String author;
+
+    @NonNull
     private String title;
-    private static Long counter;
+
+    @OneToMany(mappedBy = "book")
+    private List<Borrow> borrows = new ArrayList<>();
 
     // constructor
     public Book(){}
-    public Book(Long bookId, String author, String title) {
-        this.bookId = bookId;
+
+    public Book(Long id, String author, String title) {
+        this.id = id;
         this.author = author;
         this.title = title;
-        counter++;
     }
 
     // getters
-    public Long getBookId() {
-        return bookId;
+    public Long getId() {
+        return id;
     }
     public String getAuthor() {
         return author;
@@ -41,10 +40,9 @@ public class Book {
     public String getTitle() {
         return title;
     }
-    public static Long getCounter(){
-        return counter;
+    public List<Borrow> getBorrows() {
+        return borrows;
     }
-    public Person getPerson() {return person;}
 
     // setter
     public void setAuthor(String author) {
@@ -53,6 +51,4 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
-    public static void setCounter(){counter--;}
-
 }
