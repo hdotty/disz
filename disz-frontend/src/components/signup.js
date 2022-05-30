@@ -42,7 +42,7 @@ function Singup(){
 
                     <Button label="Sign Up" icon="pi pi-user" className="w-full" />
                     <br></br> <br></br>
-                    <Button label="Cancle" icon="pi pi-user" className="w-full" />
+                    <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/"> Cancle </Link> </Button>
                 </div>
             </div>
         </div>

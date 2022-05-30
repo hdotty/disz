@@ -5,6 +5,10 @@ import "primereact/resources/themes/tailwind-light/theme.css"
 //import 'bootstrap/dist/css/bootstrap.min.css'
 import "primeflex/primeflex.css"
 
+import SwaggerUI from "swagger-ui-react"
+import "swagger-ui-react/swagger-ui.css"
+
+
 import './App.css'
 import Login from './components/login'
 import Signup from "./components/signup";
@@ -35,6 +39,7 @@ function App() {
           </Routes>
         </Router>
 
+        
       </div>
     )
   
@@ -44,6 +49,9 @@ function App() {
 }
 
 export default App
+
+
+//<SwaggerUI url="https://petstore.swagger.io/v2/swagger.json" />
 
 
 
