@@ -2,7 +2,6 @@ package org.disz.demo.entity;
 
 import javax.persistence.*;
 
-import org.disz.demo.dto.BookDto;
 import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class Person {
     private List<Borrow> borrows = new ArrayList<>();
 
     // constructor
-    public Person(){}
+    public Person(Long personId, String firstName, String lastName, String email, String password){}
 
     public Person(String firstName, String lastName, String email, String password, boolean admin){
         this.firstName = firstName;

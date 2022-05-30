@@ -2,6 +2,7 @@ package org.disz.demo.controller;
 
 import org.disz.demo.dto.BookDto;
 import org.disz.demo.dto.PersonDto;
+import org.disz.demo.entity.Borrow;
 import org.disz.demo.entity.Person;
 import org.disz.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,6 @@ public class PersonController {
     @PostMapping("/person/{password}")
     public void pswChange(@RequestBody PersonDto personDto, String newPsw){ personService.changePsw(personDto, newPsw);}
     @GetMapping("/persons")
-    public List<BookDto> personsBooks(final @PathVariable PersonDto personDto){return personService.personsBooks(personDto);}
+    public List<Borrow> personsBooks(final @PathVariable PersonDto personDto){return personService.personsBooks(personDto);}
 
 }

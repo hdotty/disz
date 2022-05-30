@@ -29,7 +29,6 @@ public class BookServiceImp implements BookService {
     @Override
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
-        Book.setCounter();
     }
     @Override
     public List<BookDto> findAllBooks() {return bookRepository.findAll().stream().map(this::toDto).collect(Collectors.toList());}
@@ -37,8 +36,6 @@ public class BookServiceImp implements BookService {
     public BookDto getById(Long id) {return (BookDto) bookRepository.findBookById(id);}
     @Override
     public List<BookDto> find(String query) {return bookRepository.findAllByAuthorContainsOrTitleContains(query, query);}
-    @Override
-    public Long getCounter() {return Book.getCounter();} // Book's counter
 
     @Override
     public List<BookDto> findByPersonIdIsNotNull() {
@@ -52,7 +49,6 @@ public class BookServiceImp implements BookService {
     }
 
     public <S extends BookDto> BookDto toDto(Book book) {
-        Long personId = book.getPerson() == null ? null : book.getPerson().getPersonId();
-        return new BookDto(book.getBookId(), book.getAuthor(), book.getTitle(), personId);
+        return new BookDto(book.getId(), book.getAuthor(), book.getTitle()); //todo
     }
 }

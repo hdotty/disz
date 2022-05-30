@@ -1,6 +1,6 @@
 package org.disz.demo.service;
 
-import org.disz.demo.entity.PersonBook;
+import org.disz.demo.entity.Borrow;
 import org.disz.demo.repository.BorrowRepository;
 
 import java.time.LocalDate;
@@ -13,47 +13,47 @@ public class BorrowServiceImp implements BorrowService{
         this.borrowRepository = borrowRepository;}
 
     @Override
-    public void addBorrow(PersonBook borrow) {
+    public void addBorrow(Borrow borrow) {
         LocalDate currentDate = LocalDate.ofEpochDay(System.currentTimeMillis());
         borrow.setStartTime(currentDate);
         borrowRepository.save(borrow);
     }
 
     @Override
-    public void returnBook(PersonBook borrow){
+    public void returnBook(Borrow borrow){
         LocalDate currentDate = LocalDate.ofEpochDay(System.currentTimeMillis());
         borrow.setEndTime(currentDate);
     }
 
     @Override
-    public List<PersonBook> findAll() { return borrowRepository.findAll();}
+    public List<Borrow> findAll() { return borrowRepository.findAll();}
 
     @Override
-    public List<PersonBook> findBorrowByBookId(Long bookId) {  // az adott könyvet kik kölcsönözték ki
+    public List<Borrow> findBorrowByBookId(Long bookId) {  // az adott könyvet kik kölcsönözték ki
         return borrowRepository.findBorrowByBookId(bookId);
     }
 
     @Override
-    public List<PersonBook> findBorrowByPersonId(Long personId) {   // Egy Person kölcsönzéseit írjuk ki, nem a könyveket.
+    public List<Borrow> findBorrowByPersonId(Long personId) {   // Egy Person kölcsönzéseit írjuk ki, nem a könyveket.
         return borrowRepository.findBorrowByPersonId(personId); // Majd a frontEnd megoldja a többit
     }
 
 
     @Override
-    public List<PersonBook> findBorrowByStartTimeIsNotNullAndEndTimeIsNull() {
+    public List<Borrow> findBorrowByStartTimeIsNotNullAndEndTimeIsNull() {
         return borrowRepository.findBorrowByStartTimeIsNotNullAndEndTimeIsNull();}
     @Override
     public int nowBorrowedBooks() {
         return borrowRepository.findBorrowByStartTimeIsNotNullAndEndTimeIsNull().size();}
     @Override
-    public List<PersonBook> findBorrowByStartTimeAndEndTimeIsNotNull() {
+    public List<Borrow> findBorrowByStartTimeAndEndTimeIsNotNull() {
         return borrowRepository.findBorrowByStartTimeAndEndTimeIsNotNull() ;
     }
     @Override
     public int returnesBorrowes() {
         return borrowRepository.findBorrowByStartTimeAndEndTimeIsNotNull().size();}
     @Override
-    public List<PersonBook> findBorrowByStartTimeAndEndTimeIsNull() {
+    public List<Borrow> findBorrowByStartTimeAndEndTimeIsNull() {
         return borrowRepository.findBorrowByStartTimeAndEndTimeIsNull();}
     @Override
     public int notBorrowedYet() {
@@ -61,7 +61,7 @@ public class BorrowServiceImp implements BorrowService{
     }
 
     @Override
-    public List<PersonBook> findByAuthorOrTitleContaining(String search) {
+    public List<Borrow> findByAuthorOrTitleContaining(String search) {
         return borrowRepository.findByAuthorOrTitleContaining(search);
     }
 }

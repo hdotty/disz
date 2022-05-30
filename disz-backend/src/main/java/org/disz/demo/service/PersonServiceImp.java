@@ -2,6 +2,7 @@ package org.disz.demo.service;
 
 import org.disz.demo.dto.BookDto;
 import org.disz.demo.dto.PersonDto;
+import org.disz.demo.entity.Borrow;
 import org.disz.demo.entity.Person;
 import org.disz.demo.repository.BorrowRepository;
 import org.disz.demo.repository.PersonRepository;
@@ -32,7 +33,6 @@ public class PersonServiceImp implements PersonService{
     @Override
     public void deletePerson(Long id) {
         personRepository.deleteById(id);
-        Person.setCounter();
     }
     @Override
     public List<PersonDto> findAllPerson() {
@@ -52,7 +52,7 @@ public class PersonServiceImp implements PersonService{
         person.setPassword(newPsw);
     }
     @Override
-    public List<BookDto> personsBooks(PersonDto personDto) {return personDto.getBookDtos();}
+    public List<Borrow> personsBooks(PersonDto personDto) {return personDto.getBookDtos();}
 
 
 
@@ -61,7 +61,7 @@ public class PersonServiceImp implements PersonService{
     }
 
     private <S extends PersonDto> PersonDto toDto(Person person) {
-        return new PersonDto(person.getPersonId(), person.getFirstName(), person.getLastName(),person.getEmail(),person.isAdmin(),person.getPassword(), person.getBook());
+        return new PersonDto(person.getId(), person.getFirstName(), person.getLastName(),person.getEmail(),person.isAdmin(),person.getPassword(), person.getBorrows());
     }
 
 }

@@ -14,11 +14,10 @@ public class BookDto {
     private Long personId;
 
     // constructor
-    public BookDto(Long bookID, String author, String title, Long personId) {
+    public BookDto(Long bookID, String author, String title) {
         this.bookId = bookID;
         this.author = author;
         this.title = title;
-        this.personId = personId;
     }
 
     // getters
@@ -31,7 +30,6 @@ public class BookDto {
     public String getTitle() {
         return title;
     }
-    public Long getPersonId() {return personId;}
 
     //setters
     public void setAuthor(String author) {this.author = author;}

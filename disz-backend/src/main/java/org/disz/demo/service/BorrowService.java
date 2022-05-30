@@ -1,25 +1,25 @@
 package org.disz.demo.service;
 
-import org.disz.demo.entity.PersonBook;
+import org.disz.demo.entity.Borrow;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public interface  BorrowService {
-    void addBorrow(PersonBook borrow);
-    void returnBook(PersonBook borrow);
+    void addBorrow(Borrow borrow);
+    void returnBook(Borrow borrow);
 
-    List<PersonBook> findAll();
-    List<PersonBook> findBorrowByBookId(Long bookId); // WhoBorrowedTheBook
-    List<PersonBook> findBorrowByPersonId(Long personId); // WhatAPersonBorrowed
-    List<PersonBook> findBorrowByStartTimeIsNotNullAndEndTimeIsNull();
+    List<Borrow> findAll();
+    List<Borrow> findBorrowByBookId(Long bookId); // WhoBorrowedTheBook
+    List<Borrow> findBorrowByPersonId(Long personId); // WhatAPersonBorrowed
+    List<Borrow> findBorrowByStartTimeIsNotNullAndEndTimeIsNull();
     int nowBorrowedBooks();
-    List<PersonBook> findBorrowByStartTimeAndEndTimeIsNotNull();
+    List<Borrow> findBorrowByStartTimeAndEndTimeIsNotNull();
     int returnesBorrowes();
-    List<PersonBook> findBorrowByStartTimeAndEndTimeIsNull();
+    List<Borrow> findBorrowByStartTimeAndEndTimeIsNull();
     int notBorrowedYet();
 
-    List<PersonBook> findByAuthorOrTitleContaining(String search);
+    List<Borrow> findByAuthorOrTitleContaining(String search);
 
 
 

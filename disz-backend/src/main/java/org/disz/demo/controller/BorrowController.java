@@ -1,7 +1,7 @@
 package org.disz.demo.controller;
 
 
-import org.disz.demo.entity.PersonBook;
+import org.disz.demo.entity.Borrow;
 import org.disz.demo.service.BorrowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,44 +18,44 @@ public class BorrowController {
     }
 
     @PostMapping
-    public void addBorrow(final @RequestBody PersonBook borrow) {
+    public void addBorrow(final @RequestBody Borrow borrow) {
         borrowService.addBorrow(borrow);
     }
 
     @PostMapping
-    public void returnBook(final @RequestBody PersonBook borrow){borrowService.returnBook(borrow);}
+    public void returnBook(final @RequestBody Borrow borrow){borrowService.returnBook(borrow);}
 
 
     @GetMapping
-    public List<PersonBook> findAll(){return borrowService.findAll();}
+    public List<Borrow> findAll(){return borrowService.findAll();}
 
     @GetMapping
-    public List<PersonBook> findBorrowByBookId(@PathVariable final Long bookId){
+    public List<Borrow> findBorrowByBookId(@PathVariable final Long bookId){
         return borrowService.findBorrowByBookId(bookId);}
 
     @GetMapping
-    public List<PersonBook> findBorrowByPersonId(@PathVariable final Long personId) {
+    public List<Borrow> findBorrowByPersonId(@PathVariable final Long personId) {
         return borrowService.findBorrowByPersonId(personId);}
 
     @GetMapping
-    public List<PersonBook> findBorrowByStartTimeIsNotNullAndEndTimeIsNull() {
+    public List<Borrow> findBorrowByStartTimeIsNotNullAndEndTimeIsNull() {
         return borrowService.findBorrowByStartTimeIsNotNullAndEndTimeIsNull();}
     @GetMapping
     public int nowBorrowedBooks(){return nowBorrowedBooks();}
 
     @GetMapping
-    public List<PersonBook> findBorrowByStartTimeAndEndTimeIsNotNull(){
+    public List<Borrow> findBorrowByStartTimeAndEndTimeIsNotNull(){
         return borrowService.findBorrowByStartTimeIsNotNullAndEndTimeIsNull();}
     @GetMapping
     public int returnesBorrowes(){ return returnesBorrowes();}
 
     @GetMapping
-    public List<PersonBook> findBorrowByStartTimeAndEndTimeIsNull(){
+    public List<Borrow> findBorrowByStartTimeAndEndTimeIsNull(){
         return borrowService.findBorrowByStartTimeAndEndTimeIsNull();}
     @GetMapping
     public int notBorrowedYet(){return notBorrowedYet();}
 
     @GetMapping
-    public List<PersonBook> findByAuthorOrTitleContaining(@RequestParam String search){
+    public List<Borrow> findByAuthorOrTitleContaining(@RequestParam String search){
         return borrowService.findByAuthorOrTitleContaining(search);}
 }

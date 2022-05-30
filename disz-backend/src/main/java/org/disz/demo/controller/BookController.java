@@ -42,9 +42,7 @@ public class BookController {
     @GetMapping("/books")
     public List<BookDto> findByPersonIdIsNotNull(){return bookService.findByPersonIdIsNotNull();}
 
-    //findByPersonIdIsNotNull();
-    @GetMapping("/books")
-    public Long counter(){return Book.getCounter();}
+
 
 
 

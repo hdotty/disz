@@ -13,7 +13,6 @@ public interface BookService {
     List<BookDto> findAllBooks();
     BookDto getById(Long id);
     List<BookDto> find(String query);
-    Long getCounter();
     List<BookDto> findByPersonIdIsNotNull(); // azok a könyvek, amik ki vannak adva
 
 }
