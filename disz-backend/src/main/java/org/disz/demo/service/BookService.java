@@ -13,6 +13,6 @@ public interface BookService {
     List<BookDto> findAllBooks();
     BookDto getById(Long id);
     List<BookDto> find(String query);
-    List<BookDto> findByPersonIdIsNotNull(); // azok a könyvek, amik ki vannak adva
+    List<BookDto> findBorrowedBooks(); // azok a könyvek, amik ki vannak adva
 
 }

@@ -1,7 +1,6 @@
 package org.disz.demo.controller;
 
 import org.disz.demo.dto.BookDto;
-import org.disz.demo.entity.Book;
 import org.disz.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/books")
 public class BookController {
     private final BookService bookService;
 
@@ -18,29 +18,29 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @PostMapping("/books")
+    @PostMapping
     public void addBook(final @RequestBody BookDto book){bookService.addBook(book);
     }
 
-    @PostMapping("/books")
+    @PutMapping("/{id}")
     public BookDto updateBook(final @RequestBody BookDto book, String author, String title) {return bookService.updateBook(book, author, title);}
 
 
-    @GetMapping("/books")
+    @DeleteMapping("/{id}")
     public void deleteBook(final @PathVariable Long id) {bookService.deleteBook(id);}
-    @GetMapping("/books")
+    @GetMapping
     public List<BookDto> getBooks() {return bookService.findAllBooks();} //összes könyv kilistázása
-    @GetMapping("/books/{id}")
-    public Optional<BookDto> getBook(final @PathVariable Long id) { return Optional.ofNullable((BookDto) bookService.getById(id));} // egy könyv
+    @GetMapping("/{id}")
+    public BookDto getBook(final @PathVariable Long id) { return bookService.getById(id);} // egy könyv
 
     // GET /books/search?q=Hemingway
-    @GetMapping("/books/search")
+    @GetMapping("/search")
     public List<BookDto> findBooks(final @RequestParam String query) {
         return bookService.find(query);
     }
 
-    @GetMapping("/books")
-    public List<BookDto> findByPersonIdIsNotNull(){return bookService.findByPersonIdIsNotNull();}
+    @GetMapping("/borrowed")
+    public List<BookDto> findByPersonIdIsNotNull(){return bookService.findBorrowedBooks();}
 
 
 

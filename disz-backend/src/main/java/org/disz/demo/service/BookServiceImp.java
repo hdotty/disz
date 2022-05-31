@@ -31,18 +31,16 @@ public class BookServiceImp implements BookService {
         bookRepository.deleteById(id);
     }
     @Override
-    public List<BookDto> findAllBooks() {return bookRepository.findAll().stream().map(this::toDto).collect(Collectors.toList());}
+    public List<BookDto> findAllBooks() {return toDtos(bookRepository.findAll());}
     @Override
-    public BookDto getById(Long id) {return (BookDto) bookRepository.findBookById(id);}
+    public BookDto getById(Long id) {return bookRepository.findById(id).map(this::toDto).orElse(null);}
     @Override
-    public List<BookDto> find(String query) {return bookRepository.findAllByAuthorContainsOrTitleContains(query, query);}
+    public List<BookDto> find(String query) {return toDtos(bookRepository.findAllByAuthorContainsOrTitleContains(query, query));}
 
     @Override
-    public List<BookDto> findByPersonIdIsNotNull() {
-        return bookRepository.findByPersonIdIsNotNull();
+    public List<BookDto> findBorrowedBooks() {
+        return bookRepository.findAllBorrowed();
     }
-
-
 
     private Book toEntity(BookDto book) {
         return new Book(book.getBookId(), book.getAuthor(), book.getTitle());
@@ -50,5 +48,9 @@ public class BookServiceImp implements BookService {
 
     public <S extends BookDto> BookDto toDto(Book book) {
         return new BookDto(book.getId(), book.getAuthor(), book.getTitle()); //todo
+    }
+
+    public List<BookDto> toDtos(List<Book> books) {
+        return books.stream().map(this::toDto).collect(Collectors.toList());
     }
 }

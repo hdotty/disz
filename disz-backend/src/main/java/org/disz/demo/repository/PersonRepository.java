@@ -9,14 +9,5 @@ import java.util.List;
 
 @Repository
 public interface PersonRepository extends JpaRepository <Person, Long> {
-    void addPerson(Person person);
-    void updatePerson(Person person, String newFirstNAme, String newLastName, String newEmail);
-    void deletePerson(Long id);
-    List<Person> findPersonById(Long id);
-    List<Person> findAllPerson();
-    List<Person> findPersonByFirstNameOrLastNameOrEmail(String name);
-    List<Book> personsBooks(Person person);
-
-
-
+    List<Person> findPersonByFirstNameOrLastNameOrEmail(String firstName, String lastName, String email);
 }
