@@ -16,6 +16,7 @@ import PersonPage from "./components/personPage";
 import ForgotPsw from "./components/forgotPsw";
 import Header from "./header"
 import Home from "./components/home"
+import BooksTable from "./components/books"
 
 import {
   BrowserRouter as Router,
@@ -32,13 +33,14 @@ function App() {
           <Header/><br/>
           <Routes>
             <Route exact path='/' element={ <Home/> }/>
+            <Route exact path='/components/books' element={ <BooksTable/> }/>
             <Route exact path='/components/signup' element={ <Signup/> }/>
             <Route exact path='/components/login' element={ <Login/> }/>
             <Route exact path='/components/personPage' element={ <PersonPage/> }/>
             <Route exact path='/components/forgotPsw' element={ <ForgotPsw/> }/>
           </Routes>
         </Router>
-
+        
         
       </div>
     )

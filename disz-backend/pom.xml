@@ -53,12 +53,23 @@
 			<version>3.0.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 
 
 
 
-<!--Az ADMINHOZ kell. Le kell még tölteni a -->
+		<!--Az ADMINHOZ kell. Le kell még tölteni a -->
 <!--		<dependency>-->
 <!--			<groupId>de.codecentric</groupId>-->
 <!--			<artifactId>spring-boot-admin-starter-server</artifactId>-->

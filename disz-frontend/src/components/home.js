@@ -14,6 +14,7 @@ function Home(){
                 </div>
 
                 <div>
+                    <Button icon="pi pi-user" className="w-full"><Link className='nav-link' to="/components/books"> Books </Link> </Button> <br/><br/>
                     <Button icon="pi pi-user" className="w-full"><Link className='nav-link' to="/components/login"> Log In </Link> </Button> <br/><br/>
                     <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/components/signup"> Sign Up </Link> </Button>
                 </div>
