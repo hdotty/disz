@@ -13,11 +13,11 @@ public interface  BorrowService {
     List<Borrow> findBorrowByBookId(Long bookId); // WhoBorrowedTheBook
     List<Borrow> findBorrowByPersonId(Long personId); // WhatAPersonBorrowed
     List<Borrow> findBorrowByStartTimeIsNotNullAndEndTimeIsNull();
-    int nowBorrowedBooks();
+    long nowBorrowedBooks();
     List<Borrow> findBorrowByStartTimeAndEndTimeIsNotNull();
-    int returnesBorrowes();
+    long returnesBorrowes();
     List<Borrow> findBorrowByStartTimeAndEndTimeIsNull();
-    int notBorrowedYet();
+    long notBorrowedYet();
 
     List<Borrow> findByAuthorOrTitleContaining(String search);
 

@@ -10,15 +10,11 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    List<Book> findAll();
-    List<BookDto> findBookById(Long id);
-    Book getById(Long bookId);
-    List<BookDto> findAllByAuthorContainsOrTitleContains(String query, String query1);
-    List<BookDto> findByPersonIdIsNotNull(); // azok a könyvek, amik ki vannak adva
+    List<Book> findAllByAuthorContainsOrTitleContains(String query, String query1);
 
+    @Query("SELECT book FROM Book book LEFT JOIN book.borrows borrow ON borrow.endTime IS NULL WHERE borrow.id IS NULL")
+    List<Book> findAllNotBorrowed();
 
-
-
-
-
+    @Query("SELECT book FROM Book book LEFT JOIN book.borrows borrow ON borrow.endTime IS NULL WHERE borrow.id IS NOT NULL")
+    List<BookDto> findAllBorrowed();
 }

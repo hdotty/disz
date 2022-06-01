@@ -40,11 +40,11 @@ public class PersonServiceImp implements PersonService{
     }
     @Override
     public PersonDto getById(Long id) {
-        return (PersonDto)(personRepository.findPersonById(id));
+        return personRepository.findById(id).map(this::toDto).orElse(null);
     }
     @Override
     public List<PersonDto> findPersonByFirstNameOrLastNameOrEmail(String query) {
-        return personRepository.findPersonByFirstNameOrLastNameOrEmail(query).stream().map(this::toDto).collect(Collectors.toList());
+        return personRepository.findPersonByFirstNameOrLastNameOrEmail(query, query, query).stream().map(this::toDto).collect(Collectors.toList());
     }
     @Override
     public void changePsw(PersonDto personDto, String newPsw){

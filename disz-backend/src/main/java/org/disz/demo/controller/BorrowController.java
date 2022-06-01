@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/borrows")
 public class BorrowController {
     private final BorrowService borrowService;
 
@@ -22,40 +23,34 @@ public class BorrowController {
         borrowService.addBorrow(borrow);
     }
 
-    @PostMapping
+    @PutMapping("/{id}/return")
     public void returnBook(final @RequestBody Borrow borrow){borrowService.returnBook(borrow);}
 
 
     @GetMapping
     public List<Borrow> findAll(){return borrowService.findAll();}
 
-    @GetMapping
+    @GetMapping("/books/{bookId}")
     public List<Borrow> findBorrowByBookId(@PathVariable final Long bookId){
         return borrowService.findBorrowByBookId(bookId);}
 
-    @GetMapping
+    @GetMapping("/person/{personId}")
     public List<Borrow> findBorrowByPersonId(@PathVariable final Long personId) {
         return borrowService.findBorrowByPersonId(personId);}
 
-    @GetMapping
+    @GetMapping("/borrowed")
     public List<Borrow> findBorrowByStartTimeIsNotNullAndEndTimeIsNull() {
         return borrowService.findBorrowByStartTimeIsNotNullAndEndTimeIsNull();}
-    @GetMapping
+    @GetMapping("/borrowed/count")
     public int nowBorrowedBooks(){return nowBorrowedBooks();}
 
-    @GetMapping
+    @GetMapping("/returned")
     public List<Borrow> findBorrowByStartTimeAndEndTimeIsNotNull(){
         return borrowService.findBorrowByStartTimeIsNotNullAndEndTimeIsNull();}
-    @GetMapping
+    @GetMapping("/returned/count")
     public int returnesBorrowes(){ return returnesBorrowes();}
 
-    @GetMapping
-    public List<Borrow> findBorrowByStartTimeAndEndTimeIsNull(){
-        return borrowService.findBorrowByStartTimeAndEndTimeIsNull();}
-    @GetMapping
-    public int notBorrowedYet(){return notBorrowedYet();}
-
-    @GetMapping
+    @GetMapping("/search")
     public List<Borrow> findByAuthorOrTitleContaining(@RequestParam String search){
         return borrowService.findByAuthorOrTitleContaining(search);}
 }

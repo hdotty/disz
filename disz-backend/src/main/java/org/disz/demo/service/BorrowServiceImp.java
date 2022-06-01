@@ -2,10 +2,12 @@ package org.disz.demo.service;
 
 import org.disz.demo.entity.Borrow;
 import org.disz.demo.repository.BorrowRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class BorrowServiceImp implements BorrowService{
     private final BorrowRepository borrowRepository;
 
@@ -30,38 +32,38 @@ public class BorrowServiceImp implements BorrowService{
 
     @Override
     public List<Borrow> findBorrowByBookId(Long bookId) {  // az adott könyvet kik kölcsönözték ki
-        return borrowRepository.findBorrowByBookId(bookId);
+        return borrowRepository.findAllByBookId(bookId);
     }
 
     @Override
     public List<Borrow> findBorrowByPersonId(Long personId) {   // Egy Person kölcsönzéseit írjuk ki, nem a könyveket.
-        return borrowRepository.findBorrowByPersonId(personId); // Majd a frontEnd megoldja a többit
+        return borrowRepository.findAllByPersonId(personId); // Majd a frontEnd megoldja a többit
     }
 
 
     @Override
     public List<Borrow> findBorrowByStartTimeIsNotNullAndEndTimeIsNull() {
-        return borrowRepository.findBorrowByStartTimeIsNotNullAndEndTimeIsNull();}
+        return borrowRepository.findAllByEndTimeIsNull();}
     @Override
-    public int nowBorrowedBooks() {
-        return borrowRepository.findBorrowByStartTimeIsNotNullAndEndTimeIsNull().size();}
+    public long nowBorrowedBooks() {
+        return borrowRepository.countByEndTimeIsNull();}
     @Override
     public List<Borrow> findBorrowByStartTimeAndEndTimeIsNotNull() {
-        return borrowRepository.findBorrowByStartTimeAndEndTimeIsNotNull() ;
+        return borrowRepository.findAllByEndTimeIsNotNull() ;
     }
     @Override
-    public int returnesBorrowes() {
-        return borrowRepository.findBorrowByStartTimeAndEndTimeIsNotNull().size();}
+    public long returnesBorrowes() {
+        return borrowRepository.countByEndTimeIsNotNull();}
     @Override
     public List<Borrow> findBorrowByStartTimeAndEndTimeIsNull() {
-        return borrowRepository.findBorrowByStartTimeAndEndTimeIsNull();}
+        return borrowRepository.findAllByEndTimeIsNull();}
     @Override
-    public int notBorrowedYet() {
-        return borrowRepository.findBorrowByStartTimeAndEndTimeIsNull().size();
+    public long notBorrowedYet() {
+        return borrowRepository.countByEndTimeIsNull();
     }
 
     @Override
     public List<Borrow> findByAuthorOrTitleContaining(String search) {
-        return borrowRepository.findByAuthorOrTitleContaining(search);
+        return borrowRepository.findByBookAuthorContainingOrBookTitleContaining(search, search);
     }
 }
