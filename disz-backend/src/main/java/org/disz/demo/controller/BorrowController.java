@@ -24,7 +24,7 @@ public class BorrowController {
     }
 
     @PutMapping("/{id}/return")
-    public void returnBook(final @RequestBody Borrow borrow){borrowService.returnBook(borrow);}
+    public void returnBook(final @RequestBody Borrow borrow, final @PathVariable long id){borrowService.returnBook(borrow);}
 
 
     @GetMapping
