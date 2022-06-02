@@ -20,7 +20,7 @@ import BookDto from '../model/BookDto';
 * @module api/BookControllerApi
 * @version 1.0
 */
-export default class BookControllerApi {
+class BookControllerApi {
 
     /**
     * Constructs a new BookControllerApi. 
@@ -326,3 +326,5 @@ export default class BookControllerApi {
 
 
 }
+
+export default new BookControllerApi()

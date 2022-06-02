@@ -18,6 +18,8 @@ import Header from "./header"
 import Home from "./components/home"
 import BooksTable from "./components/books"
 
+import AddBook from "./components/addBook"
+
 import {
   BrowserRouter as Router,
   Route,
@@ -26,11 +28,12 @@ import {
 }from 'react-router-dom'  
 
 function App() {
-
     return (
       <div>
         <Router>
           <Header/><br/>
+          <AddBook/><br/>
+
           <Routes>
             <Route exact path='/' element={ <Home/> }/>
             <Route exact path='/components/books' element={ <BooksTable/> }/>

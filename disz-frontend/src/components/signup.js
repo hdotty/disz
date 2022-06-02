@@ -1,6 +1,5 @@
 import React from "react";
 import {InputText} from "primereact/inputtext"
-import {Checkbox} from "primereact/checkbox"
 import {Button} from "primereact/button"
 import { useState } from "react";
 import { Link } from "react-router-dom";
