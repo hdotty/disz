@@ -29,7 +29,7 @@ function Singup(){
 
 
                     <label htmlFor="email" className="block text-900 font-medium mb-2">Email</label>
-                    <InputText id="email" type="text" className="w-full mb-3" />
+                    <InputText id="email" type="email" className="w-full mb-3" />
 
                     <label htmlFor="password" className="block text-900 font-medium mb-2">Password</label>
                     <InputText id="password" type="password" className="w-full mb-3" />

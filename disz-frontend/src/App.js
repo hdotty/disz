@@ -1,14 +1,9 @@
-
 import "primereact/resources/themes/tailwind-light/theme.css"
 //import "primereact/resources/primereact.min.css";
 //import "primeicons/primeicons.css";
 //import 'bootstrap/dist/css/bootstrap.min.css'
 import "primeflex/primeflex.css"
-
-import SwaggerUI from "swagger-ui-react"
 import "swagger-ui-react/swagger-ui.css"
-
-
 import './App.css'
 import Login from './components/login'
 import Signup from "./components/signup";
@@ -17,9 +12,7 @@ import ForgotPsw from "./components/forgotPsw";
 import Header from "./header"
 import Home from "./components/home"
 import BooksTable from "./components/books"
-
 import AddBook from "./components/addBook"
-
 import {
   BrowserRouter as Router,
   Route,
@@ -28,10 +21,13 @@ import {
 }from 'react-router-dom'  
 
 function App() {
+
+
     return (
       <div>
         <Router>
           <Header/><br/>
+          
           <AddBook/><br/>
 
           <Routes>
@@ -48,9 +44,6 @@ function App() {
       </div>
     )
   
-  
-
-
 }
 
 export default App

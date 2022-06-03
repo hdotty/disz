@@ -1,9 +1,7 @@
 package org.disz.demo.controller;
 
-import org.disz.demo.dto.BookDto;
 import org.disz.demo.dto.PersonDto;
 import org.disz.demo.entity.Borrow;
-import org.disz.demo.entity.Person;
 import org.disz.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +12,6 @@ import java.util.List;
 @Controller
 public class PersonController {
     private final PersonService personService;
-
 
     @Autowired
     public PersonController(final PersonService personService) {

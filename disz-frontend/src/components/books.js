@@ -5,6 +5,8 @@
 import React, { Component } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+//import BookControllerApi from '../api/src/api/BookControllerApi';
+
 
 class BooksTable extends Component {
 
@@ -22,6 +24,8 @@ class BooksTable extends Component {
         this.productService.getProductsSmall().then(data => this.setState({ products: data }));
     }
 */
+
+    
 
     render() {
         return (
