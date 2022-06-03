@@ -6,10 +6,12 @@ import org.disz.demo.entity.Borrow;
 import org.disz.demo.entity.Person;
 import org.disz.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Controller
 public class PersonController {
     private final PersonService personService;
 
@@ -20,10 +22,10 @@ public class PersonController {
     }
     @PostMapping("/person")
     public void addPerson(final @RequestBody PersonDto personDto) {personService.addPerson(personDto);}
-    @PostMapping
+    @PutMapping("/person")
     public void updatePerson(final @RequestBody PersonDto personDto, String newFirstName, String newLastName, String newEmail){
         personService.updatePerson(personDto, newFirstName, newLastName, newEmail);}
-    @PostMapping
+    @DeleteMapping("/person/{id")
     public void deletePerson(Long id){ personService.deletePerson(id); }
     @GetMapping("/person")
     public List<PersonDto> getPersons() {return personService.findAllPerson();}

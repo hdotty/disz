@@ -6,10 +6,12 @@ import org.disz.demo.entity.Borrow;
 import org.disz.demo.entity.Person;
 import org.disz.demo.repository.BorrowRepository;
 import org.disz.demo.repository.PersonRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class PersonServiceImp implements PersonService{
     public final PersonRepository personRepository;
     public final BorrowRepository borrowRepository;

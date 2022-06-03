@@ -1,6 +1,10 @@
 package org.disz.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.disz.demo.entity.Borrow;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookDto {
     // variables
@@ -11,7 +15,7 @@ public class BookDto {
     @JsonProperty
     private String title;
     @JsonProperty
-    private Long personId;
+    private List<Borrow> borrows = new ArrayList<>();
 
     // constructor
     public BookDto(Long bookID, String author, String title) {
