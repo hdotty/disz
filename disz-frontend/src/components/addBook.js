@@ -8,11 +8,13 @@ import {useAddBook} from "../hooks/useAddBook"
 export default function AddBook(){
     const [author, setAuthor] = useState ('')
     const [title, setTitle] = useState('')  
-    const {addbook, isPending, error} = useAddBook
+    const {addbook, isPending, error, posted} = useAddBook()
 
     const handleSubmit = (e) => {
-        e.preventDefault()
         addbook(author, title)
+        e.preventDefault()
+        setAuthor('')
+        setTitle('')
     }
 
     return(
@@ -32,9 +34,12 @@ export default function AddBook(){
                     <label htmlFor="title" className="block text-900 font-medium mb-2">Title</label>
                     <InputText onChange={(e)=>setTitle(e.target.value)} id="title" value={title} type="text" className="w-full mb-3" />
 
+                    {error && <div className="text-600 font-medium line-height-3">{error}</div>}
+                    <div className="text-600 font-medium line-height-3">{posted}</div>
+                    <br/>
+
                     {!isPending && <Button type="submit" label="Add" icon="pi pi-user" className="w-full" /> }
-                    {isPending && <Button label="loading" icon="pi pi-user" className="w-full" > loading </Button>}
-                    {error && <p>{error}</p>}
+                    {isPending && <Button label="loading" icon="pi pi-user" className="w-full" />}
                     <br></br> <br></br>
                     <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/"> Cancle </Link> </Button>
                 </div>

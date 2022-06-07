@@ -5,7 +5,7 @@ import org.disz.demo.dto.BookDto;
 import java.util.List;
 
 public interface BookService {
-    BookDto addBook(BookDto book);
+    void addBook(BookDto book);
     BookDto updateBook(BookDto bookDto, String author, String title);
 
     void deleteBook(Long id);

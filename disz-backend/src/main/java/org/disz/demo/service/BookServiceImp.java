@@ -16,9 +16,7 @@ public class BookServiceImp implements BookService {
         this.bookRepository = bookRepository;
     }
     @Override
-    public BookDto addBook(BookDto book) {bookRepository.save(toEntity(book));
-        return book;
-    }
+    public void addBook(BookDto book) {bookRepository.save(toEntity(book));}
     @Override
     public BookDto updateBook(BookDto bookDto, String author, String title){
         Book book = toEntity(bookDto);

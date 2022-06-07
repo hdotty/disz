@@ -4,6 +4,7 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Book {
@@ -25,7 +26,7 @@ public class Book {
     public Book(){}
 
     public Book(Long id, String author, String title) {
-        this.id = id;
+        this.id = Optional.ofNullable(id).orElse(0L);
         this.author = author;
         this.title = title;
     }

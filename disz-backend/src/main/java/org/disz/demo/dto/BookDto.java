@@ -18,6 +18,8 @@ public class BookDto {
     private List<Borrow> borrows = new ArrayList<>();
 
     // constructor
+
+    public BookDto(){}
     public BookDto(Long bookID, String author, String title) {
         this.bookId = bookID;
         this.author = author;

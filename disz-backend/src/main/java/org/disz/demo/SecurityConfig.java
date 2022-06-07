@@ -14,11 +14,13 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/v?/api-docs").permitAll()
-                .antMatchers("/swagger-ui/**").permitAll()
-                .antMatchers("/swagger-resources/**").permitAll()
-                .anyRequest().authenticated();
+        http.csrf().disable()
+                .authorizeRequests()
+                //.antMatchers("/v?/api-docs").permitAll()
+                //.antMatchers("/swagger-ui/**").permitAll()
+                //.antMatchers("/swagger-resources/**").permitAll()
+                //.anyRequest().authenticated();
+                .anyRequest().permitAll();
     }
 
     @Override

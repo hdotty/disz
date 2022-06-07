@@ -1,5 +1,8 @@
 import {Button} from "primereact/button"
 
+//ide kell egy POST borrow
+//meg egy GET book
+
 function BookPage(){
 
     return(
