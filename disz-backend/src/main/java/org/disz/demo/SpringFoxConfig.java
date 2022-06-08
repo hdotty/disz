@@ -14,6 +14,7 @@ public class SpringFoxConfig {
     @Bean
     public Docket api(){
         return new Docket(DocumentationType.SWAGGER_2)
+                .host("localhost:8080")
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
