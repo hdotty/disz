@@ -22,6 +22,7 @@ public class PersonDto {
     @JsonProperty
     private List<Borrow> borrows;
 
+    public PersonDto(){}
     public PersonDto(Long personID, String firstName, String lastName, String email, boolean admin, String password, List<Borrow> borrows) {
         this.personID = personID;
         this.firstName = firstName;

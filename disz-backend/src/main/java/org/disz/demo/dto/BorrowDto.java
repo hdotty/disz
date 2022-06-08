@@ -1,5 +1,6 @@
 package org.disz.demo.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.disz.demo.entity.Book;
 import org.disz.demo.entity.Borrow;
 import org.disz.demo.entity.Person;
@@ -12,15 +13,16 @@ import java.time.LocalDate;
 public class BorrowDto {
     private long id;
 
+    @JsonProperty
     @NonNull
     private Person person;
-
+    @JsonProperty
     @NonNull
     private Book book;  //Book vagy BookDto?
-
+    @JsonProperty
     @NonNull
     LocalDate startTime;
-
+    @JsonProperty
     @Nullable
     LocalDate endTime;
 

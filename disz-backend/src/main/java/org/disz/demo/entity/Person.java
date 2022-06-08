@@ -27,6 +27,7 @@ public class Person {
     private List<Borrow> borrows = new ArrayList<>();
 
     // constructor
+    public Person(){}
     public Person(Long personId, String firstName, String lastName, String email, String password){}
 
     public Person(String firstName, String lastName, String email, String password, boolean admin){
