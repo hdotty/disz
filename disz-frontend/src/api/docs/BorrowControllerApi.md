@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## addBorrowUsingPOST
 
-> addBorrowUsingPOST(borrow)
+> addBorrowUsingPOST(borrowDto)
 
 addBorrow
 
@@ -29,8 +29,8 @@ addBorrow
 import ApiDocumentation from 'api_documentation';
 
 let apiInstance = new ApiDocumentation.BorrowControllerApi();
-let borrow = new ApiDocumentation.Borrow(); // Borrow | borrow
-apiInstance.addBorrowUsingPOST(borrow, (error, data, response) => {
+let borrowDto = new ApiDocumentation.BorrowDto(); // BorrowDto | borrowDto
+apiInstance.addBorrowUsingPOST(borrowDto, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -44,7 +44,7 @@ apiInstance.addBorrowUsingPOST(borrow, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **borrow** | [**Borrow**](Borrow.md)| borrow | 
+ **borrowDto** | [**BorrowDto**](BorrowDto.md)| borrowDto | 
 
 ### Return type
 
@@ -62,7 +62,7 @@ No authorization required
 
 ## findAllUsingGET
 
-> [Borrow] findAllUsingGET()
+> [BorrowDto] findAllUsingGET()
 
 findAll
 
@@ -87,7 +87,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[Borrow]**](Borrow.md)
+[**[BorrowDto]**](BorrowDto.md)
 
 ### Authorization
 
@@ -101,7 +101,7 @@ No authorization required
 
 ## findBorrowByBookIdUsingGET
 
-> [Borrow] findBorrowByBookIdUsingGET(bookId)
+> [BorrowDto] findBorrowByBookIdUsingGET(bookId)
 
 findBorrowByBookId
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[Borrow]**](Borrow.md)
+[**[BorrowDto]**](BorrowDto.md)
 
 ### Authorization
 
@@ -144,7 +144,7 @@ No authorization required
 
 ## findBorrowByPersonIdUsingGET
 
-> [Borrow] findBorrowByPersonIdUsingGET(personId)
+> [BorrowDto] findBorrowByPersonIdUsingGET(personId)
 
 findBorrowByPersonId
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[Borrow]**](Borrow.md)
+[**[BorrowDto]**](BorrowDto.md)
 
 ### Authorization
 
@@ -187,7 +187,7 @@ No authorization required
 
 ## findBorrowByStartTimeAndEndTimeIsNotNullUsingGET
 
-> [Borrow] findBorrowByStartTimeAndEndTimeIsNotNullUsingGET()
+> [BorrowDto] findBorrowByStartTimeAndEndTimeIsNotNullUsingGET()
 
 findBorrowByStartTimeAndEndTimeIsNotNull
 
@@ -212,7 +212,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[Borrow]**](Borrow.md)
+[**[BorrowDto]**](BorrowDto.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ No authorization required
 
 ## findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET
 
-> [Borrow] findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET()
+> [BorrowDto] findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET()
 
 findBorrowByStartTimeIsNotNullAndEndTimeIsNull
 
@@ -251,7 +251,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[Borrow]**](Borrow.md)
+[**[BorrowDto]**](BorrowDto.md)
 
 ### Authorization
 
@@ -265,7 +265,7 @@ No authorization required
 
 ## findByAuthorOrTitleContainingUsingGET
 
-> [Borrow] findByAuthorOrTitleContainingUsingGET(search)
+> [BorrowDto] findByAuthorOrTitleContainingUsingGET(search)
 
 findByAuthorOrTitleContaining
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[Borrow]**](Borrow.md)
+[**[BorrowDto]**](BorrowDto.md)
 
 ### Authorization
 
@@ -347,7 +347,7 @@ No authorization required
 
 ## returnBookUsingPUT
 
-> returnBookUsingPUT(id, borrow)
+> returnBookUsingPUT(id, borrowDto)
 
 returnBook
 
@@ -358,8 +358,8 @@ import ApiDocumentation from 'api_documentation';
 
 let apiInstance = new ApiDocumentation.BorrowControllerApi();
 let id = 789; // Number | id
-let borrow = new ApiDocumentation.Borrow(); // Borrow | borrow
-apiInstance.returnBookUsingPUT(id, borrow, (error, data, response) => {
+let borrowDto = new ApiDocumentation.BorrowDto(); // BorrowDto | borrowDto
+apiInstance.returnBookUsingPUT(id, borrowDto, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -374,7 +374,7 @@ apiInstance.returnBookUsingPUT(id, borrow, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**| id | 
- **borrow** | [**Borrow**](Borrow.md)| borrow | 
+ **borrowDto** | [**BorrowDto**](BorrowDto.md)| borrowDto | 
 
 ### Return type
 

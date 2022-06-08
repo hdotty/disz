@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import Borrow from './Borrow';
 
 /**
  * The BookDto model module.
@@ -53,8 +54,8 @@ class BookDto {
             if (data.hasOwnProperty('bookId')) {
                 obj['bookId'] = ApiClient.convertToType(data['bookId'], 'Number');
             }
-            if (data.hasOwnProperty('personId')) {
-                obj['personId'] = ApiClient.convertToType(data['personId'], 'Number');
+            if (data.hasOwnProperty('borrows')) {
+                obj['borrows'] = ApiClient.convertToType(data['borrows'], [Borrow]);
             }
             if (data.hasOwnProperty('title')) {
                 obj['title'] = ApiClient.convertToType(data['title'], 'String');
@@ -77,9 +78,9 @@ BookDto.prototype['author'] = undefined;
 BookDto.prototype['bookId'] = undefined;
 
 /**
- * @member {Number} personId
+ * @member {Array.<module:model/Borrow>} borrows
  */
-BookDto.prototype['personId'] = undefined;
+BookDto.prototype['borrows'] = undefined;
 
 /**
  * @member {String} title

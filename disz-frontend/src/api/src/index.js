@@ -16,12 +16,16 @@ import ApiClient from './ApiClient';
 import Book from './model/Book';
 import BookDto from './model/BookDto';
 import Borrow from './model/Borrow';
+import BorrowDto from './model/BorrowDto';
 import ModelAndView from './model/ModelAndView';
 import Person from './model/Person';
+import PersonDtoReq from './model/PersonDtoReq';
+import PersonDtoRes from './model/PersonDtoRes';
 import View from './model/View';
 import BasicErrorControllerApi from './api/BasicErrorControllerApi';
 import BookControllerApi from './api/BookControllerApi';
 import BorrowControllerApi from './api/BorrowControllerApi';
+import PersonControllerApi from './api/PersonControllerApi';
 
 
 /**
@@ -81,6 +85,12 @@ export {
     Borrow,
 
     /**
+     * The BorrowDto model constructor.
+     * @property {module:model/BorrowDto}
+     */
+    BorrowDto,
+
+    /**
      * The ModelAndView model constructor.
      * @property {module:model/ModelAndView}
      */
@@ -91,6 +101,18 @@ export {
      * @property {module:model/Person}
      */
     Person,
+
+    /**
+     * The PersonDtoReq model constructor.
+     * @property {module:model/PersonDtoReq}
+     */
+    PersonDtoReq,
+
+    /**
+     * The PersonDtoRes model constructor.
+     * @property {module:model/PersonDtoRes}
+     */
+    PersonDtoRes,
 
     /**
      * The View model constructor.
@@ -114,5 +136,11 @@ export {
     * The BorrowControllerApi service constructor.
     * @property {module:api/BorrowControllerApi}
     */
-    BorrowControllerApi
+    BorrowControllerApi,
+
+    /**
+    * The PersonControllerApi service constructor.
+    * @property {module:api/PersonControllerApi}
+    */
+    PersonControllerApi
 };

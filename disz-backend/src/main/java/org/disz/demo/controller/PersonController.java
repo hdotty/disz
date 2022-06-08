@@ -31,7 +31,7 @@ public class PersonController {
     @GetMapping("/person/search")
     public List<PersonDto> findPerson(final @RequestParam String query) {return personService.findPersonByFirstNameOrLastNameOrEmail(query);}
     @PostMapping("/person/{password}")
-    public void pswChange(@RequestBody PersonDto personDto, String newPsw){ personService.changePsw(personDto, newPsw);}
+    public void pswChange(@RequestBody PersonDto personDto, @PathVariable String password){ personService.changePsw(personDto, password);}
     @GetMapping("/persons")
     public List<Borrow> personsBooks(final @PathVariable PersonDto personDto){return personService.personsBooks(personDto);}
 

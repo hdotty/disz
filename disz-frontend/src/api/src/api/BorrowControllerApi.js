@@ -13,7 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
-import Borrow from '../model/Borrow';
+import BorrowDto from '../model/BorrowDto';
 
 /**
 * BorrowController service.
@@ -44,14 +44,14 @@ export default class BorrowControllerApi {
 
     /**
      * addBorrow
-     * @param {module:model/Borrow} borrow borrow
+     * @param {module:model/BorrowDto} borrowDto borrowDto
      * @param {module:api/BorrowControllerApi~addBorrowUsingPOSTCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    addBorrowUsingPOST(borrow, callback) {
-      let postBody = borrow;
-      // verify the required parameter 'borrow' is set
-      if (borrow === undefined || borrow === null) {
-        throw new Error("Missing the required parameter 'borrow' when calling addBorrowUsingPOST");
+    addBorrowUsingPOST(borrowDto, callback) {
+      let postBody = borrowDto;
+      // verify the required parameter 'borrowDto' is set
+      if (borrowDto === undefined || borrowDto === null) {
+        throw new Error("Missing the required parameter 'borrowDto' when calling addBorrowUsingPOST");
       }
 
       let pathParams = {
@@ -78,14 +78,14 @@ export default class BorrowControllerApi {
      * Callback function to receive the result of the findAllUsingGET operation.
      * @callback module:api/BorrowControllerApi~findAllUsingGETCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/Borrow>} data The data returned by the service call.
+     * @param {Array.<module:model/BorrowDto>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * findAll
      * @param {module:api/BorrowControllerApi~findAllUsingGETCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/Borrow>}
+     * data is of type: {@link Array.<module:model/BorrowDto>}
      */
     findAllUsingGET(callback) {
       let postBody = null;
@@ -102,7 +102,7 @@ export default class BorrowControllerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = [Borrow];
+      let returnType = [BorrowDto];
       return this.apiClient.callApi(
         '/borrows', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -114,7 +114,7 @@ export default class BorrowControllerApi {
      * Callback function to receive the result of the findBorrowByBookIdUsingGET operation.
      * @callback module:api/BorrowControllerApi~findBorrowByBookIdUsingGETCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/Borrow>} data The data returned by the service call.
+     * @param {Array.<module:model/BorrowDto>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -122,7 +122,7 @@ export default class BorrowControllerApi {
      * findBorrowByBookId
      * @param {Number} bookId bookId
      * @param {module:api/BorrowControllerApi~findBorrowByBookIdUsingGETCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/Borrow>}
+     * data is of type: {@link Array.<module:model/BorrowDto>}
      */
     findBorrowByBookIdUsingGET(bookId, callback) {
       let postBody = null;
@@ -144,7 +144,7 @@ export default class BorrowControllerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = [Borrow];
+      let returnType = [BorrowDto];
       return this.apiClient.callApi(
         '/borrows/books/{bookId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -156,7 +156,7 @@ export default class BorrowControllerApi {
      * Callback function to receive the result of the findBorrowByPersonIdUsingGET operation.
      * @callback module:api/BorrowControllerApi~findBorrowByPersonIdUsingGETCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/Borrow>} data The data returned by the service call.
+     * @param {Array.<module:model/BorrowDto>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -164,7 +164,7 @@ export default class BorrowControllerApi {
      * findBorrowByPersonId
      * @param {Number} personId personId
      * @param {module:api/BorrowControllerApi~findBorrowByPersonIdUsingGETCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/Borrow>}
+     * data is of type: {@link Array.<module:model/BorrowDto>}
      */
     findBorrowByPersonIdUsingGET(personId, callback) {
       let postBody = null;
@@ -186,7 +186,7 @@ export default class BorrowControllerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = [Borrow];
+      let returnType = [BorrowDto];
       return this.apiClient.callApi(
         '/borrows/person/{personId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -198,14 +198,14 @@ export default class BorrowControllerApi {
      * Callback function to receive the result of the findBorrowByStartTimeAndEndTimeIsNotNullUsingGET operation.
      * @callback module:api/BorrowControllerApi~findBorrowByStartTimeAndEndTimeIsNotNullUsingGETCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/Borrow>} data The data returned by the service call.
+     * @param {Array.<module:model/BorrowDto>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * findBorrowByStartTimeAndEndTimeIsNotNull
      * @param {module:api/BorrowControllerApi~findBorrowByStartTimeAndEndTimeIsNotNullUsingGETCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/Borrow>}
+     * data is of type: {@link Array.<module:model/BorrowDto>}
      */
     findBorrowByStartTimeAndEndTimeIsNotNullUsingGET(callback) {
       let postBody = null;
@@ -222,7 +222,7 @@ export default class BorrowControllerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = [Borrow];
+      let returnType = [BorrowDto];
       return this.apiClient.callApi(
         '/borrows/returned', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -234,14 +234,14 @@ export default class BorrowControllerApi {
      * Callback function to receive the result of the findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET operation.
      * @callback module:api/BorrowControllerApi~findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGETCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/Borrow>} data The data returned by the service call.
+     * @param {Array.<module:model/BorrowDto>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * findBorrowByStartTimeIsNotNullAndEndTimeIsNull
      * @param {module:api/BorrowControllerApi~findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGETCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/Borrow>}
+     * data is of type: {@link Array.<module:model/BorrowDto>}
      */
     findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET(callback) {
       let postBody = null;
@@ -258,7 +258,7 @@ export default class BorrowControllerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = [Borrow];
+      let returnType = [BorrowDto];
       return this.apiClient.callApi(
         '/borrows/borrowed', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -270,7 +270,7 @@ export default class BorrowControllerApi {
      * Callback function to receive the result of the findByAuthorOrTitleContainingUsingGET operation.
      * @callback module:api/BorrowControllerApi~findByAuthorOrTitleContainingUsingGETCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/Borrow>} data The data returned by the service call.
+     * @param {Array.<module:model/BorrowDto>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -278,7 +278,7 @@ export default class BorrowControllerApi {
      * findByAuthorOrTitleContaining
      * @param {String} search search
      * @param {module:api/BorrowControllerApi~findByAuthorOrTitleContainingUsingGETCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/Borrow>}
+     * data is of type: {@link Array.<module:model/BorrowDto>}
      */
     findByAuthorOrTitleContainingUsingGET(search, callback) {
       let postBody = null;
@@ -300,7 +300,7 @@ export default class BorrowControllerApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = [Borrow];
+      let returnType = [BorrowDto];
       return this.apiClient.callApi(
         '/borrows/search', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -355,18 +355,18 @@ export default class BorrowControllerApi {
     /**
      * returnBook
      * @param {Number} id id
-     * @param {module:model/Borrow} borrow borrow
+     * @param {module:model/BorrowDto} borrowDto borrowDto
      * @param {module:api/BorrowControllerApi~returnBookUsingPUTCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    returnBookUsingPUT(id, borrow, callback) {
-      let postBody = borrow;
+    returnBookUsingPUT(id, borrowDto, callback) {
+      let postBody = borrowDto;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling returnBookUsingPUT");
       }
-      // verify the required parameter 'borrow' is set
-      if (borrow === undefined || borrow === null) {
-        throw new Error("Missing the required parameter 'borrow' when calling returnBookUsingPUT");
+      // verify the required parameter 'borrowDto' is set
+      if (borrowDto === undefined || borrowDto === null) {
+        throw new Error("Missing the required parameter 'borrowDto' when calling returnBookUsingPUT");
       }
 
       let pathParams = {

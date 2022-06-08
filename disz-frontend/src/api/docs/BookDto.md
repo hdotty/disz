@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **author** | **String** |  | [optional] 
 **bookId** | **Number** |  | [optional] 
-**personId** | **Number** |  | [optional] 
+**borrows** | [**[Borrow]**](Borrow.md) |  | [optional] 
 **title** | **String** |  | [optional] 
 
 
