@@ -12,26 +12,32 @@ import ForgotPsw from "./components/forgotPsw";
 import Header from "./header"
 import Home from "./components/home"
 import BooksTable from "./components/books"
-import AddBook from "./components/addBook"
+import {AddBook} from "./components/addBook"
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link
 }from 'react-router-dom'  
+import { useEffect, useState } from "react"
 
-function App() {
-
+const App = () => {
+    const [state, setState] = useState({
+      loggedInUser: {
+        userName: "admin",
+        isAdmin: true
+      } /* null */
+    });
 
     return (
       <div>
         <Router>
-          <Header/><br/>
+          <Header loggedInUser={state.loggedInUser}/><br/>
+
           
-          <AddBook/><br/>
 
           <Routes>
-            <Route exact path='/' element={ <Home/> }/>
+            <Route exact path='/' element={ <Home user={state.loggedInUser} /> }/>
+            <Route exact path='components/addBook' element={ <AddBook/> }/>
             <Route exact path='/components/books' element={ <BooksTable/> }/>
             <Route exact path='/components/signup' element={ <Signup/> }/>
             <Route exact path='/components/login' element={ <Login/> }/>
@@ -48,26 +54,3 @@ function App() {
 
 export default App
 
-
-//<SwaggerUI url="https://petstore.swagger.io/v2/swagger.json" />
-
-
-
-/*
-      <Router>
-            <div>
-                <ul className="App-header">
-                    <li> <Link to='/components/signup'> Signup </Link> </li>
-                    <li> <Link to='/components/login'> Login </Link> </li>
-                    <li> <Link to='/components/personPage'> MyPage </Link> </li>
-                </ul>
-
-                <Routes>
-                    <Route exact path='/components/signup' element={ <Signup/> }/>
-                    <Route exact path='/components/login' element={ <Login/> }/>
-                    <Route exact path='/components/personPage' element={ <PersonPage/> }/>
-                </Routes>
-            </div>
-      </Router>
-
-      */

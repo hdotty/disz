@@ -2,10 +2,9 @@ import {InputText} from "primereact/inputtext"
 import {Button} from "primereact/button"
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {useAddBook} from "../hooks/useAddBook.js"
 
-import {useAddBook} from "../hooks/useAddBook"
-
-export default function AddBook(){
+const AddBook = () => {
     const [author, setAuthor] = useState ('')
     const [title, setTitle] = useState('')  
     const {addbook, isPending, error, posted} = useAddBook()
@@ -41,11 +40,11 @@ export default function AddBook(){
                     {!isPending && <Button type="submit" label="Add" icon="pi pi-user" className="w-full" /> }
                     {isPending && <Button label="loading" icon="pi pi-user" className="w-full" />}
                     <br></br> <br></br>
-                    <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/"> Cancle </Link> </Button>
+                    <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/"> Back to home </Link> </Button>
                 </div>
             </form>
         </div>
     
     )
 }
-
+export {AddBook}

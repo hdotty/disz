@@ -1,45 +1,40 @@
 //egy file lesz
 //mindig ez lesz meghivva, és a "filtert" változtatjuk
 
-
-import React, { Component } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-//import BookControllerApi from '../api/src/api/BookControllerApi';
+import {useBooks} from "../hooks/useBooks.js"
+import { useState, useEffect } from 'react';
+import BookControllerApi from '../api/src/api/BookControllerApi.js';
 
 
-class BooksTable extends Component {
-
-/*
-    constructor(props) {
-        super(props);
-        this.state = {
-            products: []
-        };
-
-        this.productService = new ProductService();
-    }
-
-    componentDidMount() {
-        this.productService.getProductsSmall().then(data => this.setState({ products: data }));
-    }
-*/
-
+const BooksTable = () => {
+    const BookController = new BookControllerApi()
+    const [books, setBooks] = useState([]);
+ 
+    useEffect(() => {
+        BookController.getBooksUsingGET(function(error, data){
+            if(error !== null){
+                console.log(error)
+            }else{
+                setBooks(data)
+                console.log("done?")
+            }  
+        })
+    }, [])
     
-
-    render() {
-        return (
-            <div>
-                <div className="card">
-                    <DataTable responsiveLayout="scroll">
-                        <Column field="author" header="Author"></Column>
-                        <Column field="title" header="Title"></Column>
-                        <Column field="isFree" header="Free"></Column>
-                    </DataTable>
-                </div>
+        
+    return (
+        <div>
+            <div className="card">
+                <DataTable value={books} responsiveLayout="scroll">
+                    <Column field="author" header="Author"></Column>
+                    <Column field="title" header="Title"></Column>
+                </DataTable>
             </div>
-        );
-    }
+        </div>
+    );
+    
 }
          
 export default BooksTable

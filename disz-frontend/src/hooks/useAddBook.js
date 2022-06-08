@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
-import BookControllerApi from "../api/src/api/BookControllerApi"
-import BookDto from "../api/src/model/BookDto"
+import BookControllerApi from "./../api/src/api/BookControllerApi.js"
+import BookDto from "./../api/src/model/BookDto.js"
 
-export const useAddBook = () => {
+const useAddBook = () => {
     const [isCanceled, setIsCanceled] = useState(false)
     const [error, setError] = useState(null)
     const [isPending, setIsPending] = useState(false)
     const [posted, setPosted] = useState('')
+
+    const BookController = new BookControllerApi()
 
     function addbook(author, title) {
         var book = new BookDto()
@@ -14,9 +16,6 @@ export const useAddBook = () => {
         book.title = title
         
         setIsPending(true)
-
-        //a try-ba rakjuk az if-et, amiben megnézzük h üres e string. Ha az, errort dobunk. miután a catch is lefutott, az urán POSTolunk csak
-
 
         try{
             if (book.author=='' || book.title==''){
@@ -26,7 +25,8 @@ export const useAddBook = () => {
                 throw new Error ('The book needs an author and a title!')
             }
 
-            BookControllerApi.addBookUsingPOST(book, function(error) {
+            BookController.addBookUsingPOST(book, function(error, data, response) {
+                console.log(error, data, response)
                 if (error !== null) {
                     setPosted('Something went wrong!')
                 } else {
@@ -54,3 +54,4 @@ export const useAddBook = () => {
     return {error, isPending, addbook, posted}
 
 }
+export {useAddBook}

@@ -1,23 +1,18 @@
 import { Link } from "react-router-dom"
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route
-}from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Signup from "./components/signup"
-import Login from "./components/login"
-import PersonPage from "./components/personPage"
 
 
-function Header(){
+
+function Header(props){
 
     return (
         <nav className="navbar navbar-expand navbar-dark bg-dark">
             <ul className="navbar-nav mr-auto">
                 <li className="nav-item"> <Link to='/' className="nav-link"> Home </Link></li>
                 <li className="nav-item"> <Link to='/components/signup' className="nav-link"> Sign Up </Link> </li>
-                <li className="nav-item"> <Link to='/components/login' className="nav-link"> Log In </Link> </li>
+                { props.loggedInUser === null && <li className="nav-item"> <Link to='/components/login' className="nav-link"> Log In </Link> </li>}
+                <li className="nav-item"> <Link to='/components/addBook' className="nav-link"> Add Book </Link> </li>
+                <li className="nav-item"> <Link to='/components/books' className="nav-link"> Books </Link> </li>
             </ul>
         </nav>
     )
