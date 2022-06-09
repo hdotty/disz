@@ -4,12 +4,12 @@ import org.disz.demo.dto.PersonDto;
 import org.disz.demo.entity.Borrow;
 import org.disz.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
-@Controller
+@RestController
 public class PersonController {
     private final PersonService personService;
 
@@ -18,7 +18,7 @@ public class PersonController {
         this.personService = personService;
     }
     @PostMapping("/person")
-    public void addPerson(final @RequestBody PersonDto personDto) {personService.addPerson(personDto);}
+    public void addPerson(final @RequestBody @Valid PersonDto personDto) {personService.addPerson(personDto);}
     @PutMapping("/person")
     public void updatePerson(final @RequestBody PersonDto personDto, String newFirstName, String newLastName, String newEmail){
         personService.updatePerson(personDto, newFirstName, newLastName, newEmail);}

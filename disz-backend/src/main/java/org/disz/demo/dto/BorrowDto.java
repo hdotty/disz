@@ -8,6 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 public class BorrowDto {
@@ -21,6 +22,7 @@ public class BorrowDto {
     private Book book;  //Book vagy BookDto?
     @JsonProperty
     @NonNull
+    @NotBlank(message = "Start Date must be set")
     LocalDate startTime;
     @JsonProperty
     @Nullable

@@ -2,7 +2,9 @@ package org.disz.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.disz.demo.entity.Borrow;
+import org.springframework.lang.NonNull;
 
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +13,10 @@ public class BookDto {
     @JsonProperty
     private Long bookId;
     @JsonProperty
+    @NotBlank(message = "Author must be set")
     private String author;
     @JsonProperty
+    @NotBlank(message = "Title must be set")
     private String title;
     @JsonProperty
     private List<Borrow> borrows = new ArrayList<>();

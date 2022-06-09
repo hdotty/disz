@@ -3,22 +3,26 @@ package org.disz.demo.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.disz.demo.entity.Borrow;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 public class PersonDto {
     @JsonProperty
     private Long personID;
     @JsonProperty
+    @NotBlank(message = "First name must be set")
     private String firstName;
     @JsonProperty
+    @NotBlank(message = "Last name must be set")
     private String lastName;
     @JsonProperty
+    @NotBlank(message = "Email must be set")
     private String email;
     @JsonProperty
     private boolean admin = false;
     @JsonProperty
+    @NotBlank(message = "Password must be set")
     private String password;
-
     @JsonProperty
     private List<Borrow> borrows;
 
