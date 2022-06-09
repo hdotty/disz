@@ -3,9 +3,9 @@
 
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import {useBooks} from "../hooks/useBooks.js"
 import { useState, useEffect } from 'react';
 import BookControllerApi from '../api/src/api/BookControllerApi.js';
+
 
 
 const BooksTable = () => {
@@ -18,20 +18,26 @@ const BooksTable = () => {
                 console.log(error)
             }else{
                 setBooks(data)
-                console.log("done?")
+                console.log("books")
             }  
         })
     }, [])
     
+    const asd = (e) => {}
         
     return (
         <div>
-            <div className="card">
-                <DataTable value={books} responsiveLayout="scroll">
+            <div className="card p-fluid">
+                <DataTable value={books} editMode="row" dataKey='id' onRowEditComplete={asd} responsiveLayout="scroll">
                     <Column field="author" header="Author"></Column>
                     <Column field="title" header="Title"></Column>
+                    <Column rowEditor headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
+
                 </DataTable>
+
+
             </div>
+            
         </div>
     );
     

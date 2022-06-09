@@ -1,18 +1,38 @@
 import React from "react";
 import {InputText} from "primereact/inputtext"
 import {Button} from "primereact/button"
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { UseSignUp } from "../hooks/useSignUp";
+import { useState } from "react";
 
 
 function Singup(){
-    const [checked, setChecked] = useState(false)
-    const handleClick = () => setChecked(!checked)
+
+    const [firstName, setFirstName] = useState ('')
+    const [lastName, setLastName] = useState('')  
+    const [email, setEmail] = useState('')  
+    const [password1, setPassword1] = useState('')  
+    const [password2, setPassword2] = useState('')  
+    const {error, isPending, addUser, registered} = UseSignUp()
+
+    const handleSubmit = (e) => {
+        addUser(firstName, lastName, email, password1, password2)
+        e.preventDefault()
+    }
+
+    const handleOnClick = (e) => {
+        e.preventDefault()
+        setFirstName('')
+        setLastName('')
+        setEmail('')
+        setPassword1('')
+        setPassword2('')
+    }
 
     return(
         
         <div className="flex align-items-center justify-content-center">
-            <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+            <form onSubmit={(e=>handleSubmit(e))} className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
                 <div className="text-center mb-5">
                     <img src="assets/images/blocks/logos/hyper.svg" alt="hyper" height={50} className="mb-3" />
                     <div className="text-900 text-3xl font-medium mb-3">Welcome!</div>
@@ -22,28 +42,30 @@ function Singup(){
 
                 <div>
                     <label htmlFor="firsName" className="block text-900 font-medium mb-2">First Name</label>
-                    <InputText id="firsName" type="text" className="w-full mb-3" />
+                    <InputText onChange={(e)=>setFirstName(e.target.value)} id="firsName" value={firstName} type="text" className="w-full mb-3" />
 
                     <label htmlFor="lastName" className="block text-900 font-medium mb-2">Last Name</label>
-                    <InputText id="lastName" type="text" className="w-full mb-3" />
+                    <InputText onChange={(e)=>setLastName(e.target.value)} id="lastName" value={lastName} type="text" className="w-full mb-3" />
 
 
                     <label htmlFor="email" className="block text-900 font-medium mb-2">Email</label>
-                    <InputText id="email" type="email" className="w-full mb-3" />
+                    <InputText onChange={(e)=>setEmail(e.target.value)} id="email" value={email} type="email" className="w-full mb-3" />
 
                     <label htmlFor="password" className="block text-900 font-medium mb-2">Password</label>
-                    <InputText id="password" type="password" className="w-full mb-3" />
+                    <InputText onChange={(e)=>setPassword1(e.target.value)} id="password" value={(password1)} type="password" className="w-full mb-3" />
 
                     <label htmlFor="password2" className="block text-900 font-medium mb-2">Password Again </label>
-                    <InputText id="password2" type="password" className="w-full mb-3" />
+                    <InputText onChange={(e)=>setPassword2(e.target.value)} id="password2" value={password2} type="password" className="w-full mb-3" />
 
-                    
 
-                    <Button label="Sign Up" icon="pi pi-user" className="w-full" />
+                    {!isPending && <Button type="submit" label="Sign Up" icon="pi pi-user" className="w-full" />}
+                    {isPending && <Button label="loading..." icon="pi pi-user" className="w-full" />}
+                    <br></br> <br></br>
+                    <Button onClick={(e)=>handleOnClick(e)} icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/"> Clear </Link> </Button>
                     <br></br> <br></br>
                     <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/"> Cancle </Link> </Button>
                 </div>
-            </div>
+            </form>
         </div>
     
     )

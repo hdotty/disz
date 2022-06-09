@@ -18,31 +18,35 @@ import {
   Route,
   Routes,
 }from 'react-router-dom'  
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 const App = () => {
-    const [state, setState] = useState({
-      loggedInUser: {
-        userName: "admin",
-        isAdmin: true
-      } /* null */
-    });
+    const [loggedInUser, setLoggedInUser] = useState(true);
+    const [isAdmin, setIsadmin] = useState(true)
+
 
     return (
       <div>
+        <h1></h1>
         <Router>
-          <Header loggedInUser={state.loggedInUser}/><br/>
+          <Header/><br/>
 
           
 
           <Routes>
-            <Route exact path='/' element={ <Home user={state.loggedInUser} /> }/>
-            <Route exact path='components/addBook' element={ <AddBook/> }/>
+            <Route exact path='/' element={ <Home/> }/>
             <Route exact path='/components/books' element={ <BooksTable/> }/>
-            <Route exact path='/components/signup' element={ <Signup/> }/>
-            <Route exact path='/components/login' element={ <Login/> }/>
-            <Route exact path='/components/personPage' element={ <PersonPage/> }/>
-            <Route exact path='/components/forgotPsw' element={ <ForgotPsw/> }/>
+
+            {loggedInUser &&  <Route exact path='/components/signup' element={ <Signup /> }/>}
+            {!loggedInUser &&  <Route exact path='/components/login' element={ <Login/> }/>}
+
+            {loggedInUser && <Route exact path='/components/personPage' element={ <PersonPage /> }/>}
+            {loggedInUser && <Route exact path='/components/forgotPsw' element={ <ForgotPsw /> }/>}
+
+            {isAdmin && <Route exact path='components/addBook' element={ <AddBook/> }/>}
+            
+            
+
           </Routes>
         </Router>
         
