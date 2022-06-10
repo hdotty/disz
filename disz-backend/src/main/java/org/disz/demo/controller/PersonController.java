@@ -22,7 +22,7 @@ public class PersonController {
     @PutMapping("/person")
     public void updatePerson(final @RequestBody PersonDto personDto){personService.updatePerson(personDto);}
     @DeleteMapping("/person/{id}")
-    public void deletePerson(Long id){ personService.deletePerson(id); }
+    public void deletePerson(final @PathVariable Long id){ personService.deletePerson(id); }
     @GetMapping("/person")
     public List<PersonDto> getPersons() {return personService.findAllPerson();}
     @GetMapping("/person/{id}")
