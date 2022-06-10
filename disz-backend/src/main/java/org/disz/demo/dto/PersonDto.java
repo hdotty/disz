@@ -1,14 +1,13 @@
 package org.disz.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.disz.demo.entity.Borrow;
 
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 public class PersonDto {
     @JsonProperty
-    private Long personID;
+    private Long personId;
     @JsonProperty
     @NotBlank(message = "First name must be set")
     private String firstName;
@@ -24,11 +23,11 @@ public class PersonDto {
     @NotBlank(message = "Password must be set")
     private String password;
     @JsonProperty
-    private List<Borrow> borrows;
+    private List<BorrowDto> borrows;
 
     public PersonDto(){}
-    public PersonDto(Long personID, String firstName, String lastName, String email, boolean admin, String password, List<Borrow> borrows) {
-        this.personID = personID;
+    public PersonDto(Long personId, String firstName, String lastName, String email, boolean admin, String password, List<BorrowDto> borrows) {
+        this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -37,7 +36,7 @@ public class PersonDto {
         this.borrows = borrows;
     }
 
-    public Long getPersonId() {return personID;}
+    public Long getPersonId() {return personId;}
 
     public String getFirstName() {return firstName;}
 
@@ -49,5 +48,5 @@ public class PersonDto {
 
     public String getPassword() {return password;}
 
-    public List<Borrow> getBookDtos() {return borrows;}
+    public List<BorrowDto> getBookDtos() {return borrows;}
 }

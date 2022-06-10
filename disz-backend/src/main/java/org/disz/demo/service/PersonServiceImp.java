@@ -1,8 +1,7 @@
 package org.disz.demo.service;
 
-import org.disz.demo.dto.BookDto;
+import org.disz.demo.dto.BorrowDto;
 import org.disz.demo.dto.PersonDto;
-import org.disz.demo.entity.Borrow;
 import org.disz.demo.entity.Person;
 import org.disz.demo.repository.BorrowRepository;
 import org.disz.demo.repository.PersonRepository;
@@ -15,10 +14,12 @@ import java.util.stream.Collectors;
 public class PersonServiceImp implements PersonService{
     public final PersonRepository personRepository;
     public final BorrowRepository borrowRepository;
+    public final BorrowServiceImp borrowServiceImp; //TODO ez itt nagyon csúnya?
 
-    public PersonServiceImp(PersonRepository personRepository, BorrowRepository borrowRepository) {
+    public PersonServiceImp(PersonRepository personRepository, BorrowRepository borrowRepository, BorrowServiceImp borrowServiceImp) {
         this.personRepository = personRepository;
         this.borrowRepository = borrowRepository;
+        this.borrowServiceImp = borrowServiceImp;
     }
 
 
@@ -49,7 +50,7 @@ public class PersonServiceImp implements PersonService{
         person.setPassword(newPsw);
     }
     @Override
-    public List<Borrow> personsBooks(PersonDto personDto) {return personDto.getBookDtos();}
+    public List<BorrowDto> personsBooks(PersonDto personDto) {return personDto.getBookDtos();}
 
 
 
@@ -58,7 +59,7 @@ public class PersonServiceImp implements PersonService{
     }
 
     private <S extends PersonDto> PersonDto toDto(Person person) {
-        return new PersonDto(person.getId(), person.getFirstName(), person.getLastName(),person.getEmail(),person.isAdmin(),person.getPassword(), person.getBorrows());
+        return new PersonDto(person.getId(), person.getFirstName(), person.getLastName(),person.getEmail(),person.isAdmin(),person.getPassword(), borrowServiceImp.toDtos(person.getBorrows()));
     }
 
 }

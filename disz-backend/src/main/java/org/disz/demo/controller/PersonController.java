@@ -1,5 +1,6 @@
 package org.disz.demo.controller;
 
+import org.disz.demo.dto.BorrowDto;
 import org.disz.demo.dto.PersonDto;
 import org.disz.demo.entity.Borrow;
 import org.disz.demo.service.PersonService;
@@ -32,6 +33,6 @@ public class PersonController {
     @PostMapping("/person/{password}")
     public void pswChange(@RequestBody PersonDto personDto, @PathVariable String password){ personService.changePsw(personDto, password);}
     @GetMapping("/persons")
-    public List<Borrow> personsBooks(final @RequestBody PersonDto personDto){return personService.personsBooks(personDto);}
+    public List<BorrowDto> personsBooks(final @RequestBody PersonDto personDto){return personService.personsBooks(personDto);}
 
 }

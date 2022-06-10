@@ -1,7 +1,6 @@
 package org.disz.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.disz.demo.entity.Borrow;
 import org.springframework.lang.NonNull;
 
 import javax.validation.constraints.NotBlank;

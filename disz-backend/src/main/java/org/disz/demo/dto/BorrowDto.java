@@ -2,12 +2,10 @@ package org.disz.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.disz.demo.entity.Book;
-import org.disz.demo.entity.Borrow;
 import org.disz.demo.entity.Person;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
