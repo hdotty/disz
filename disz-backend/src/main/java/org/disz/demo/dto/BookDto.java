@@ -19,7 +19,7 @@ public class BookDto {
     @NotBlank(message = "Title must be set")
     private String title;
     @JsonProperty
-    private List<Borrow> borrows = new ArrayList<>();
+    private List<BorrowDto> borrows = new ArrayList<>();
 
     // constructor
 

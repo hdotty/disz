@@ -22,8 +22,8 @@ public class BookController {
     public void addBook(final @RequestBody BookDto book){bookService.addBook(book);
     }
 
-    @PutMapping("/{id}")
-    public BookDto updateBook(final @RequestBody BookDto book, final @PathVariable long id, String author, String title) {return bookService.updateBook(book, author, title);}
+    @PutMapping
+    public void updateBook(final @RequestBody BookDto bookDto) {bookService.updateBook(bookDto);}
 
 
     @DeleteMapping("/{id}")

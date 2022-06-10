@@ -16,7 +16,7 @@ public interface  BorrowService {
     List<BorrowDto> findBorrowByStartTimeIsNotNullAndEndTimeIsNull();
     long nowBorrowedBooks();
     List<BorrowDto> findBorrowByStartTimeAndEndTimeIsNotNull();
-    long returnesBorrowes();
+    long returnedBorrowes();
     List<BorrowDto> findBorrowByStartTimeAndEndTimeIsNull();
     long notBorrowedYet();
 

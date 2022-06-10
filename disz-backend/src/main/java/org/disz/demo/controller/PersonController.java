@@ -20,9 +20,8 @@ public class PersonController {
     @PostMapping("/person")
     public void addPerson(final @RequestBody @Valid PersonDto personDto) {personService.addPerson(personDto);}
     @PutMapping("/person")
-    public void updatePerson(final @RequestBody PersonDto personDto, String newFirstName, String newLastName, String newEmail){
-        personService.updatePerson(personDto, newFirstName, newLastName, newEmail);}
-    @DeleteMapping("/person/{id")
+    public void updatePerson(final @RequestBody PersonDto personDto){personService.updatePerson(personDto);}
+    @DeleteMapping("/person/{id}")
     public void deletePerson(Long id){ personService.deletePerson(id); }
     @GetMapping("/person")
     public List<PersonDto> getPersons() {return personService.findAllPerson();}
@@ -33,6 +32,6 @@ public class PersonController {
     @PostMapping("/person/{password}")
     public void pswChange(@RequestBody PersonDto personDto, @PathVariable String password){ personService.changePsw(personDto, password);}
     @GetMapping("/persons")
-    public List<Borrow> personsBooks(final @PathVariable PersonDto personDto){return personService.personsBooks(personDto);}
+    public List<Borrow> personsBooks(final @RequestBody PersonDto personDto){return personService.personsBooks(personDto);}
 
 }

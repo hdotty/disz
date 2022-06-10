@@ -18,12 +18,7 @@ public class BookServiceImp implements BookService {
     @Override
     public void addBook(BookDto book) {bookRepository.save(toEntity(book));}
     @Override
-    public BookDto updateBook(BookDto bookDto, String author, String title){
-        Book book = toEntity(bookDto);
-        book.setAuthor(author);
-        book.setTitle(title);
-        return bookDto;
-    }
+    public void updateBook(BookDto bookDto){bookRepository.updateBook(toEntity(bookDto));}
     @Override
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
@@ -37,7 +32,7 @@ public class BookServiceImp implements BookService {
 
     @Override
     public List<BookDto> findBorrowedBooks() {
-        return bookRepository.findAllBorrowed();
+        return bookRepository.findAllBorrowed().stream().map(this::toDto).collect(Collectors.toList());
     }
 
     private Book toEntity(BookDto book) {
@@ -45,8 +40,10 @@ public class BookServiceImp implements BookService {
     }
 
     public <S extends BookDto> BookDto toDto(Book book) {
-        return new BookDto(book.getId(), book.getAuthor(), book.getTitle()); //todo
+        return new BookDto(book.getId(), book.getAuthor(), book.getTitle());
     }
+
+
 
     public List<BookDto> toDtos(List<Book> books) {
         return books.stream().map(this::toDto).collect(Collectors.toList());

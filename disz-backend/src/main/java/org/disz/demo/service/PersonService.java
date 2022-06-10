@@ -9,7 +9,7 @@ import java.util.List;
 public interface PersonService {
 
     void addPerson(PersonDto personDto);
-    void updatePerson(PersonDto personDto, String newFirstName, String newLastName, String newEmail);
+    void updatePerson(PersonDto personDto);
     void deletePerson(Long id);
 
     List<PersonDto> findAllPerson();

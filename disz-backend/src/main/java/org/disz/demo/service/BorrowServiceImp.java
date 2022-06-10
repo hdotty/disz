@@ -1,8 +1,6 @@
 package org.disz.demo.service;
 
-import org.disz.demo.dto.BookDto;
 import org.disz.demo.dto.BorrowDto;
-import org.disz.demo.entity.Book;
 import org.disz.demo.entity.Borrow;
 import org.disz.demo.repository.BorrowRepository;
 import org.springframework.stereotype.Service;
@@ -54,7 +52,7 @@ public class BorrowServiceImp implements BorrowService{
         return toDtos(borrowRepository.findAllByEndTimeIsNotNull()) ;
     }
     @Override
-    public long returnesBorrowes() {
+    public long returnedBorrowes() {
         return borrowRepository.countByEndTimeIsNotNull();}
     @Override
     public List<BorrowDto> findBorrowByStartTimeAndEndTimeIsNull() {

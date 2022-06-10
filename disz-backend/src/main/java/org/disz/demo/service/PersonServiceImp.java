@@ -26,12 +26,7 @@ public class PersonServiceImp implements PersonService{
     public void addPerson(PersonDto personDto) {personRepository.save(toEntity(personDto));
     }
     @Override
-    public void updatePerson(PersonDto personDto, String newFirstName, String newLastName, String newEmail) {
-        Person person = toEntity(personDto);
-        person.setFirstName(newFirstName);
-        person.setLastName(newFirstName);
-        person.setEmail(newEmail);
-    }
+    public void updatePerson(PersonDto personDto){ toEntity(personDto); }
     @Override
     public void deletePerson(Long id) {
         personRepository.deleteById(id);
