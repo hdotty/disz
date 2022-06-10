@@ -18,7 +18,7 @@ public class BookServiceImp implements BookService {
     @Override
     public void addBook(BookDto book) {bookRepository.save(toEntity(book));}
     @Override
-    public void updateBook(BookDto bookDto){bookRepository.updateBook(toEntity(bookDto));}
+    public void updateBook(BookDto bookDto){toEntity(bookDto);}
     @Override
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);

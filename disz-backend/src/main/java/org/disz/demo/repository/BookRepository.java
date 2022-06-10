@@ -9,8 +9,6 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    void updateBook(Book book);
-
     List<Book> findAllByAuthorContainsOrTitleContains(String query, String query1);
 
     @Query("SELECT book FROM Book book LEFT JOIN book.borrows borrow ON borrow.endTime IS NULL WHERE borrow.id IS NULL")
