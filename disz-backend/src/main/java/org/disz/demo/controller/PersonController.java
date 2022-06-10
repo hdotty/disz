@@ -2,7 +2,6 @@ package org.disz.demo.controller;
 
 import org.disz.demo.dto.BorrowDto;
 import org.disz.demo.dto.PersonDto;
-import org.disz.demo.entity.Borrow;
 import org.disz.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

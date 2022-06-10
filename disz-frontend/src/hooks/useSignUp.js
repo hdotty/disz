@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import PersonControllerApi from "../api/src/api/PersonControllerApi"
-import PersonDtoRes from './../api/src/model/PersonDtoRes.js'
+import PersonDto from './../api/src/model/PersonDto.js'
 
 const UseSignUp = () => {
     const [isCanceled, setIsCanceled] = useState(false)
@@ -11,41 +11,39 @@ const UseSignUp = () => {
     const PersonController = new PersonControllerApi()
 
     function addUser(firstName, lastName, email, psw, psw2) {
-        var person = new PersonDtoRes()
+        var person = new PersonDto()
         person.firstName = firstName
         person.lastName = lastName
         person.email = email
-        console.log(person)
         setIsPending(true)
 
         try{
             if (psw === psw2){
-                console.log(person)
                 person.password = psw
+                PersonController.addPersonUsingPOST(person, function(err) {
+                    if (err !== null) {
+                        setIsPending(false);
+                        setError("Something went wrong! \nMaybe your email adress has been already registrated.")
+                        throw new Error (error)
+                        
+                    } else {
+                        setRegistered(true)
+                        setIsPending(false);
+                        setIsCanceled(true);
+                        setError("")
+                    }
+                })
             }else{
-                throw new Error ('nem egyezik a két jelszó')
+                setRegistered(false)
+                throw new Error ("Passwords dont't match!")
             }
 
-            PersonController.addPersonUsingPOST(person, function(error) {
-                console.log(error)
-                if (error !== null) {
-                    setIsPending(false);
-                    throw new Error (error)
-                    
-                } else {
-                    setRegistered(true)
-                    setIsPending(false);
-                    setIsCanceled(true);
-                    setError("")
-                }
-            })
+            
             
         }catch(err){
-            if(isCanceled){
-                console.log(err)
-                setError(err.message)
-                setIsPending(false)
-            }
+            setError(err.message)
+            setIsPending(false)
+            console.log(error)
             
         }
 

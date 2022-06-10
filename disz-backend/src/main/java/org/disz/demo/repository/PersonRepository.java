@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface PersonRepository extends JpaRepository <Person, Long> {
     List<Person> findPersonByFirstNameOrLastNameOrEmail(String firstName, String lastName, String email);
+
+    boolean existsByEmail(String email);
 }

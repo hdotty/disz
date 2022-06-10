@@ -11,7 +11,7 @@ import PersonPage from "./components/personPage";
 import ForgotPsw from "./components/forgotPsw";
 import Header from "./header"
 import Home from "./components/home"
-import BooksTable from "./components/books"
+import BooksTable from "./components/books/books"
 import {AddBook} from "./components/addBook"
 import {
   BrowserRouter as Router,
@@ -37,13 +37,13 @@ const App = () => {
             <Route exact path='/' element={ <Home/> }/>
             <Route exact path='/components/books' element={ <BooksTable/> }/>
 
-            {loggedInUser &&  <Route exact path='/components/signup' element={ <Signup /> }/>}
-            {!loggedInUser &&  <Route exact path='/components/login' element={ <Login/> }/>}
+            {<Route exact path='/components/signup' element={ <Signup /> }/>}
+            {<Route exact path='/components/login' element={ <Login/> }/>}
 
-            {loggedInUser && <Route exact path='/components/personPage' element={ <PersonPage /> }/>}
-            {loggedInUser && <Route exact path='/components/forgotPsw' element={ <ForgotPsw /> }/>}
+            {<Route exact path='/components/personPage' element={ <PersonPage /> }/>}
+            {<Route exact path='/components/forgotPsw' element={ <ForgotPsw /> }/>}
 
-            {isAdmin && <Route exact path='components/addBook' element={ <AddBook/> }/>}
+            {<Route exact path='components/addBook' element={ <AddBook/> }/>}
             
             
 

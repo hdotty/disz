@@ -9,3 +9,8 @@ spring:
 logging:
   level:
     root: DEBUG
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: TRACE

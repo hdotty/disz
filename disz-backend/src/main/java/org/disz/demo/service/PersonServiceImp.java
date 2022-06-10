@@ -24,7 +24,12 @@ public class PersonServiceImp implements PersonService{
 
 
     @Override
-    public void addPerson(PersonDto personDto) {personRepository.save(toEntity(personDto));
+    public void addPerson(PersonDto personDto) {
+        if (personRepository.existsByEmail(personDto.getEmail())) {
+            throw new IllegalArgumentException("A person with that email address already exists");
+        }
+
+        personRepository.save(toEntity(personDto));
     }
     @Override
     public void updatePerson(PersonDto personDto){ toEntity(personDto); }

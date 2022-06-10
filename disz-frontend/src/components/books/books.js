@@ -4,7 +4,7 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { useState, useEffect } from 'react';
-import BookControllerApi from '../api/src/api/BookControllerApi.js';
+import BookControllerApi from '../../api/src/api/BookControllerApi.js';
 
 
 

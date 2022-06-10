@@ -6,6 +6,7 @@ import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Person {
@@ -28,7 +29,14 @@ public class Person {
 
     // constructor
     public Person(){}
-    public Person(Long personId, String firstName, String lastName, String email, String password){}
+    public Person(Long personId, String firstName, String lastName, String email, String password){
+        this.id = Optional.ofNullable(personId).orElse(0L);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.admin = false;
+    }
 
     public Person(String firstName, String lastName, String email, String password, boolean admin){
         this.firstName = firstName;
