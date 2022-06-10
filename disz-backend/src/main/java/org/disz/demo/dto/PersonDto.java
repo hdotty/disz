@@ -48,5 +48,5 @@ public class PersonDto {
 
     public String getPassword() {return password;}
 
-    public List<BorrowDto> getBookDtos() {return borrows;}
+    public List<BorrowDto> getBorrows() {return borrows;}
 }

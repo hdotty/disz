@@ -50,7 +50,7 @@ public class PersonServiceImp implements PersonService{
         person.setPassword(newPsw);
     }
     @Override
-    public List<BorrowDto> personsBooks(PersonDto personDto) {return personDto.getBookDtos();}
+    public List<BorrowDto> personsBooks(PersonDto personDto) {return personDto.getBorrows();}
 
 
 
