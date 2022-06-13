@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BookService {
     void addBook(BookDto book);
-    void updateBook(BookDto bookDto);
+    void updateBook(BookDto bookDto, String author, String title);
 
     void deleteBook(Long id);
 

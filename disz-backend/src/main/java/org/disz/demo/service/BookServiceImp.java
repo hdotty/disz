@@ -18,7 +18,12 @@ public class BookServiceImp implements BookService {
     @Override
     public void addBook(BookDto book) {bookRepository.save(toEntity(book));}
     @Override
-    public void updateBook(BookDto bookDto){toEntity(bookDto);}
+    public void updateBook(BookDto bookDto, String author, String title){
+        Book book = toEntity(bookDto);
+        book.setAuthor(author);
+        book.setTitle(title);
+        bookRepository.save(book);
+    }
     @Override
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);

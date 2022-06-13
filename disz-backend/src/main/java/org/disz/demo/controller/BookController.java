@@ -23,7 +23,7 @@ public class BookController {
     }
 
     @PutMapping
-    public void updateBook(final @RequestBody BookDto bookDto) {bookService.updateBook(bookDto);}
+    public void updateBook(final @RequestBody BookDto bookDto, String author, String title) {bookService.updateBook(bookDto, author, title);}
 
 
     @DeleteMapping("/{id}")
