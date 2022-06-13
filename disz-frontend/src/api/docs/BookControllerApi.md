@@ -266,7 +266,7 @@ No authorization required
 
 ## updateBookUsingPUT
 
-> updateBookUsingPUT(bookDto)
+> updateBookUsingPUT(bookDto, opts)
 
 updateBook
 
@@ -277,7 +277,11 @@ import ApiDocumentation from 'api_documentation';
 
 let apiInstance = new ApiDocumentation.BookControllerApi();
 let bookDto = new ApiDocumentation.BookDto(); // BookDto | bookDto
-apiInstance.updateBookUsingPUT(bookDto, (error, data, response) => {
+let opts = {
+  'author': "author_example", // String | author
+  'title': "title_example" // String | title
+};
+apiInstance.updateBookUsingPUT(bookDto, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -292,6 +296,8 @@ apiInstance.updateBookUsingPUT(bookDto, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookDto** | [**BookDto**](BookDto.md)| bookDto | 
+ **author** | **String**| author | [optional] 
+ **title** | **String**| title | [optional] 
 
 ### Return type
 

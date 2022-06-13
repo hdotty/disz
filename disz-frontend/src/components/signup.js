@@ -53,15 +53,13 @@ function Singup(){
                     <InputText onChange={(e)=>setEmail(e.target.value)} id="email" value={email} type="email" className="w-full mb-3" />
 
                     <label htmlFor="password" className="block text-900 font-medium mb-2">Password</label>
-                    <InputText onChange={(e)=>setPassword1(e.target.value)} id="password" value={(password1)} type="password" className="w-full mb-3" />
+                    <InputText onChange={(e)=>setPassword1(e.target.value)} id="password" value={password1} type="password" className="w-full mb-3" />
 
                     <label htmlFor="password2" className="block text-900 font-medium mb-2">Password Again </label>
                     <InputText onChange={(e)=>setPassword2(e.target.value)} id="password2" value={password2} type="password" className="w-full mb-3" />
                     {error!==null && <p>{error}</p>}
                     {registered===true && <p>siker</p>}
                  
-                    
-
                     {!isPending && <Button type="submit" label="Sign Up" icon="pi pi-user" className="w-full" />}
                     {isPending && <Button label="loading..." icon="pi pi-user" className="w-full" />}
                     <br></br> <br></br>

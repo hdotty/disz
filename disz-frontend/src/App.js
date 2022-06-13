@@ -11,7 +11,7 @@ import PersonPage from "./components/personPage";
 import ForgotPsw from "./components/forgotPsw";
 import Header from "./header"
 import Home from "./components/home"
-import BooksTable from "./components/books/books"
+import BooksTable from "./components/books/readOnlyRows"
 import {AddBook} from "./components/addBook"
 import {
   BrowserRouter as Router,
@@ -19,6 +19,9 @@ import {
   Routes,
 }from 'react-router-dom'  
 import { useState } from "react"
+
+
+import Book from "./components/book_new/book.js"
 
 const App = () => {
     const [loggedInUser, setLoggedInUser] = useState(true);
@@ -30,7 +33,7 @@ const App = () => {
         <h1></h1>
         <Router>
           <Header/><br/>
-
+          <Book/>
           
 
           <Routes>

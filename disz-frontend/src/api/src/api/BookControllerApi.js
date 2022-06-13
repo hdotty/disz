@@ -282,9 +282,13 @@ export default class BookControllerApi {
     /**
      * updateBook
      * @param {module:model/BookDto} bookDto bookDto
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.author author
+     * @param {String} opts.title title
      * @param {module:api/BookControllerApi~updateBookUsingPUTCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    updateBookUsingPUT(bookDto, callback) {
+    updateBookUsingPUT(bookDto, opts, callback) {
+      opts = opts || {};
       let postBody = bookDto;
       // verify the required parameter 'bookDto' is set
       if (bookDto === undefined || bookDto === null) {
@@ -294,6 +298,8 @@ export default class BookControllerApi {
       let pathParams = {
       };
       let queryParams = {
+        'author': opts['author'],
+        'title': opts['title']
       };
       let headerParams = {
       };
