@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import BookDto from "../../api/src/model/BookDto";
 
-const EditableRow = ({book }) => {
-
+const EditableRow = ({book, props }) => {
+    props.func("hello there")
 
     return (
         <tr>

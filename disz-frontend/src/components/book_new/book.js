@@ -1,11 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import ReadOnlyRows from "./readOnlyrows";
-
 import BookControllerApi from "../../api/src/api/BookControllerApi";
-import EditableRows from "./EditableRows";
-import edit from "./EditableRows"
 import { Fragment } from "react";
 import BookDto from "../../api/src/model/BookDto";
 
@@ -15,6 +11,7 @@ const Book = () => {
     const [editBookId, setEditBookId] = useState(0)
     const [editAuthor, setEditAuthor] = useState('')
     const [editTitle, setEditTitle] = useState('')
+    const [currentBook, setCurrentBook] = useState(new BookDto)
 
     useEffect(() => {
         BookController.getBooksUsingGET(function(error, data){
@@ -29,36 +26,63 @@ const Book = () => {
     const handleEditClick = (e, book) => {
         e.preventDefault()
         setEditBookId(book.bookId)
+        console.log("book: ", book)
     }
 
-    const handleEditFormChange = (e) => {
+
+    const handleSaveClick = (e, book) => {
         e.preventDefault()
-        //const fieldName = e.target.getAttribute("name")
-        //const fieldValue = e.target.value
-        //console.log(fieldName)
+        var edit = {'author': editAuthor, 'title': editTitle}
+        BookController.updateBookUsingPUT(book, edit, function(error, data, response){
+            if(error !== null){
+                console.log(response)
+                console.log("something went wrong")
+            }else{
+                console.log("done")
+                console.log(response)
+                console.log("new book: ", book)
+            }
+            
+        })
+        setEditBookId(null)
     }
 
-    const handleSubmit = (e) => {
+        
+    
+    const handleDeleteClick = (e, book) => {
         e.preventDefault()
-
+        BookController.deleteBookUsingDELETE(book.bookId, function(error){})
     }
     
-
     return (
         <div className="card p-fluid">
-            <form onSubmit={(e=>handleSubmit(e))}>
-            <table className="table table-striped">
+            <form>
+            <table className="table table-striped" >
                 <thead>
-                    <td scope="col" >Author</td>
-                    <td scope="col">title</td>
-                    <td scope="col">sdf</td>
+                    <tr>
+                        <th scope="col" >Author</th>
+                        <th scope="col">title</th>
+                        <th scope="col">sdf</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    {books.map((book)=>(
-                        <Fragment>
+                    {books.map((book, id)=>(
+                        <Fragment key={id}>
                             {editBookId === book.bookId ? 
-                            (<EditableRows book={book}/>) : 
-                            (<ReadOnlyRows book={book}  handleEditClick={handleEditClick}/>
+                            (<tr>
+                                <td><input onChange={(e)=>setEditAuthor(e.target.value)} id="author" value={editAuthor} type="text" placeholder={book.author}/></td>
+                                <td><input onChange={(e)=>setEditTitle(e.target.value)} id="title" value={editTitle} type="text" placeholder={book.title}/></td>
+                                <td>
+                                    <button type="button" onClick={(e)=>handleSaveClick(e, book)}>Save</button>
+                                    <button type="button">Cancle</button>
+                                </td>
+                            </tr>) : 
+                            (<tr>
+                                <td>{book.author}</td>
+                                <td>{book.title}</td>
+                                <td><button type="button" onClick={(e)=>handleEditClick(e, book)}>Edit</button></td>
+                                <td><button type="button" onClick={(e)=>handleDeleteClick(e, book)}>Delete</button></td>
+                            </tr>
                             )}
                         </Fragment>
                     ))}
