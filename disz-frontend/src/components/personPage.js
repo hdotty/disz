@@ -1,39 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from 'primereact/button';
+import UsePerson from "../hooks/usePerson";
+import PersonDto from "../api/src/model/PersonDto";
+import { Link } from "react-router-dom";
 
 function PersonPage(){
+    const id = 125;  //ha az id-t válotztatom, akkor utána F5!! 
+    //nem raktam kükön useEffectbe, mert ez alapbol nem fog majd változni. 
+    // ha valaki belép, akkor annak az id-jával fog működni, nem fog változgatni
+
+    const {person, getPerson} = UsePerson()
+    const [done, setDone] = useState(false)
+    
+    if(!done){
+        getPerson(id)
+        setDone(true)
+    }
+
 
     return (
-
-        <div className="surface-0">
-            <div className="font-medium text-3xl text-900 mb-3">Personal Data</div>
-            <div className="text-500 mb-5">You can change your personal data if you want.</div>
+        <div className="flex align-items-center justify-content-center">
+        <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6 ">
+            <div className="text-center mb-5">
+            <div className="text-900 text-3xl font-medium mb-3">Personal Data</div>
+            <div className="text-600 font-medium line-height-3">You can change your personal data if you want.</div>
+            <div className="font-medium no-underline ml-2 text-blue-500 cursor-pointer"><Link to='/components/editPersonData'> Edit </Link> </div>
+            </div>
+            
             <ul className="list-none p-0 m-0">
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                     <div className="text-500 w-6 md:w-2 font-medium">Last Name</div>
-                    <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">lastName</div>
-                    <div className="w-6 md:w-2 flex justify-content-end">
-                        <Button label="Edit" icon="pi pi-pencil" className="p-button-text" />
-                    </div>
+                    {  <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{person.lastName}</div>}
                 </li>
-                
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                     <div className="text-500 w-6 md:w-2 font-medium">First Name</div>
-                    <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">firstName</div>
-                    <div className="w-6 md:w-2 flex justify-content-end">
-                        <Button label="Edit" icon="pi pi-pencil" className="p-button-text" />
-                    </div>
+                    <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{person.firstName}</div>
                 </li>
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                     <div className="text-500 w-6 md:w-2 font-medium">Email</div>
-                    <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">email</div>
-                    <div className="w-6 md:w-2 flex justify-content-end">
-                        <Button label="Edit" icon="pi pi-pencil" className="p-button-text" />
-                    </div>
+                    <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{person.email}</div>
                 </li>
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                     <div className="text-500 w-6 md:w-2 font-medium">Password</div>
-                    <Button label="Change your password" className="p-button-text" ></Button>
+                    <Button type="button" className="p-button-text" ><Link to='/components/changePsw' className="nav-link">Change your password</Link></Button>
                 </li>
 
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-bottom-1 border-300 flex-wrap">
@@ -45,7 +54,7 @@ function PersonPage(){
 
             </ul>
         </div>
-            
+        </div>
     )
 }
 

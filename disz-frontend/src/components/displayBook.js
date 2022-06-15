@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import BookControllerApi from "../../api/src/api/BookControllerApi";
+import BookControllerApi from "../api/src/api/BookControllerApi";
 import { Fragment } from "react";
-import BookDto from "../../api/src/model/BookDto";
+import BookDto from "../api/src/model/BookDto";
+import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
 
 const Book = () => {
     const BookController = new BookControllerApi()
@@ -11,7 +13,6 @@ const Book = () => {
     const [editBookId, setEditBookId] = useState(0)
     const [editAuthor, setEditAuthor] = useState('')
     const [editTitle, setEditTitle] = useState('')
-    const [currentBook, setCurrentBook] = useState(new BookDto)
 
     useEffect(() => {
         BookController.getBooksUsingGET(function(error, data){
@@ -21,7 +22,7 @@ const Book = () => {
                 setBooks(data)
             }  
         })
-    }, [])
+    }, [editAuthor, editTitle])
 
     const handleEditClick = (e, book) => {
         e.preventDefault()
@@ -55,14 +56,15 @@ const Book = () => {
     }
     
     return (
-        <div className="card p-fluid">
+        <div className="card p-fluid ">
             <form>
             <table className="table table-striped" >
                 <thead>
                     <tr>
                         <th scope="col" >Author</th>
                         <th scope="col">title</th>
-                        <th scope="col">sdf</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,18 +72,16 @@ const Book = () => {
                         <Fragment key={id}>
                             {editBookId === book.bookId ? 
                             (<tr>
-                                <td><input onChange={(e)=>setEditAuthor(e.target.value)} id="author" value={editAuthor} type="text" placeholder={book.author}/></td>
-                                <td><input onChange={(e)=>setEditTitle(e.target.value)} id="title" value={editTitle} type="text" placeholder={book.title}/></td>
-                                <td>
-                                    <button type="button" onClick={(e)=>handleSaveClick(e, book)}>Save</button>
-                                    <button type="button">Cancle</button>
-                                </td>
+                                <td><InputText onChange={(e)=>setEditAuthor(e.target.value)} id="author" value={editAuthor} type="text" placeholder={book.author}/></td>
+                                <td><InputText onChange={(e)=>setEditTitle(e.target.value)} id="title" value={editTitle} type="text" placeholder={book.title}/></td>
+                                <td><Button type="button"  onClick={(e)=>handleSaveClick(e, book)}>Save</Button></td>
+                                <td><Button type="button">Cancle</Button></td>
                             </tr>) : 
                             (<tr>
                                 <td>{book.author}</td>
                                 <td>{book.title}</td>
-                                <td><button type="button" onClick={(e)=>handleEditClick(e, book)}>Edit</button></td>
-                                <td><button type="button" onClick={(e)=>handleDeleteClick(e, book)}>Delete</button></td>
+                                <td><Button type="button" onClick={(e)=>handleEditClick(e, book)}>Edit</Button></td>
+                                <td><Button type="button" onClick={(e)=>handleDeleteClick(e, book)}>Delete</Button></td>
                             </tr>
                             )}
                         </Fragment>

@@ -10,7 +10,7 @@ function ChangePsw(){
 
     return (
         
-        <div className="flex align-items-center justify-content-center">
+    <div className="flex align-items-center justify-content-center">
         <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
 
             <div>
