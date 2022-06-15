@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import BookControllerApi from "../api/src/api/BookControllerApi";
+import BookControllerApi from "../../api/src/api/BookControllerApi";
 import { Fragment } from "react";
-import BookDto from "../api/src/model/BookDto";
+import BookDto from "../../api/src/model/BookDto";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 

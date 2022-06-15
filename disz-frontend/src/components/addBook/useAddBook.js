@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import BookControllerApi from "./../api/src/api/BookControllerApi.js"
-import BookDto from "./../api/src/model/BookDto.js"
+import BookControllerApi from "../../api/src/api/BookControllerApi.js"
+import BookDto from "../../api/src/model/BookDto.js"
 
 const useAddBook = () => {
     const [isCanceled, setIsCanceled] = useState(false)

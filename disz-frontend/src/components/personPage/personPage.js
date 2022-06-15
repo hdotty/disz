@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from 'primereact/button';
-import UsePerson from "../hooks/usePerson";
-import PersonDto from "../api/src/model/PersonDto";
+import UsePerson from "./usePerson";
+import PersonDto from "../../api/src/model/PersonDto";
 import { Link } from "react-router-dom";
 
 function PersonPage(){

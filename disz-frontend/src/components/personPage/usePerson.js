@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import PersonControllerApi from "../api/src/api/PersonControllerApi";
-import PersonDto from "../api/src/model/PersonDto";
+import PersonControllerApi from "../../api/src/api/PersonControllerApi";
+import PersonDto from "../../api/src/model/PersonDto";
 
 const UsePerson = () => {
     const PersonController = new PersonControllerApi()

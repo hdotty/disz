@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import PersonControllerApi from "../api/src/api/PersonControllerApi"
-import PersonDto from './../api/src/model/PersonDto.js'
+import PersonControllerApi from "../../api/src/api/PersonControllerApi.js"
+import PersonDto from "../../api/src/model/PersonDto.js"
 
 const UseSignUp = () => {
     const [isCanceled, setIsCanceled] = useState(false)

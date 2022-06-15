@@ -2,7 +2,7 @@ import {InputText} from "primereact/inputtext"
 import {Button} from "primereact/button"
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {useAddBook} from "../hooks/useAddBook.js"
+import {useAddBook} from "./useAddBook.js"
 
 const AddBook = () => {
     const [author, setAuthor] = useState ('')

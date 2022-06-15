@@ -2,7 +2,7 @@ import React from "react";
 import {InputText} from "primereact/inputtext"
 import {Button} from "primereact/button"
 import { Link } from "react-router-dom";
-import { UseSignUp } from "../hooks/useSignUp";
+import { UseSignUp } from "./useSignUp";
 import { useState } from "react";
 
 

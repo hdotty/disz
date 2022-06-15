@@ -6,13 +6,13 @@ import "primeflex/primeflex.css"
 import "swagger-ui-react/swagger-ui.css"
 import './App.css'
 import Login from './components/login'
-import Signup from "./components/signup";
-import PersonPage from "./components/personPage";
+import Signup from "./components/signUp/signup";
+import PersonPage from "./components/personPage/personPage";
 import ForgotPsw from "./components/forgotPsw";
 import Header from "./header"
 import Home from "./components/home"
 import ChangePsw from "./components/changePsw"
-import {AddBook} from "./components/addBook"
+import {AddBook} from "./components/addBook/addBook"
 import {
   BrowserRouter as Router,
   Route,
@@ -21,7 +21,7 @@ import {
 import { useState } from "react"
 
 
-import Book from "./components/displayBook.js"
+import Book from "./components/displayBooks/displayBook"
 
 const App = () => {
     const [loggedInUser, setLoggedInUser] = useState(true);
