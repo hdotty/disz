@@ -5,8 +5,6 @@ const useBooks = () => {
     const BookController = new BookControllerApi()
 
     const [books, setBooks] = useState([]);
-    const [editAuthor, setEditAuthor] = useState('')
-    const [editTitle, setEditTitle] = useState('')
     const [editBookId, setEditBookId] = useState(0)
     const [reRenderBooks, setReRenderBooks] = useState(true)
     
@@ -14,7 +12,6 @@ const useBooks = () => {
     const displayBooks = () => {
         if(reRenderBooks){
             BookController.getBooksUsingGET(function(error, data){
-                console.log(error, data)
                 if(error !== null){
                     console.log(error)
                 }else{
@@ -25,25 +22,40 @@ const useBooks = () => {
         }
     }
     
-
-    const handleSaveClick = (e, book) => {
+    const handleEditClick = (e, book) => {
         e.preventDefault()
+        setEditBookId(book.bookId)
+    }    
+
+    const handleSaveClick = (e, book, editAuthor, editTitle) => {
+        e.preventDefault()
+        console.log(edit)
         var edit = {'author': editAuthor, 'title': editTitle}
         BookController.updateBookUsingPUT(book, edit, function(error, data, response){
             if(error !== null){
                 console.log(response)
                 console.log("something went wrong")
             }else{
-                console.log("done")
-                console.log(response)
-                console.log("new book: ", book)
+                setEditBookId(null)
+                setReRenderBooks(true)
+                displayBooks()
             }
-            
         })
-        setReRenderBooks(true)
+        
         setEditBookId(null)
-        displayBooks()
+        
     }
-    return {books, displayBooks, handleSaveClick}
+
+    const handleDeleteClick = (e, book) => {
+        e.preventDefault()
+        BookController.deleteBookUsingDELETE(book.bookId, function(error){
+            if(error === null){
+                setReRenderBooks(true)
+                displayBooks()
+            }
+        })
+    }
+
+    return {books, editBookId, displayBooks, handleEditClick, handleSaveClick, handleDeleteClick}
 }
 export {useBooks}

@@ -1,39 +1,23 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import BookControllerApi from "../../api/src/api/BookControllerApi";
 import { Fragment } from "react";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { useBooks } from "./useDisplayBooks";
 
 const Book = () => {
-    const BookController = new BookControllerApi()
 
-    const [editBookId, setEditBookId] = useState(0)
     const [editAuthor, setEditAuthor] = useState('')
     const [editTitle, setEditTitle] = useState('')
-    const {books, displayBooks, handleSaveClick} = useBooks()
-    const [reRenderBooks, setReRenderBooks] = useState(true)
-    var edit = {'author': editAuthor, 'title': editTitle}
+    const {books, editBookId, displayBooks, handleEditClick, handleSaveClick, handleDeleteClick} = useBooks()
 
     displayBooks()
     
 
-    const handleEditClick = (e, book) => {
-        e.preventDefault()
-        setEditBookId(book.bookId)
-        console.log("book: ", book)
-    }
-
-
-console.log(books)
-        
     
-    const handleDeleteClick = (e, book) => {
-        e.preventDefault()
-        BookController.deleteBookUsingDELETE(book.bookId, function(error){})
-    }
+    
+
     
     return (
         <div className="flex align-items-center justify-content-center">
@@ -55,7 +39,7 @@ console.log(books)
                             (<tr>
                                 <td><InputText onChange={(e)=>setEditAuthor(e.target.value)} id="author" value={editAuthor} type="text" placeholder={book.author}/></td>
                                 <td><InputText onChange={(e)=>setEditTitle(e.target.value)} id="title" value={editTitle} type="text" placeholder={book.title}/></td>
-                                <td><Button type="button"  onClick={(e)=>{handleSaveClick(e, book, edit); setEditBookId(null); displayBooks()}}>Save</Button></td>
+                                <td><Button type="button"  onClick={(e)=>{handleSaveClick(e, book, editAuthor, editTitle)}}>Save</Button></td>
                                 <td><Button type="button">Cancle</Button></td>
                             </tr>) : 
                             (<tr>

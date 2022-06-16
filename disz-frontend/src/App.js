@@ -13,6 +13,7 @@ import Header from "./header"
 import Home from "./components/home"
 import ChangePsw from "./components/changePsw"
 import {AddBook} from "./components/addBook/addBook"
+import DisplayPersons from "./components/displayPersons/displayPersons"
 import {
   BrowserRouter as Router,
   Route,
@@ -33,7 +34,7 @@ const App = () => {
         <h1></h1>
         <Router>
           <Header/><br/>
-          <Book/>
+          
 
           <Routes>
             <Route exact path='/' element={ <Home/> }/>
@@ -42,7 +43,7 @@ const App = () => {
             {<Route exact path='/components/signup' element={ <Signup /> }/>}
             {<Route exact path='/components/login' element={ <Login/> }/>}
 
-            {<Route exact path='/components/personPage' element={ <PersonPage /> }/>}
+            {<Route exact path='/components/personPage/personPage' element={ <PersonPage /> }/>}
             {<Route exact path='/components/forgotPsw' element={ <ForgotPsw /> }/>}
 
             {<Route exact path='components/addBook' element={ <AddBook/> }/>}
