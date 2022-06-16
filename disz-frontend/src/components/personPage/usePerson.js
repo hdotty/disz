@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import PersonControllerApi from "../../api/src/api/PersonControllerApi";
 import PersonDto from "../../api/src/model/PersonDto";
+import useDisplayPersons from "../displayPersons/useDisplayPersons";
 
 const UsePerson = () => {
     const PersonController = new PersonControllerApi()
     const [isCanceled, setIsCanceled] = useState(false)
     const [person, setPerson] = useState(new PersonDto())
-
-    const getPerson = (id) => {
+    const {currentId} = useDisplayPersons()
+    const getPerson = () => {
         try{
             if(!isCanceled){
-                PersonController.getPersonUsingGET(id, function(error, data){
+                console.log(currentId, "id")
+                PersonController.getPersonUsingGET(currentId, function(error, data){
                     console.log(error, data)
                     if(error !== null){
-                        throw Error(error)
                         setIsCanceled(true)
+                        throw Error(error)
+                        
                     }else{
                         setPerson(data)
                         setIsCanceled(true)

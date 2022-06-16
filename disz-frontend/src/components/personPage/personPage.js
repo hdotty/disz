@@ -2,17 +2,16 @@ import {  useState } from "react";
 import { Button } from 'primereact/button';
 import UsePerson from "./usePerson";
 import { Link } from "react-router-dom";
+import useDisplayPersons from "../displayPersons/useDisplayPersons";
 
-function PersonPage(){
-    const id = 125;  //ha az id-t válotztatom, akkor utána F5!! 
-    //nem raktam kükön useEffectbe, mert ez alapbol nem fog majd változni. 
-    // ha valaki belép, akkor annak az id-jával fog működni, nem fog változgatni
-
+const PersonPage = (props) => {
+    const id = props.currentId
+    console.log(id)
     const {person, getPerson} = UsePerson()
     const [done, setDone] = useState(false)
-    
+
     if(!done){
-        getPerson(id)
+        getPerson()
         setDone(true)
     }
 

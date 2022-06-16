@@ -35,6 +35,7 @@ const Book = () => {
                 <tbody>
                     {books.map((book, id)=>(
                         <Fragment key={id}>
+                            
                             {editBookId === book.bookId ? 
                             (<tr>
                                 <td><InputText onChange={(e)=>setEditAuthor(e.target.value)} id="author" value={editAuthor} type="text" placeholder={book.author}/></td>
