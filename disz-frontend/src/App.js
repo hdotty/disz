@@ -5,7 +5,7 @@ import "primereact/resources/themes/tailwind-light/theme.css"
 import "primeflex/primeflex.css"
 import "swagger-ui-react/swagger-ui.css"
 import './App.css'
-import Login from './components/login'
+import Login from './components/login/login.js'
 import Signup from "./components/signUp/signup";
 import PersonPage from "./components/personPage/personPage";
 import ForgotPsw from "./components/forgotPsw";
@@ -43,7 +43,7 @@ const App = () => {
             {<Route exact path='/components/signup' element={ <Signup /> }/>}
             {<Route exact path='/components/login' element={ <Login/> }/>}
 
-            {<Route exact path='/components/personPage/personPage' element={ <PersonPage /> }/>}
+            {<Route exact path='/components/personPage' element={ <PersonPage /> }/>}
             {<Route exact path='/components/forgotPsw' element={ <ForgotPsw /> }/>}
 
             {<Route exact path='components/addBook' element={ <AddBook/> }/>}

@@ -11,7 +11,7 @@ const PersonPage = (props) => {
     const [done, setDone] = useState(false)
 
     if(!done){
-        getPerson()
+        getPerson(id)
         setDone(true)
     }
 

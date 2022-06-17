@@ -7,12 +7,12 @@ const UsePerson = () => {
     const PersonController = new PersonControllerApi()
     const [isCanceled, setIsCanceled] = useState(false)
     const [person, setPerson] = useState(new PersonDto())
-    const {currentId} = useDisplayPersons()
-    const getPerson = () => {
+
+
+    const getPerson = (id) => {
         try{
             if(!isCanceled){
-                console.log(currentId, "id")
-                PersonController.getPersonUsingGET(currentId, function(error, data){
+                PersonController.getPersonUsingGET(id, function(error, data){
                     console.log(error, data)
                     if(error !== null){
                         setIsCanceled(true)
