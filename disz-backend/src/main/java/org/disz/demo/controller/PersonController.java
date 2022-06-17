@@ -20,7 +20,7 @@ public class PersonController {
     @PostMapping("/person")
     public void addPerson(final @RequestBody @Valid PersonDto personDto) {personService.addPerson(personDto);}
     @PutMapping("/person")
-    public void updatePerson(final @RequestBody PersonDto personDto){personService.updatePerson(personDto);}
+    public void updatePerson(final @RequestBody PersonDto personDto, String firstName, String lastName, String email){personService.updatePerson(personDto, firstName, lastName, email);}
     @DeleteMapping("/person/{id}")
     public void deletePerson(final @PathVariable Long id){ personService.deletePerson(id); }
     @GetMapping("/person")
@@ -29,7 +29,7 @@ public class PersonController {
     public PersonDto getPerson(final @PathVariable Long id) {return personService.getById(id);}
     @GetMapping("/person/search")
     public List<PersonDto> findPerson(final @RequestParam String query) {return personService.findPersonByFirstNameOrLastNameOrEmail(query);}
-    @PostMapping("/person/{password}")
+    @PutMapping("/person/{password}")
     public void pswChange(@RequestBody PersonDto personDto, @PathVariable String password){ personService.changePsw(personDto, password);}
     @GetMapping("/persons")
     public List<BorrowDto> personsBooks(final @RequestBody PersonDto personDto){return personService.personsBooks(personDto);}

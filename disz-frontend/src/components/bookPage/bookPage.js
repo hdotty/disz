@@ -1,9 +1,16 @@
+import React from "react"
 import {Button} from "primereact/button"
+import useBookPage from "./useBookPage"
 
 //ide kell egy POST borrow
 //meg egy GET book
 
-function BookPage(){
+function BookPage(props){
+    const id = props.editBookId
+    const {book, getBook} = useBookPage()
+    
+    getBook(id)
+
 
     return(
         <div className="surface-0">
@@ -12,12 +19,12 @@ function BookPage(){
             <ul className="list-none p-0 m-0">
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                     <div className="text-500 w-6 md:w-2 font-medium">Author</div>
-                    <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">author</div>
+                    <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{book.author}</div>
                 </li>
                 
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                     <div className="text-500 w-6 md:w-2 font-medium">Title</div>
-                    <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">title</div>
+                    <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{book.title}</div>
                 </li>
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                     <div className="text-500 w-6 md:w-2 font-medium">Available</div>
@@ -31,8 +38,16 @@ function BookPage(){
                 </li>
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                     <div className="text-500 w-6 md:w-2 font-medium">Who borrowed it?
-                        <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">yes or no</div>
-                        <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">yes </div>
+                        <table className="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Who</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
                     </div>
                 </li>
                     

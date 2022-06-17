@@ -32,7 +32,13 @@ public class PersonServiceImp implements PersonService{
         personRepository.save(toEntity(personDto));
     }
     @Override
-    public void updatePerson(PersonDto personDto){ toEntity(personDto); }
+    public void updatePerson(PersonDto personDto, String firstName, String lastName, String email){
+        Person person = toEntity(personDto);
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        person.setEmail(email);
+        personRepository.save(person);
+    }
     @Override
     public void deletePerson(Long id) {
         personRepository.deleteById(id);
@@ -53,6 +59,7 @@ public class PersonServiceImp implements PersonService{
     public void changePsw(PersonDto personDto, String newPsw){
         Person person = toEntity(personDto);
         person.setPassword(newPsw);
+        personRepository.save(person);
     }
     @Override
     public List<BorrowDto> personsBooks(PersonDto personDto) {return personDto.getBorrows();}

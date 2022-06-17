@@ -18,11 +18,16 @@ function Singup(){
     const handleSubmit = (e) => {
         addUser(firstName, lastName, email, password1, password2)
         e.preventDefault()
+        clear()
 
     }
 
     const handleOnClick = (e) => {
         e.preventDefault()
+        clear()
+    }
+
+    const clear = () => {
         setFirstName('')
         setLastName('')
         setEmail('')
@@ -58,7 +63,7 @@ function Singup(){
                     <label htmlFor="password2" className="block text-900 font-medium mb-2">Password Again </label>
                     <InputText onChange={(e)=>setPassword2(e.target.value)} id="password2" value={password2} type="password" className="w-full mb-3" />
                     {error!==null && <p>{error}</p>}
-                    {registered===true && <p>siker</p>}
+                    {registered===true && <p>Your registration was successful!</p>}
                  
                     {!isPending && <Button type="submit" label="Sign Up" icon="pi pi-user" className="w-full" />}
                     {isPending && <Button label="loading..." icon="pi pi-user" className="w-full" />}

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import PersonControllerApi from "../../api/src/api/PersonControllerApi";
 import PersonDto from "../../api/src/model/PersonDto";
-import useDisplayPersons from "../displayPersons/useDisplayPersons";
+
 
 const UsePerson = () => {
     const PersonController = new PersonControllerApi()
     const [isCanceled, setIsCanceled] = useState(false)
     const [person, setPerson] = useState(new PersonDto())
+    const [edit, setEdit] = useState(false)
 
 
     const getPerson = (id) => {
@@ -24,16 +25,25 @@ const UsePerson = () => {
                     }
                 })
             }
-            
         }catch(err){
             console.log(err)
             setIsCanceled(true)
         }
         
+    }    
+
+    const handleEdit = (e) => {
+        e.preventDefault()
+        setEdit(true)
     }
-    console.log("usePerson person", person)
-    
-    return {getPerson, person}
+
+    const handleSave = (e, firstName, lastName) => {
+        e.preventDefault()
+        //PersonController.updatePersonUsingPUT
+        //
+    }
+
+    return {getPerson, person, handleEdit, edit}
 }
 
 export default UsePerson

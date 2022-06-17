@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PersonControllerApi from "../../api/src/api/PersonControllerApi";
-import { useNavigate } from "react-router-dom";
 
 const useDisplayPersons = () => {
     const PersonController = new PersonControllerApi()

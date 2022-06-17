@@ -8,7 +8,7 @@ import java.util.List;
 public interface PersonService {
 
     void addPerson(PersonDto personDto);
-    void updatePerson(PersonDto personDto);
+    void updatePerson(PersonDto personDto, String firstName, String lastName, String email);
     void deletePerson(Long id);
 
     List<PersonDto> findAllPerson();

@@ -6,6 +6,8 @@ const useBooks = () => {
 
     const [books, setBooks] = useState([]);
     const [editBookId, setEditBookId] = useState(0)
+    const [view, setView] = useState(false)
+
     const [reRenderBooks, setReRenderBooks] = useState(true)
     
     
@@ -29,7 +31,6 @@ const useBooks = () => {
 
     const handleSaveClick = (e, book, editAuthor, editTitle) => {
         e.preventDefault()
-        console.log(edit)
         var edit = {'author': editAuthor, 'title': editTitle}
         BookController.updateBookUsingPUT(book, edit, function(error, data, response){
             if(error !== null){
@@ -41,9 +42,12 @@ const useBooks = () => {
                 displayBooks()
             }
         })
-        
         setEditBookId(null)
-        
+    }
+
+    const handleCancelClick = (e) => {
+        e.preventDefault()
+        setEditBookId(null)
     }
 
     const handleDeleteClick = (e, book) => {
@@ -56,6 +60,11 @@ const useBooks = () => {
         })
     }
 
-    return {books, editBookId, displayBooks, handleEditClick, handleSaveClick, handleDeleteClick}
+    const handleViewClick = (e, book) => {
+        e.preventDefault()
+        setEditBookId(book.bookId)
+        setView(true)
+    }
+    return {books, editBookId, displayBooks, handleEditClick, handleSaveClick, handleCancelClick, handleDeleteClick, handleViewClick, view}
 }
 export {useBooks}

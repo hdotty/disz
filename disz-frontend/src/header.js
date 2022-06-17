@@ -14,7 +14,12 @@ function Header(){
                 {   <li className="nav-item"> <Link to='/components/login' className="nav-link"> Log In </Link> </li>}
                 <li className="nav-item"> <Link to='/components/books' className="nav-link"> Books </Link> </li>
                 <li className="nav-item"> <Link to='/components/addBook' className="nav-link"> Add Book </Link> </li>
+                <li className="nav-item"> <Link to='/components/bookPage/bookPage' className="nav-link"> Book Page </Link> </li>
+                <li className="nav-item"> <Link to='/components/displayPersons/displayPersons' className="nav-link"> Persons </Link> </li>
+
                 
+                <li className="nav-item"> <Link to='/components/addBook' className="nav-link"> Add Book </Link> </li>
+                <li className="nav-item"> <Link to='/components/addBook' className="nav-link"> Add Book </Link> </li>
             </ul>
         </nav>
     )
