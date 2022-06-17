@@ -278,8 +278,8 @@ export default class PersonControllerApi {
     }
 
     /**
-     * Callback function to receive the result of the pswChangeUsingPOST operation.
-     * @callback module:api/PersonControllerApi~pswChangeUsingPOSTCallback
+     * Callback function to receive the result of the pswChangeUsingPUT operation.
+     * @callback module:api/PersonControllerApi~pswChangeUsingPUTCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -289,17 +289,17 @@ export default class PersonControllerApi {
      * pswChange
      * @param {String} password password
      * @param {module:model/PersonDto} personDto personDto
-     * @param {module:api/PersonControllerApi~pswChangeUsingPOSTCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/PersonControllerApi~pswChangeUsingPUTCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    pswChangeUsingPOST(password, personDto, callback) {
+    pswChangeUsingPUT(password, personDto, callback) {
       let postBody = personDto;
       // verify the required parameter 'password' is set
       if (password === undefined || password === null) {
-        throw new Error("Missing the required parameter 'password' when calling pswChangeUsingPOST");
+        throw new Error("Missing the required parameter 'password' when calling pswChangeUsingPUT");
       }
       // verify the required parameter 'personDto' is set
       if (personDto === undefined || personDto === null) {
-        throw new Error("Missing the required parameter 'personDto' when calling pswChangeUsingPOST");
+        throw new Error("Missing the required parameter 'personDto' when calling pswChangeUsingPUT");
       }
 
       let pathParams = {
@@ -317,7 +317,7 @@ export default class PersonControllerApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/person/{password}', 'POST',
+        '/person/{password}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -334,9 +334,14 @@ export default class PersonControllerApi {
     /**
      * updatePerson
      * @param {module:model/PersonDto} personDto personDto
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.email email
+     * @param {String} opts.firstName firstName
+     * @param {String} opts.lastName lastName
      * @param {module:api/PersonControllerApi~updatePersonUsingPUTCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    updatePersonUsingPUT(personDto, callback) {
+    updatePersonUsingPUT(personDto, opts, callback) {
+      opts = opts || {};
       let postBody = personDto;
       // verify the required parameter 'personDto' is set
       if (personDto === undefined || personDto === null) {
@@ -346,6 +351,9 @@ export default class PersonControllerApi {
       let pathParams = {
       };
       let queryParams = {
+        'email': opts['email'],
+        'firstName': opts['firstName'],
+        'lastName': opts['lastName']
       };
       let headerParams = {
       };

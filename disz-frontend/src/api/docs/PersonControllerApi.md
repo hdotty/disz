@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**getPersonUsingGET**](PersonControllerApi.md#getPersonUsingGET) | **GET** /person/{id} | getPerson
 [**getPersonsUsingGET**](PersonControllerApi.md#getPersonsUsingGET) | **GET** /person | getPersons
 [**personsBooksUsingGET**](PersonControllerApi.md#personsBooksUsingGET) | **GET** /persons | personsBooks
-[**pswChangeUsingPOST**](PersonControllerApi.md#pswChangeUsingPOST) | **POST** /person/{password} | pswChange
+[**pswChangeUsingPUT**](PersonControllerApi.md#pswChangeUsingPUT) | **PUT** /person/{password} | pswChange
 [**updatePersonUsingPUT**](PersonControllerApi.md#updatePersonUsingPUT) | **PUT** /person | updatePerson
 
 
@@ -269,9 +269,9 @@ No authorization required
 - **Accept**: */*
 
 
-## pswChangeUsingPOST
+## pswChangeUsingPUT
 
-> pswChangeUsingPOST(password, personDto)
+> pswChangeUsingPUT(password, personDto)
 
 pswChange
 
@@ -283,7 +283,7 @@ import ApiDocumentation from 'api_documentation';
 let apiInstance = new ApiDocumentation.PersonControllerApi();
 let password = "password_example"; // String | password
 let personDto = new ApiDocumentation.PersonDto(); // PersonDto | personDto
-apiInstance.pswChangeUsingPOST(password, personDto, (error, data, response) => {
+apiInstance.pswChangeUsingPUT(password, personDto, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -316,7 +316,7 @@ No authorization required
 
 ## updatePersonUsingPUT
 
-> updatePersonUsingPUT(personDto)
+> updatePersonUsingPUT(personDto, opts)
 
 updatePerson
 
@@ -327,7 +327,12 @@ import ApiDocumentation from 'api_documentation';
 
 let apiInstance = new ApiDocumentation.PersonControllerApi();
 let personDto = new ApiDocumentation.PersonDto(); // PersonDto | personDto
-apiInstance.updatePersonUsingPUT(personDto, (error, data, response) => {
+let opts = {
+  'email': "email_example", // String | email
+  'firstName': "firstName_example", // String | firstName
+  'lastName': "lastName_example" // String | lastName
+};
+apiInstance.updatePersonUsingPUT(personDto, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -342,6 +347,9 @@ apiInstance.updatePersonUsingPUT(personDto, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **personDto** | [**PersonDto**](PersonDto.md)| personDto | 
+ **email** | **String**| email | [optional] 
+ **firstName** | **String**| firstName | [optional] 
+ **lastName** | **String**| lastName | [optional] 
 
 ### Return type
 

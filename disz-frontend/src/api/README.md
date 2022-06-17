@@ -149,7 +149,7 @@ Class | Method | HTTP request | Description
 *ApiDocumentation.PersonControllerApi* | [**getPersonUsingGET**](docs/PersonControllerApi.md#getPersonUsingGET) | **GET** /person/{id} | getPerson
 *ApiDocumentation.PersonControllerApi* | [**getPersonsUsingGET**](docs/PersonControllerApi.md#getPersonsUsingGET) | **GET** /person | getPersons
 *ApiDocumentation.PersonControllerApi* | [**personsBooksUsingGET**](docs/PersonControllerApi.md#personsBooksUsingGET) | **GET** /persons | personsBooks
-*ApiDocumentation.PersonControllerApi* | [**pswChangeUsingPOST**](docs/PersonControllerApi.md#pswChangeUsingPOST) | **POST** /person/{password} | pswChange
+*ApiDocumentation.PersonControllerApi* | [**pswChangeUsingPUT**](docs/PersonControllerApi.md#pswChangeUsingPUT) | **PUT** /person/{password} | pswChange
 *ApiDocumentation.PersonControllerApi* | [**updatePersonUsingPUT**](docs/PersonControllerApi.md#updatePersonUsingPUT) | **PUT** /person | updatePerson
 
 
