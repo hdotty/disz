@@ -51,6 +51,12 @@ public class PersonServiceImp implements PersonService{
     public PersonDto getById(Long id) {
         return personRepository.findById(id).map(this::toDto).orElse(null);
     }
+
+    @Override
+    public PersonDto getByEmail(String email) {
+        return toDto(personRepository.getByEmail(email));
+    }
+
     @Override
     public List<PersonDto> findPersonByFirstNameOrLastNameOrEmail(String query) {
         return personRepository.findPersonByFirstNameOrLastNameOrEmail(query, query, query).stream().map(this::toDto).collect(Collectors.toList());

@@ -19,6 +19,7 @@ public class Person {
     @NonNull
     private String lastName;
     @NonNull
+    @Column(unique = true)
     private String email;
     private boolean admin;
     @NonNull

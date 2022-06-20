@@ -8,6 +8,7 @@ const UsePerson = () => {
     const [isCanceled, setIsCanceled] = useState(false)
     const [person, setPerson] = useState(new PersonDto())
     const [edit, setEdit] = useState(false)
+    const [saving, setSaving] = useState(true)
 
 
     const getPerson = (id) => {
@@ -37,13 +38,26 @@ const UsePerson = () => {
         setEdit(true)
     }
 
-    const handleSave = (e, firstName, lastName) => {
+    const handleSave = (e, person, firstName, lastName, email) => {
         e.preventDefault()
-        //PersonController.updatePersonUsingPUT
-        //
+        if(saving){
+            var update = {"firstName": firstName, "lastName": lastName, "email": email}
+            PersonController.updatePersonUsingPUT(person, update, function(error){
+                if(error!==null){
+                    console.log(error)
+                    setSaving(false)
+                }else{
+                    setEdit(false)
+                    setSaving(false)
+                }
+            })
+        }
+        
+        
+        
     }
 
-    return {getPerson, person, handleEdit, edit}
+    return {getPerson, person, handleEdit, edit, handleSave}
 }
 
 export default UsePerson

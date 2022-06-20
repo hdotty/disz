@@ -31,7 +31,7 @@ const PersonPage = (props) => {
             <div className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">
                 {edit ? 
                     <Button type="button" onClick={(e)=>handleSave(e,firstName,lastName,email)}>Save</Button> :
-                    <Button type="button" onClick={(e)=>handleEdit(e)}>Edit</Button>
+                    <Button type="button" onClick={(e)=>handleEdit(e, person, firstName, lastName, email)}>Edit</Button>
                 }
                 
             </div>
@@ -52,7 +52,7 @@ const PersonPage = (props) => {
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                     <div className="text-500 w-6 md:w-2 font-medium">Email</div>
                     {edit ? 
-                        <InputText onChange={(e)=>setLastName(e.target.value)} id="firstName" value={email} type="text" placeholder={person.email}/> :
+                        <InputText onChange={(e)=>setEmail(e.target.value)} id="firstName" value={email} type="text" placeholder={person.email}/> :
                         <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{person.email}</div>}
                 </li>
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">

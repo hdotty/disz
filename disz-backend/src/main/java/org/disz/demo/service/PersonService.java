@@ -13,6 +13,7 @@ public interface PersonService {
 
     List<PersonDto> findAllPerson();
     PersonDto getById(Long id);
+    PersonDto getByEmail(String email);
     List<PersonDto> findPersonByFirstNameOrLastNameOrEmail(String query);
     void changePsw(PersonDto personDto, String newPsw);
     List<BorrowDto> personsBooks(PersonDto personDto);

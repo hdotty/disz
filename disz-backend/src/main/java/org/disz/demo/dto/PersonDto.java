@@ -25,6 +25,8 @@ public class PersonDto {
     @JsonProperty
     private List<BorrowDto> borrows;
 
+    private boolean loggedIn = false;
+
     public PersonDto(){}
     public PersonDto(Long personId, String firstName, String lastName, String email, boolean admin, String password, List<BorrowDto> borrows) {
         this.personId = personId;
@@ -49,4 +51,8 @@ public class PersonDto {
     public String getPassword() {return password;}
 
     public List<BorrowDto> getBorrows() {return borrows;}
+
+    public boolean isLoggedIn(){return loggedIn;}
+
+    public void setLoggedIn(boolean loggedIn){this.loggedIn = loggedIn;}
 }

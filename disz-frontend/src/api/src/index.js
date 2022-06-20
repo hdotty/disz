@@ -24,6 +24,7 @@ import View from './model/View';
 import BasicErrorControllerApi from './api/BasicErrorControllerApi';
 import BookControllerApi from './api/BookControllerApi';
 import BorrowControllerApi from './api/BorrowControllerApi';
+import LoginControllerApi from './api/LoginControllerApi';
 import PersonControllerApi from './api/PersonControllerApi';
 
 
@@ -130,6 +131,12 @@ export {
     * @property {module:api/BorrowControllerApi}
     */
     BorrowControllerApi,
+
+    /**
+    * The LoginControllerApi service constructor.
+    * @property {module:api/LoginControllerApi}
+    */
+    LoginControllerApi,
 
     /**
     * The PersonControllerApi service constructor.

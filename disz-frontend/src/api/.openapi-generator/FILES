@@ -9,6 +9,7 @@ docs/BookDto.md
 docs/Borrow.md
 docs/BorrowControllerApi.md
 docs/BorrowDto.md
+docs/LoginControllerApi.md
 docs/ModelAndView.md
 docs/Person.md
 docs/PersonControllerApi.md
@@ -21,6 +22,7 @@ src/ApiClient.js
 src/api/BasicErrorControllerApi.js
 src/api/BookControllerApi.js
 src/api/BorrowControllerApi.js
+src/api/LoginControllerApi.js
 src/api/PersonControllerApi.js
 src/index.js
 src/model/Book.js
@@ -31,3 +33,4 @@ src/model/ModelAndView.js
 src/model/Person.js
 src/model/PersonDto.js
 src/model/View.js
+test/api/LoginControllerApi.spec.js

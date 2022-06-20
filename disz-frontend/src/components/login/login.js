@@ -4,18 +4,14 @@ import {Button} from "primereact/button"
 import { useState } from "react"
 import { Link } from "react-router-dom";
 
-// import {useNavigate} from "react-router-dom"
-
 
 function Login(){
-    const [checked, setChecked] = useState(false)
-    const handleClick = () => setChecked(!checked)
 
 
 
     return(
         
-        <div className="flex align-items-center justify-content-center">
+        <form className="flex align-items-center justify-content-center" >
             <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
                 <div className="text-center mb-5">
                     <img src="assets/images/blocks/logos/hyper.svg" alt="hyper" height={50} className="mb-3" />
@@ -38,10 +34,10 @@ function Login(){
                         <div className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"><Link to="/components/forgotPsw">Forgot your password?</Link>  </div>
                     </div>
 
-                    <Button label="Sign In" icon="pi pi-user" className="w-full" />
+                    <Button label="Sign In" icon="pi pi-user" className="w-full" type="submit" />
                 </div>
             </div>
-        </div>
+        </form>
     
     )
 }
