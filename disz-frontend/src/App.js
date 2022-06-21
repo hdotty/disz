@@ -23,7 +23,7 @@ import {
 }from 'react-router-dom'  
 import { useState } from "react"
 
-
+import AddBorrow from "./components/addBorrow/addBorrow"
 import Book from "./components/displayBooks/displayBook"
 
 const App = () => {
@@ -36,7 +36,7 @@ const App = () => {
         <h1></h1>
         <Router>
           <Header/><br/>
-          
+                    
 
           <Routes>
             <Route exact path='/' element={ <Home/> }/>
@@ -55,6 +55,8 @@ const App = () => {
             
             {<Route exact path='components/changePsw' element={ <ChangePsw/> }/>}
             
+
+            {<Route exact path='components/addBorrow' element={ <AddBorrow/> }/>}
 
           </Routes>
         </Router>

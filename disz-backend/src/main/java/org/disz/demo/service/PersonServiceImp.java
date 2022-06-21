@@ -53,6 +53,11 @@ public class PersonServiceImp implements PersonService{
     }
 
     @Override
+    public boolean existsByEmail(String email) {
+        return personRepository.existsByEmail(email);
+    }
+
+    @Override
     public PersonDto getByEmail(String email) {
         return toDto(personRepository.getByEmail(email));
     }

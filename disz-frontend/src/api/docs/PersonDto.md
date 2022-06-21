@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **email** | **String** |  | 
 **firstName** | **String** |  | 
 **lastName** | **String** |  | 
+**loggedIn** | **Boolean** |  | [optional] 
 **password** | **String** |  | 
 **personId** | **Number** |  | [optional] 
 

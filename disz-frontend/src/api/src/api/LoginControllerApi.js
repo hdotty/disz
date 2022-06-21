@@ -34,29 +34,36 @@ export default class LoginControllerApi {
 
 
     /**
-     * Callback function to receive the result of the loginPostUsingPOST operation.
-     * @callback module:api/LoginControllerApi~loginPostUsingPOSTCallback
+     * Callback function to receive the result of the loginUsingPOST operation.
+     * @callback module:api/LoginControllerApi~loginUsingPOSTCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Object} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * loginPost
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.email email
-     * @param {String} opts.password password
-     * @param {module:api/LoginControllerApi~loginPostUsingPOSTCallback} callback The callback function, accepting three arguments: error, data, response
+     * login
+     * @param {String} email email
+     * @param {String} password password
+     * @param {module:api/LoginControllerApi~loginUsingPOSTCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Object}
      */
-    loginPostUsingPOST(opts, callback) {
-      opts = opts || {};
+    loginUsingPOST(email, password, callback) {
       let postBody = null;
+      // verify the required parameter 'email' is set
+      if (email === undefined || email === null) {
+        throw new Error("Missing the required parameter 'email' when calling loginUsingPOST");
+      }
+      // verify the required parameter 'password' is set
+      if (password === undefined || password === null) {
+        throw new Error("Missing the required parameter 'password' when calling loginUsingPOST");
+      }
 
       let pathParams = {
       };
       let queryParams = {
-        'email': opts['email'],
-        'password': opts['password']
+        'email': email,
+        'password': password
       };
       let headerParams = {
       };
@@ -65,8 +72,8 @@ export default class LoginControllerApi {
 
       let authNames = [];
       let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
+      let accepts = ['*/*'];
+      let returnType = Object;
       return this.apiClient.callApi(
         '/login', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

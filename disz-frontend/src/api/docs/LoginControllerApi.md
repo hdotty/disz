@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**loginPostUsingPOST**](LoginControllerApi.md#loginPostUsingPOST) | **POST** /login | loginPost
+[**loginUsingPOST**](LoginControllerApi.md#loginUsingPOST) | **POST** /login | login
 
 
 
-## loginPostUsingPOST
+## loginUsingPOST
 
-> loginPostUsingPOST(opts)
+> Object loginUsingPOST(email, password)
 
-loginPost
+login
 
 ### Example
 
@@ -20,15 +20,13 @@ loginPost
 import ApiDocumentation from 'api_documentation';
 
 let apiInstance = new ApiDocumentation.LoginControllerApi();
-let opts = {
-  'email': "email_example", // String | email
-  'password': "password_example" // String | password
-};
-apiInstance.loginPostUsingPOST(opts, (error, data, response) => {
+let email = "email_example"; // String | email
+let password = "password_example"; // String | password
+apiInstance.loginUsingPOST(email, password, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -38,12 +36,12 @@ apiInstance.loginPostUsingPOST(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| email | [optional] 
- **password** | **String**| password | [optional] 
+ **email** | **String**| email | 
+ **password** | **String**| password | 
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -52,5 +50,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: */*
 

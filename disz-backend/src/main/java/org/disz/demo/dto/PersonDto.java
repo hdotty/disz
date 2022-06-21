@@ -2,6 +2,7 @@ package org.disz.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class PersonDto {
     private String lastName;
     @JsonProperty
     @NotBlank(message = "Email must be set")
+    @Column(unique = true)
     private String email;
     @JsonProperty
     private boolean admin = false;

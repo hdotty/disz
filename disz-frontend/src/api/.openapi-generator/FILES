@@ -33,4 +33,3 @@ src/model/ModelAndView.js
 src/model/Person.js
 src/model/PersonDto.js
 src/model/View.js
-test/api/LoginControllerApi.spec.js

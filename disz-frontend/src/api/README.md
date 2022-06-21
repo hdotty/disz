@@ -143,7 +143,7 @@ Class | Method | HTTP request | Description
 *ApiDocumentation.BorrowControllerApi* | [**nowBorrowedBooksUsingGET**](docs/BorrowControllerApi.md#nowBorrowedBooksUsingGET) | **GET** /borrows/borrowed/count | nowBorrowedBooks
 *ApiDocumentation.BorrowControllerApi* | [**returnBookUsingPUT**](docs/BorrowControllerApi.md#returnBookUsingPUT) | **PUT** /borrows/{id}/return | returnBook
 *ApiDocumentation.BorrowControllerApi* | [**returnesBorrowesUsingGET**](docs/BorrowControllerApi.md#returnesBorrowesUsingGET) | **GET** /borrows/returned/count | returnesBorrowes
-*ApiDocumentation.LoginControllerApi* | [**loginPostUsingPOST**](docs/LoginControllerApi.md#loginPostUsingPOST) | **POST** /login | loginPost
+*ApiDocumentation.LoginControllerApi* | [**loginUsingPOST**](docs/LoginControllerApi.md#loginUsingPOST) | **POST** /login | login
 *ApiDocumentation.PersonControllerApi* | [**addPersonUsingPOST**](docs/PersonControllerApi.md#addPersonUsingPOST) | **POST** /person | addPerson
 *ApiDocumentation.PersonControllerApi* | [**deletePersonUsingDELETE**](docs/PersonControllerApi.md#deletePersonUsingDELETE) | **DELETE** /person/{id} | deletePerson
 *ApiDocumentation.PersonControllerApi* | [**findPersonUsingGET**](docs/PersonControllerApi.md#findPersonUsingGET) | **GET** /person/search | findPerson

@@ -71,6 +71,9 @@ class PersonDto {
             if (data.hasOwnProperty('lastName')) {
                 obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
             }
+            if (data.hasOwnProperty('loggedIn')) {
+                obj['loggedIn'] = ApiClient.convertToType(data['loggedIn'], 'Boolean');
+            }
             if (data.hasOwnProperty('password')) {
                 obj['password'] = ApiClient.convertToType(data['password'], 'String');
             }
@@ -108,6 +111,11 @@ PersonDto.prototype['firstName'] = undefined;
  * @member {String} lastName
  */
 PersonDto.prototype['lastName'] = undefined;
+
+/**
+ * @member {Boolean} loggedIn
+ */
+PersonDto.prototype['loggedIn'] = undefined;
 
 /**
  * @member {String} password
