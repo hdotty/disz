@@ -12,8 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import Book from './Book';
-import Person from './Person';
+import BookDto from './BookDto';
+import PersonDto from './PersonDto';
 
 /**
  * The BorrowDto model module.
@@ -52,13 +52,19 @@ class BorrowDto {
             obj = obj || new BorrowDto();
 
             if (data.hasOwnProperty('book')) {
-                obj['book'] = Book.constructFromObject(data['book']);
+                obj['book'] = BookDto.constructFromObject(data['book']);
+            }
+            if (data.hasOwnProperty('bookDto')) {
+                obj['bookDto'] = BookDto.constructFromObject(data['bookDto']);
             }
             if (data.hasOwnProperty('endTime')) {
                 obj['endTime'] = ApiClient.convertToType(data['endTime'], 'Date');
             }
             if (data.hasOwnProperty('person')) {
-                obj['person'] = Person.constructFromObject(data['person']);
+                obj['person'] = PersonDto.constructFromObject(data['person']);
+            }
+            if (data.hasOwnProperty('personDto')) {
+                obj['personDto'] = PersonDto.constructFromObject(data['personDto']);
             }
             if (data.hasOwnProperty('startTime')) {
                 obj['startTime'] = ApiClient.convertToType(data['startTime'], 'Date');
@@ -71,9 +77,14 @@ class BorrowDto {
 }
 
 /**
- * @member {module:model/Book} book
+ * @member {module:model/BookDto} book
  */
 BorrowDto.prototype['book'] = undefined;
+
+/**
+ * @member {module:model/BookDto} bookDto
+ */
+BorrowDto.prototype['bookDto'] = undefined;
 
 /**
  * @member {Date} endTime
@@ -81,9 +92,14 @@ BorrowDto.prototype['book'] = undefined;
 BorrowDto.prototype['endTime'] = undefined;
 
 /**
- * @member {module:model/Person} person
+ * @member {module:model/PersonDto} person
  */
 BorrowDto.prototype['person'] = undefined;
+
+/**
+ * @member {module:model/PersonDto} personDto
+ */
+BorrowDto.prototype['personDto'] = undefined;
 
 /**
  * @member {Date} startTime

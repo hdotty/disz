@@ -13,12 +13,9 @@
 
 
 import ApiClient from './ApiClient';
-import Book from './model/Book';
 import BookDto from './model/BookDto';
-import Borrow from './model/Borrow';
 import BorrowDto from './model/BorrowDto';
 import ModelAndView from './model/ModelAndView';
-import Person from './model/Person';
 import PersonDto from './model/PersonDto';
 import View from './model/View';
 import BasicErrorControllerApi from './api/BasicErrorControllerApi';
@@ -67,22 +64,10 @@ export {
     ApiClient,
 
     /**
-     * The Book model constructor.
-     * @property {module:model/Book}
-     */
-    Book,
-
-    /**
      * The BookDto model constructor.
      * @property {module:model/BookDto}
      */
     BookDto,
-
-    /**
-     * The Borrow model constructor.
-     * @property {module:model/Borrow}
-     */
-    Borrow,
 
     /**
      * The BorrowDto model constructor.
@@ -95,12 +80,6 @@ export {
      * @property {module:model/ModelAndView}
      */
     ModelAndView,
-
-    /**
-     * The Person model constructor.
-     * @property {module:model/Person}
-     */
-    Person,
 
     /**
      * The PersonDto model constructor.

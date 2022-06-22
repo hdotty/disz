@@ -1,8 +1,6 @@
 package org.disz.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.disz.demo.entity.Book;
-import org.disz.demo.entity.Person;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
@@ -14,10 +12,10 @@ public class BorrowDto {
 
     @JsonProperty
     @NonNull
-    private Person person;
+    private PersonDto personDto;
     @JsonProperty
     @NonNull
-    private Book book;  //Book vagy BookDto?
+    private BookDto bookDto;
     @JsonProperty
     @NonNull
     @NotBlank(message = "Start Date must be set")
@@ -27,27 +25,27 @@ public class BorrowDto {
     LocalDate endTime;
 
     public BorrowDto(){}
-    public BorrowDto(Person person, Book book, LocalDate startTime, LocalDate endTime){
-        this.person = person;
-        this.book = book;
+    public BorrowDto(PersonDto personDto, BookDto bookDto, LocalDate startTime, LocalDate endTime){
+        this.personDto = personDto;
+        this.bookDto = bookDto;
         this.startTime = startTime;
         this.endTime = endTime;
     }
     //getters
-    public Person getPerson() {
-        return person;}
-    public Book getBook(){
-        return book;}
+    public PersonDto getPerson() {
+        return personDto;}
+    public BookDto getBook(){
+        return bookDto;}
     public LocalDate getStartTime(){
         return startTime;}
     public LocalDate getEndTime(){
         return endTime;}
 
     //setters
-    public void setPerson(@NonNull Person person) {
-        this.person = person;}
-    public void setBook(@NonNull Book book) {
-        this.book = book;}
+    public void setPerson(@NonNull PersonDto personDto) {
+        this.personDto = personDto;}
+    public void setBook(@NonNull BookDto bookDto) {
+        this.bookDto = bookDto;}
     public void setStartTime(@NonNull LocalDate startTime) {
         this.startTime = startTime;}
     public void setEndTime(@Nullable LocalDate endTime) {

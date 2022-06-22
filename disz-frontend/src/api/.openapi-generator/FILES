@@ -3,15 +3,12 @@
 .travis.yml
 README.md
 docs/BasicErrorControllerApi.md
-docs/Book.md
 docs/BookControllerApi.md
 docs/BookDto.md
-docs/Borrow.md
 docs/BorrowControllerApi.md
 docs/BorrowDto.md
 docs/LoginControllerApi.md
 docs/ModelAndView.md
-docs/Person.md
 docs/PersonControllerApi.md
 docs/PersonDto.md
 docs/View.md
@@ -25,11 +22,8 @@ src/api/BorrowControllerApi.js
 src/api/LoginControllerApi.js
 src/api/PersonControllerApi.js
 src/index.js
-src/model/Book.js
 src/model/BookDto.js
-src/model/Borrow.js
 src/model/BorrowDto.js
 src/model/ModelAndView.js
-src/model/Person.js
 src/model/PersonDto.js
 src/model/View.js

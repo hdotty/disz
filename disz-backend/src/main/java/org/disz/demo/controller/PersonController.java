@@ -34,9 +34,4 @@ public class PersonController {
     @GetMapping("/persons")
     public List<BorrowDto> personsBooks(final @RequestBody PersonDto personDto){return personService.personsBooks(personDto);}
 
-//    @GetMapping("/person/{email}")
-//    public PersonDto personGetByEmail (final @PathVariable String email){return personService.getByEmail(email);}
-
-
-
 }

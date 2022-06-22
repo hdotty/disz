@@ -1,7 +1,11 @@
 package org.disz.demo.service;
 
+import org.disz.demo.dto.BookDto;
 import org.disz.demo.dto.BorrowDto;
+import org.disz.demo.dto.PersonDto;
+import org.disz.demo.entity.Book;
 import org.disz.demo.entity.Borrow;
+import org.disz.demo.entity.Person;
 import org.disz.demo.repository.BorrowRepository;
 import org.springframework.stereotype.Service;
 
@@ -68,10 +72,28 @@ public class BorrowServiceImp implements BorrowService{
     }
 
 
+
+    private Person toPersonEntity(PersonDto personDto) {
+        return new Person(personDto.getPersonId(), personDto.getFirstName(), personDto.getLastName(), personDto.getEmail(), personDto.getPassword(), personDto.isAdmin());
+    }
+    private PersonDto toPersonDto (Person person){
+        return new PersonDto(person.getId(), person.getFirstName(), person.getLastName(), person.getEmail(), person.getPassword(), person.isAdmin());
+    }
+
+
+    private Book toBookEntity(BookDto book) {
+        return new Book(book.getBookId(), book.getAuthor(), book.getTitle());
+    }
+
+    public BookDto toBookDto(Book book) {
+        return new BookDto(book.getId(), book.getAuthor(), book.getTitle());
+    }
+
+
     public Borrow toEntity(BorrowDto borrow){
-        return new Borrow(borrow.getPerson(), borrow.getBook(), borrow.getStartTime(),borrow.getEndTime());}
+        return new Borrow(toPersonEntity(borrow.getPerson()), toBookEntity(borrow.getBook()), borrow.getStartTime(), borrow.getEndTime());}
     public BorrowDto toDto(Borrow borrow){
-        return new BorrowDto(borrow.getPerson(), borrow.getBook(), borrow.getStartTime(),borrow.getEndTime());}
+        return new BorrowDto(toPersonDto(borrow.getPerson()), toBookDto(borrow.getBook()), borrow.getStartTime(),borrow.getEndTime());}
     public List<BorrowDto> toDtos(List<Borrow> borrows){
         return borrows.stream().map(this::toDto).collect(Collectors.toList());
     }

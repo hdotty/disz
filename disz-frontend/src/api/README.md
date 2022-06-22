@@ -156,12 +156,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [ApiDocumentation.Book](docs/Book.md)
  - [ApiDocumentation.BookDto](docs/BookDto.md)
- - [ApiDocumentation.Borrow](docs/Borrow.md)
  - [ApiDocumentation.BorrowDto](docs/BorrowDto.md)
  - [ApiDocumentation.ModelAndView](docs/ModelAndView.md)
- - [ApiDocumentation.Person](docs/Person.md)
  - [ApiDocumentation.PersonDto](docs/PersonDto.md)
  - [ApiDocumentation.View](docs/View.md)
 

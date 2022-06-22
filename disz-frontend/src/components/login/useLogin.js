@@ -5,7 +5,6 @@ import PersonDto from "../../api/src/model/PersonDto";
 
 const useLogin = () => {
     const LoginController = new LoginControllerApi()
-    const PersonController = new PersonControllerApi()
     const [person, setPerson] = useState()
 
     const handleSubmit = (e, email, password) => {
@@ -13,26 +12,14 @@ const useLogin = () => {
         LoginController.loginUsingPOST(email, password, function(error,data,response){
             if(error !== null){
                 console.log(error)
-                console.log(response)
             }else{
-                
-                console.log("hello there")
-                console.log(response)
-
-                console.log(person)
+                setPerson(data)
             }
         })
-
-       /* PersonController.personGetByEmailUsingGET(email, function(error, data){
-            if(error===null){
-                setPerson(data)
-                console.log("setperson", data)
-            }else{
-                console.log(error)
-            }
-            
-        })*/
     }
-    return {handleSubmit}
+
+    
+
+    return {handleSubmit, person}
 }
 export default useLogin

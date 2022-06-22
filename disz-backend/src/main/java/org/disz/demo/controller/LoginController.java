@@ -31,7 +31,7 @@ public class LoginController {
             String psw = personDto.getPassword();
             if (Objects.equals(password, psw)) {
                 personDto.setLoggedIn(true);
-                return ResponseEntity.ok("Logged in");
+                return ResponseEntity.ok(personDto);
             }else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }

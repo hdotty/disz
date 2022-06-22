@@ -36,7 +36,7 @@ const App = () => {
         <h1></h1>
         <Router>
           <Header/><br/>
-                    
+          <AddBorrow/>          
 
           <Routes>
             <Route exact path='/' element={ <Home/> }/>

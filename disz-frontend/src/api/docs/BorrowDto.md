@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**book** | [**Book**](Book.md) |  | [optional] 
+**book** | [**BookDto**](BookDto.md) |  | [optional] 
+**bookDto** | [**BookDto**](BookDto.md) |  | [optional] 
 **endTime** | **Date** |  | [optional] 
-**person** | [**Person**](Person.md) |  | [optional] 
+**person** | [**PersonDto**](PersonDto.md) |  | [optional] 
+**personDto** | [**PersonDto**](PersonDto.md) |  | [optional] 
 **startTime** | **Date** |  | 
 
 

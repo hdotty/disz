@@ -1,5 +1,7 @@
 package org.disz.demo.entity;
 
+import org.disz.demo.dto.BookDto;
+import org.disz.demo.dto.PersonDto;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 

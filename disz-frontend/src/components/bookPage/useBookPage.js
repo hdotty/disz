@@ -6,6 +6,7 @@ const useBookPage = () => {
     const BookController = new BookControllerApi()
     const [book, setBook] = useState(new BookDto)
     const [run, setRun] = useState(true)
+    const [borrow, setBorrow] = useState(false)
 
     const getBook = (id) => {
         if(run){
@@ -22,7 +23,12 @@ const useBookPage = () => {
         
     }
 
-    return {book, getBook}
+    const handleBorrow = (e) => {
+        e.preventDefault()
+        setBorrow(true)
+    }
+
+    return {book, getBook, handleBorrow, borrow}
 
 }
 

@@ -1,33 +1,35 @@
-import React, {Component, useState} from "react";
+import React, {Component, Fragment, useState} from "react";
 import Select from "react-select"
 import { Dropdown } from 'primereact/dropdown';
 import 'primereact/resources/primereact.min.css';
-
-
-const AddBorrow = () => {
-
-    const [selectedCity1, setSelectedCity1] = useState(null);
-
-    const [city, setCity] = useState()   
-    const cities = [
-        {label: 'New York', value: 'NY'},
-        {label: 'Rome', value: 'RM'},
-        {label: 'London', value: 'LDN'},
-        {label: 'Istanbul', value: 'IST'},
-        {label: 'Paris', value: 'PRS'}
-    ];
+import useAddBorrow from './useAddBorrow'
+import { Calendar } from 'primereact/calendar';
+import { Button } from "primereact/button";
  
 
+const AddBorrow = (props) => {
+    const bookId = props.id
+    const {getAllPersons, persons, handleSubmit} = useAddBorrow()
+    const [person, setPerson] = useState()
+    const [date, setDate] = useState()
+    
+    getAllPersons();
 
     return(
         
-        <div className="flex align-items-center justify-content-center">
-            <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6" >
-            
-                <Dropdown value={city} options={cities} onChange={(e) => setCity(e.value)} placeholder="Select a City"/>
- 
+        <div>
+            <label className="block text-900 font-medium mb-2">Email</label>
+                <Dropdown
+                optionLabel="email"
+                value={person} 
+                options={persons} 
+                onChange={(e) => setPerson(e.value)} 
+                placeholder="Who will borrow it..?"/><br/><br/>
 
-            </div>
+            <label className="block text-900 font-medium mb-2">From</label>
+            <Calendar value={date} onChange={(e) => setDate(e.value)}></Calendar><br/><br/>
+
+            <Button type="button" className="w-full" label="Borrow" onClick={(e)=>handleSubmit(e, person, bookId, date)} />
         </div>
     )
 }

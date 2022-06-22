@@ -40,6 +40,22 @@ public class PersonDto {
         this.borrows = borrows;
     }
 
+    public PersonDto(Long personId, String firstName, String lastName, String email, String password) {
+        this.personId = personId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
+    public PersonDto(Long id, String firstName, String lastName, String email, String password, boolean admin) {
+        this.personId = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
     public Long getPersonId() {return personId;}
 
     public String getFirstName() {return firstName;}
