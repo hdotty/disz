@@ -15,6 +15,7 @@ import ChangePsw from "./components/changePsw/changePsw"
 import {AddBook} from "./components/addBook/addBook"
 import BookPage from "./components/bookPage/bookPage"
 import DisplayPersons from "./components/displayPersons/displayPersons"
+import DisplayBorrows from "./components/displayBorrows/displayBorrows"
 
 import {
   BrowserRouter as Router,
@@ -35,7 +36,8 @@ const App = () => {
       <div>
         <h1></h1>
         <Router>
-          <Header/><br/>        
+          <Header/><br/>
+          <DisplayBorrows/>  
 
           <Routes>
             <Route exact path='/' element={ <Home/> }/>
