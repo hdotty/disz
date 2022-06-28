@@ -14,7 +14,7 @@ const useAddBook = () => {
         var book = new BookDto()
         book.author = author
         book.title = title
-        
+
         setIsPending(true)
 
         try{

@@ -5,15 +5,17 @@ import 'primereact/resources/primereact.min.css';
 import useAddBorrow from './useAddBorrow'
 import { Calendar } from 'primereact/calendar';
 import { Button } from "primereact/button";
+import BorrowDto from "../../api/src/model/BorrowDto";
  
 
 const AddBorrow = (props) => {
     const bookId = props.id
-    const {getAllPersons, persons, handleSubmit} = useAddBorrow()
+    const {getAllPersons, persons, handleSubmit, findAll} = useAddBorrow()
     const [person, setPerson] = useState()
     const [date, setDate] = useState()
-    
+
     getAllPersons();
+    //findAll()
 
     return(
         

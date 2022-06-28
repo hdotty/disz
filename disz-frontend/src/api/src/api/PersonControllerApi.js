@@ -287,15 +287,20 @@ export default class PersonControllerApi {
 
     /**
      * pswChange
-     * @param {String} password password
+     * @param {String} newPassword newPassword
+     * @param {String} oldPassword oldPassword
      * @param {module:model/PersonDto} personDto personDto
      * @param {module:api/PersonControllerApi~pswChangeUsingPUTCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    pswChangeUsingPUT(password, personDto, callback) {
+    pswChangeUsingPUT(newPassword, oldPassword, personDto, callback) {
       let postBody = personDto;
-      // verify the required parameter 'password' is set
-      if (password === undefined || password === null) {
-        throw new Error("Missing the required parameter 'password' when calling pswChangeUsingPUT");
+      // verify the required parameter 'newPassword' is set
+      if (newPassword === undefined || newPassword === null) {
+        throw new Error("Missing the required parameter 'newPassword' when calling pswChangeUsingPUT");
+      }
+      // verify the required parameter 'oldPassword' is set
+      if (oldPassword === undefined || oldPassword === null) {
+        throw new Error("Missing the required parameter 'oldPassword' when calling pswChangeUsingPUT");
       }
       // verify the required parameter 'personDto' is set
       if (personDto === undefined || personDto === null) {
@@ -303,7 +308,8 @@ export default class PersonControllerApi {
       }
 
       let pathParams = {
-        'password': password
+        'newPassword': newPassword,
+        'oldPassword': oldPassword
       };
       let queryParams = {
       };
@@ -317,7 +323,7 @@ export default class PersonControllerApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/person/{password}', 'PUT',
+        '/person/{oldPassword}/{newPassword}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

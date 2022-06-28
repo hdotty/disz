@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**getPersonUsingGET**](PersonControllerApi.md#getPersonUsingGET) | **GET** /person/{id} | getPerson
 [**getPersonsUsingGET**](PersonControllerApi.md#getPersonsUsingGET) | **GET** /person | getPersons
 [**personsBooksUsingGET**](PersonControllerApi.md#personsBooksUsingGET) | **GET** /persons | personsBooks
-[**pswChangeUsingPUT**](PersonControllerApi.md#pswChangeUsingPUT) | **PUT** /person/{password} | pswChange
+[**pswChangeUsingPUT**](PersonControllerApi.md#pswChangeUsingPUT) | **PUT** /person/{oldPassword}/{newPassword} | pswChange
 [**updatePersonUsingPUT**](PersonControllerApi.md#updatePersonUsingPUT) | **PUT** /person | updatePerson
 
 
@@ -271,7 +271,7 @@ No authorization required
 
 ## pswChangeUsingPUT
 
-> pswChangeUsingPUT(password, personDto)
+> pswChangeUsingPUT(newPassword, oldPassword, personDto)
 
 pswChange
 
@@ -281,9 +281,10 @@ pswChange
 import ApiDocumentation from 'api_documentation';
 
 let apiInstance = new ApiDocumentation.PersonControllerApi();
-let password = "password_example"; // String | password
+let newPassword = "newPassword_example"; // String | newPassword
+let oldPassword = "oldPassword_example"; // String | oldPassword
 let personDto = new ApiDocumentation.PersonDto(); // PersonDto | personDto
-apiInstance.pswChangeUsingPUT(password, personDto, (error, data, response) => {
+apiInstance.pswChangeUsingPUT(newPassword, oldPassword, personDto, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -297,7 +298,8 @@ apiInstance.pswChangeUsingPUT(password, personDto, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **password** | **String**| password | 
+ **newPassword** | **String**| newPassword | 
+ **oldPassword** | **String**| oldPassword | 
  **personDto** | [**PersonDto**](PersonDto.md)| personDto | 
 
 ### Return type

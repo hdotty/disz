@@ -29,8 +29,8 @@ public class PersonController {
     public PersonDto getPerson(final @PathVariable Long id) {return personService.getById(id);}
     @GetMapping("/person/search")
     public List<PersonDto> findPerson(final @RequestParam String query) {return personService.findPersonByFirstNameOrLastNameOrEmail(query);}
-    @PutMapping("/person/{password}")
-    public void pswChange(@RequestBody PersonDto personDto, @PathVariable String password){ personService.changePsw(personDto, password);}
+    @PutMapping("/person/{oldPassword}/{newPassword}")
+    public void pswChange(@RequestBody PersonDto personDto, @PathVariable String oldPassword, @PathVariable String newPassword){ personService.changePsw(personDto, oldPassword, newPassword);}
     @GetMapping("/persons")
     public List<BorrowDto> personsBooks(final @RequestBody PersonDto personDto){return personService.personsBooks(personDto);}
 

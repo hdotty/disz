@@ -8,6 +8,7 @@ import org.disz.demo.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,10 +68,12 @@ public class PersonServiceImp implements PersonService{
         return personRepository.findPersonByFirstNameOrLastNameOrEmail(query, query, query).stream().map(this::toDto).collect(Collectors.toList());
     }
     @Override
-    public void changePsw(PersonDto personDto, String newPsw){
+    public void changePsw(PersonDto personDto, String oldPsw, String newPsw){
         Person person = toEntity(personDto);
-        person.setPassword(newPsw);
-        personRepository.save(person);
+        if(Objects.equals(person.getPassword(), oldPsw)){
+            person.setPassword(newPsw);
+            personRepository.save(person);
+        }
     }
     @Override
     public List<BorrowDto> personsBooks(PersonDto personDto) {return personDto.getBorrows();}

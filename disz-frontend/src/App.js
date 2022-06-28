@@ -11,7 +11,7 @@ import PersonPage from "./components/personPage/personPage";
 import ForgotPsw from "./components/forgotPsw";
 import Header from "./header"
 import Home from "./components/home"
-import ChangePsw from "./components/changePsw"
+import ChangePsw from "./components/changePsw/changePsw"
 import {AddBook} from "./components/addBook/addBook"
 import BookPage from "./components/bookPage/bookPage"
 import DisplayPersons from "./components/displayPersons/displayPersons"
@@ -35,8 +35,7 @@ const App = () => {
       <div>
         <h1></h1>
         <Router>
-          <Header/><br/>
-          <AddBorrow/>          
+          <Header/><br/>        
 
           <Routes>
             <Route exact path='/' element={ <Home/> }/>

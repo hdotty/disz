@@ -15,8 +15,11 @@ const useAddBorrow = () => {
     const [run1, setRun1] = useState(true)
     const [run2, setRun2] = useState(true)
     const [run3, setRun3] = useState(true)
-
+    const [run4, setRun4] = useState(true)
     const [book, setBook] = useState()
+    const [error, setError] = useState(null)
+
+
 
 
 
@@ -54,12 +57,24 @@ const useAddBorrow = () => {
         e.preventDefault()
         if(run3){
             getBook(bookId)
-            console.log(person, book)
             const borrow = new BorrowDto()
-            borrow.personDto=person
-            borrow.bookDto
-            console.log(borrow)
-            //BorrowController.addBorrowUsingPOST()
+            borrow.person=person
+            borrow.book = book
+            borrow.startTime = date
+
+            try{
+                BorrowController.addBorrowUsingPOST(borrow, function(error){
+                    if(error!==null){
+                        throw Error(error)
+                    }else{
+                        setRun3(false)
+                    }
+                })
+            }catch(err){
+                setError(err)
+                setRun3(false)
+            }
+            
 
         }
 
@@ -67,7 +82,25 @@ const useAddBorrow = () => {
 
     }
 
-    return{getAllPersons, persons, handleSubmit}
+
+    const findAll = () => {
+
+
+        if(run4){
+            BorrowController.findAllUsingGET(function(error, data, response){
+                console.log("response: ", response)
+                if(error!==null){
+                    console.log(error)
+                }else{
+                    console.log(data)
+                }
+                setRun4(false)
+            })
+        }
+    }
+
+
+    return{getAllPersons, persons, handleSubmit, findAll}
 }
 
 export default useAddBorrow

@@ -16,7 +16,7 @@ public interface PersonService {
     boolean existsByEmail(String email);
     PersonDto getByEmail(String email);
     List<PersonDto> findPersonByFirstNameOrLastNameOrEmail(String query);
-    void changePsw(PersonDto personDto, String newPsw);
+    void changePsw(PersonDto personDto, String oldPsw, String newPsw);
     List<BorrowDto> personsBooks(PersonDto personDto);
 
 }
