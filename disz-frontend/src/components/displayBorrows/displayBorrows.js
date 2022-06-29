@@ -3,8 +3,7 @@ import {Button} from "primereact/button";
 import useDisplayBorrows from "./useDisplayBorrows";
 
 import AllBorrows from "./allBorrows";
-import NotReturnedBorrows from "./notReturnedBorrows";
-import ReturnedBorrows from "./returnedBorrows";
+
 
 const DisplayBorrows = () => {
 
@@ -19,7 +18,8 @@ return (
     <div className="flex align-items-center justify-content-center">
     <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6 ">
 
-        <table>
+        <table className="">
+            <tbody>
             <tr>
                 <td>
                     <Button label="All" type="button" 
@@ -48,8 +48,10 @@ return (
                         }}/>
                 </td>
             </tr>
+            </tbody>
         </table>
 
+        {displayAll || displayNotReturned || displayReturned &&
         <table>
             <thead>
                 <tr>
@@ -61,21 +63,16 @@ return (
                     <th>delete</th>
                 </tr>
             </thead>
-            
-            {displayAll ? 
-                <AllBorrows all={all} />   :
-                <tbody></tbody>
-            }
-            {displayNotReturned ?
-                <NotReturnedBorrows notReturned={notReturned}/> :
-                <tbody></tbody>
-            }
-            {displayReturned ?
-                <ReturnedBorrows returned={returned}/> :
-                <tbody></tbody>
-            }
+            <tbody>
+                {displayAll && <AllBorrows borrows={all} /> }
+                {displayNotReturned && <AllBorrows borrows={notReturned} /> }
+                {displayReturned && <AllBorrows borrows={returned} /> }
+            </tbody>
+        </table>
         
-        </table>        
+        }
+
+                
         
     </div>
     </div>

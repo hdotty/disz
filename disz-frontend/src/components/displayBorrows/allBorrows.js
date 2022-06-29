@@ -1,26 +1,30 @@
 import { Button } from "primereact/button";
 import React from "react";
+import { Fragment } from "react";
+import useDisplayBorrows from "./useDisplayBorrows";
+
 
 const AllBorrows = (props) => {
 
-    const findAll = props.all 
+    const {handleEdit, handleDelete} = useDisplayBorrows()
+    const borrows = props.borrows 
 
     return (
-        <tbody>
-            {findAll.map((borrow,id) =>(
+        <div>
+            {borrows.map((borrow, id) =>(
                 <Fragment key={id}>
                 <tr>
-                    <td>{findAll.person}</td>
-                    <td>{findAll.book}</td>
-                    <td>{findAll.startTime}</td>
-                    <td>{findAll.endTime}</td>
-                    <td> <Button type="button" label="Edit" onClick={(e)=>handlEdit(e, borrow)} /></td>
-                    <td> <Button type="button" label="Delete" onClick={(e)=>handlDelete(e, borrow)} /></td>
+                    <td>{borrow.person}</td>
+                    <td>{borrow.book}</td>
+                    <td>{borrow.startTime}</td>
+                    <td>{borrow.endTime}</td>
+                    <td> <Button type="button" label="Edit" onClick={(e)=>handleEdit(e, borrow)} /></td>
+                    <td> <Button type="button" label="Delete" onClick={(e)=>handleDelete(e, borrow)} /></td>
                 </tr>
                 </Fragment>
                 
             ))}
-        </tbody>
+        </div>
 
     )
 

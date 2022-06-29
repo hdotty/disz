@@ -14,6 +14,7 @@ const useDisplayBorrows = () => {
     const [returned, setReturned] = useState()
 
     const findAll = (e) => {
+        e.preventDefault()
         if(runAll){
             BorrowController.findAllUsingGET(function(error, data){
                 if(error!==null){
@@ -26,7 +27,8 @@ const useDisplayBorrows = () => {
         }
     }
 
-    const findNotReturned = () => {
+    const findNotReturned = (e) => {
+        e.preventDefault()
         if(runNotReturned){
             BorrowController.findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET(function(error,data){
                 if(error!==null){
@@ -39,7 +41,8 @@ const useDisplayBorrows = () => {
         }
     }
 
-    const findReturned = () => {
+    const findReturned = (e) => {
+        e.preventDefault()
         if(runReturned){
             BorrowController.findBorrowByStartTimeAndEndTimeIsNotNullUsingGET(
                 function(error, data){
