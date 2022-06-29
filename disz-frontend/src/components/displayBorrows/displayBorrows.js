@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import {Button} from "primereact/button";
+import useDisplayBorrows from "./useDisplayBorrows";
+
+import AllBorrows from "./allBorrows";
+import NotReturnedBorrows from "./notReturnedBorrows";
+import ReturnedBorrows from "./returnedBorrows";
 
 const DisplayBorrows = () => {
+
+    const {findAll, all, findNotReturned, notReturned, findReturned, returned} = useDisplayBorrows()
+
+    const [displayAll,  setDisplayAll] = useState(false)
+    const[displayNotReturned, setDisplayNotReturned] = useState(false)
+    const [displayReturned, setDisplayReturned] = useState(false)
 
 return (
 
@@ -10,9 +21,32 @@ return (
 
         <table>
             <tr>
-                <td><Button label="All" type="button"  /></td>
-                <td> <Button label="Not Returned" type="button"/> </td>
-                <td> <Button label="Returned" type="button" /> </td>
+                <td>
+                    <Button label="All" type="button" 
+                        onClick={(e)=>{
+                            setDisplayAll(true)
+                            setDisplayNotReturned(false)
+                            setDisplayReturned(false)
+                            findAll(e)
+                        }} />
+                </td>
+                <td>
+                    <Button label="Not Returned" type="button"
+                        onClick={(e)=>{
+                            setDisplayAll(false)
+                            setDisplayNotReturned(true)
+                            setDisplayReturned(false)
+                            findNotReturned(e)
+                        }}/>
+                </td>
+                <td><Button label="Returned" type="button" 
+                        onClick={(e)=>{
+                            setDisplayAll(false)
+                            setDisplayNotReturned(false)
+                            setDisplayReturned(true)
+                            findReturned(e)
+                        }}/>
+                </td>
             </tr>
         </table>
 
@@ -27,14 +61,19 @@ return (
                     <th>delete</th>
                 </tr>
             </thead>
-            <tbody>
-                {
-                    <tr>
-                        <td>user</td>
-                        <td></td>
-                    </tr>
-                }
-            </tbody>
+            
+            {displayAll ? 
+                <AllBorrows all={all} />   :
+                <tbody></tbody>
+            }
+            {displayNotReturned ?
+                <NotReturnedBorrows notReturned={notReturned}/> :
+                <tbody></tbody>
+            }
+            {displayReturned ?
+                <ReturnedBorrows returned={returned}/> :
+                <tbody></tbody>
+            }
         
         </table>        
         
