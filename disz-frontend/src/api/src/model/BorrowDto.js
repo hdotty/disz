@@ -57,6 +57,9 @@ class BorrowDto {
             if (data.hasOwnProperty('endTime')) {
                 obj['endTime'] = ApiClient.convertToType(data['endTime'], 'Date');
             }
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+            }
             if (data.hasOwnProperty('person')) {
                 obj['person'] = PersonDto.constructFromObject(data['person']);
             }
@@ -79,6 +82,11 @@ BorrowDto.prototype['book'] = undefined;
  * @member {Date} endTime
  */
 BorrowDto.prototype['endTime'] = undefined;
+
+/**
+ * @member {Number} id
+ */
+BorrowDto.prototype['id'] = undefined;
 
 /**
  * @member {module:model/PersonDto} person

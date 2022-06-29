@@ -5,16 +5,17 @@ import useDisplayBorrows from "./useDisplayBorrows";
 
 
 const AllBorrows = (props) => {
-
+    console.log(props)
     const {handleEdit, handleDelete} = useDisplayBorrows()
     const borrows = props.borrows 
 
     return (
-        <div>
-            {borrows.map((borrow, id) =>(
+    
+        <tbody>    
+            {borrows?.map((borrow, id) =>(
                 <Fragment key={id}>
                 <tr>
-                    <td>{borrow.person}</td>
+                    <td>{console.log("asd", borrow.person)}</td>
                     <td>{borrow.book}</td>
                     <td>{borrow.startTime}</td>
                     <td>{borrow.endTime}</td>
@@ -24,7 +25,7 @@ const AllBorrows = (props) => {
                 </Fragment>
                 
             ))}
-        </div>
+        </tbody>
 
     )
 

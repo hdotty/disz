@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import {Button} from "primereact/button";
 import useDisplayBorrows from "./useDisplayBorrows";
+import { Fragment } from "react";
 
 import AllBorrows from "./allBorrows";
 
 
 const DisplayBorrows = () => {
 
-    const {findAll, all, findNotReturned, notReturned, findReturned, returned} = useDisplayBorrows()
+    const {findAll, all, findNotReturned, notReturned, findReturned, returned, handleEdit, handleDelete} = useDisplayBorrows()
 
     const [displayAll,  setDisplayAll] = useState(false)
     const[displayNotReturned, setDisplayNotReturned] = useState(false)
@@ -18,7 +19,8 @@ return (
     <div className="flex align-items-center justify-content-center">
     <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6 ">
 
-        <table className="">
+
+        <table className="flex align-items-center justify-content-center">
             <tbody>
             <tr>
                 <td>
@@ -49,10 +51,12 @@ return (
                 </td>
             </tr>
             </tbody>
-        </table>
+        </table><br/>
 
-        {displayAll || displayNotReturned || displayReturned &&
-        <table>
+        <div className="flex align-items-center justify-content-center">
+        <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6 ">
+        {(displayAll || displayNotReturned || displayReturned) &&
+        <table className="table" >
             <thead>
                 <tr>
                     <th>User</th>
@@ -63,14 +67,28 @@ return (
                     <th>delete</th>
                 </tr>
             </thead>
-            <tbody>
-                {displayAll && <AllBorrows borrows={all} /> }
-                {displayNotReturned && <AllBorrows borrows={notReturned} /> }
-                {displayReturned && <AllBorrows borrows={returned} /> }
-            </tbody>
+
+            <tbody>    
+            {all?.map((borrow, id) =>(
+                <Fragment key={id}>
+                <tr>
+                    <td>{borrow.person.email}</td>
+                    <td>{borrow.book.title}</td>
+                    <td>{borrow.startTime}</td>
+                    <td>{borrow.endTime}</td>
+                    <td> <Button type="button" label="Edit" onClick={(e)=>handleEdit(e, borrow.email)} /></td>
+                    <td> <Button type="button" label="Delete" onClick={(e)=>handleDelete(e, borrow.email)} /></td>
+                </tr>
+                </Fragment>
+                
+            ))}
+        </tbody>
+               
         </table>
         
         }
+        </div>
+        </div>
 
                 
         
@@ -81,3 +99,10 @@ return (
 
 }
 export default DisplayBorrows
+
+
+/*
+{displayAll && <AllBorrows borrows={all} /> }
+{displayNotReturned && <AllBorrows borrows={notReturned} /> }
+{displayReturned && <AllBorrows borrows={returned} /> }
+*/

@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 public class BorrowDto {
+    @JsonProperty
     private long id;
 
     @JsonProperty
