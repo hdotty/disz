@@ -22,8 +22,6 @@ public class BorrowServiceImp implements BorrowService{
 
     @Override
     public void addBorrow(BorrowDto borrowDto) {
-        LocalDate currentDate = LocalDate.ofEpochDay(System.currentTimeMillis());
-        borrowDto.setStartTime(currentDate);
         borrowRepository.save(toEntity(borrowDto));
     }
 

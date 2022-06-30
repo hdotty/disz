@@ -18,11 +18,15 @@ const PersonPage = (props) => {
     const {person, getPerson, handleEdit, edit, handleSave} = UsePerson()
     const [done, setDone] = useState(false)
 
-    if(!done){
-        getPerson(id)
-        setDone(true)
+    const displayPerson = (id, bool) => {
+        if(bool){
+            getPerson(id)
+            bool = false
+            //setDone(true)
+        }
     }
-
+    
+    displayPerson(id, true)
 
     return (
         
@@ -40,8 +44,18 @@ const PersonPage = (props) => {
 
                 
                     {edit ? 
-                        <div><Button type="button" className="w-full" label="Save" onClick={(e)=>handleSave(e,firstName,lastName,email)}/><br/></div> :
-                        <div><Button className="w-full" label="Edit" type="button" onClick={(e)=>handleEdit(e, person, firstName, lastName, email)}/><br/><br/></div>
+                        <div><Button type="button" className="w-full" label="Save" 
+                                onClick={(e)=>{
+                                    handleSave(e, id, person, firstName,lastName,email)
+                                    displayPerson(id, true)
+                                }}/><br/></div> :
+
+                        <div><Button className="w-full" label="Edit" type="button" 
+                                onClick={(e)=>{
+                                    handleEdit(e, person, firstName, lastName, email)
+                                    
+                                }}
+                            /><br/><br/></div>
                     }
                     
                     

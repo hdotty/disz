@@ -10,12 +10,10 @@ const UsePerson = () => {
     const [edit, setEdit] = useState(false)
     const [saving, setSaving] = useState(true)
 
-
     const getPerson = (id) => {
         try{
             if(!isCanceled){
                 PersonController.getPersonUsingGET(id, function(error, data){
-                    console.log(error, data)
                     if(error !== null){
                         setIsCanceled(true)
                         throw Error(error)
@@ -36,9 +34,10 @@ const UsePerson = () => {
     const handleEdit = (e) => {
         e.preventDefault()
         setEdit(true)
+        setSaving(true)
     }
 
-    const handleSave = (e, person, firstName, lastName, email) => {
+    const handleSave = (e, id, person, firstName, lastName, email) => {
         e.preventDefault()
         if(saving){
             var update = {"firstName": firstName, "lastName": lastName, "email": email}
@@ -46,9 +45,13 @@ const UsePerson = () => {
                 if(error!==null){
                     console.log(error)
                     setSaving(false)
+                    setIsCanceled(false)
                 }else{
                     setEdit(false)
                     setSaving(false)
+                    setIsCanceled(false)
+                    getPerson(id)
+                    
                 }
             })
         }
