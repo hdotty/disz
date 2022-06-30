@@ -6,10 +6,12 @@ import useAddBorrow from './useAddBorrow'
 import { Calendar } from 'primereact/calendar';
 import { Button } from "primereact/button";
 import BorrowDto from "../../api/src/model/BorrowDto";
+import convertDate from "../../convertDate";
  
 
 const AddBorrow = (props) => {
     const book = props.book
+    const {convertDatee} = convertDate()
     const {getAllPersons, persons, handleSubmit, findAll, success} = useAddBorrow()
     const [person, setPerson] = useState()
     const [date, setDate] = useState()
@@ -32,7 +34,7 @@ const AddBorrow = (props) => {
                         placeholder="Who will borrow it..?"/><br/><br/>
 
                     <label className="block text-900 font-medium mb-2">From</label>
-                    <Calendar value={date} onChange={(e) => setDate(e.value)}></Calendar><br/><br/>
+                    <Calendar value={date} onChange={(e) => setDate(convertDatee(e.value))}></Calendar><br/><br/>
 
                     <Button type="button" className="w-full" label="Borrow" onClick={(e)=>handleSubmit(e, person, book, date)} />
                 </div>

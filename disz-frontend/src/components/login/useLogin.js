@@ -14,8 +14,10 @@ const useLogin = () => {
                 console.log(error)
             }else{
                 setPerson(data)
+                
             }
         })
+        console.log(person)
     }
 
     

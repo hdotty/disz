@@ -7,10 +7,11 @@ import useLogin from "./useLogin";
 
 function Login(){
 
-    const {handleSubmit} = useLogin()
+    const {handleSubmit, person} = useLogin()
     const [email, setEmail] = useState('')
     const [psw, setPsw] = useState('')
 
+    console.log(person)
     
     return(
         

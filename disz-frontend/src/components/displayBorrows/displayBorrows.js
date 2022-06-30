@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import {Button} from "primereact/button";
 import useDisplayBorrows from "./useDisplayBorrows";
 import { Fragment } from "react";
-
-import AllBorrows from "./allBorrows";
-
+import convertDate from "../../convertDate";
 
 const DisplayBorrows = () => {
 
     const {findAll, all, findNotReturned, findReturned, notReturned, handleEdit, handleDelete} = useDisplayBorrows()
+    const {convertDatee} = convertDate()
 
     const [displayAll,  setDisplayAll] = useState(false)
     const [displayNotReturned, setDisplayNotReturned] = useState(false)
@@ -82,7 +81,7 @@ return (
                     {console.log()}
                     <td>{borrow.person.email}</td>
                     <td>{borrow.book.title}</td>
-                    <td>{borrow.startTime && borrow.startTime.toString()}</td>
+                    <td>{borrow.startTime && convertDatee(borrow.startTime)}</td>
                     <td>{borrow.endTime && borrow.endTime.toString()}</td>
                     <td><Button type="button" label="Edit" onClick={(e)=>handleEdit(e, borrow.email)}/></td>
                     <td><Button type="button" label="Delete" onClick={(e)=>handleDelete(e, borrow.email)}/></td>
