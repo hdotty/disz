@@ -9,30 +9,37 @@ import BorrowDto from "../../api/src/model/BorrowDto";
  
 
 const AddBorrow = (props) => {
-    const bookId = props.id
-    const {getAllPersons, persons, handleSubmit, findAll} = useAddBorrow()
+    const book = props.book
+    const {getAllPersons, persons, handleSubmit, findAll, success} = useAddBorrow()
     const [person, setPerson] = useState()
     const [date, setDate] = useState()
 
     getAllPersons();
-    //findAll()
-
     return(
-        
+
+ 
         <div>
-            <label className="block text-900 font-medium mb-2">Email</label>
-                <Dropdown
-                optionLabel="email"
-                value={person} 
-                options={persons} 
-                onChange={(e) => setPerson(e.value)} 
-                placeholder="Who will borrow it..?"/><br/><br/>
 
-            <label className="block text-900 font-medium mb-2">From</label>
-            <Calendar value={date} onChange={(e) => setDate(e.value)}></Calendar><br/><br/>
+            {success ? 
+                <div>{person.firstName} {person.lastName} have borrowed this book.</div> :
+                <div>
+                    <label className="block text-900 font-medium mb-2">Email</label>
+                        <Dropdown
+                        optionLabel="email"
+                        value={person} 
+                        options={persons} 
+                        onChange={(e) => setPerson(e.value)} 
+                        placeholder="Who will borrow it..?"/><br/><br/>
 
-            <Button type="button" className="w-full" label="Borrow" onClick={(e)=>handleSubmit(e, person, bookId, date)} />
+                    <label className="block text-900 font-medium mb-2">From</label>
+                    <Calendar value={date} onChange={(e) => setDate(e.value)}></Calendar><br/><br/>
+
+                    <Button type="button" className="w-full" label="Borrow" onClick={(e)=>handleSubmit(e, person, book, date)} />
+                </div>
+            }
         </div>
     )
 }
 export default AddBorrow
+
+//"text-500 mb-5"

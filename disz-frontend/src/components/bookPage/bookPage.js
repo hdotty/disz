@@ -15,13 +15,12 @@ function BookPage(props){
 
     return(
 
-        <div className="surface-0">
+        <div className="surface-0 ">
             <div className="font-medium text-3xl text-900 mb-3">{book.author}</div>
             <div className="font-medium text-3xl text-900 mb-3">{book.title}</div>
-            <div className="text-500 mb-5">Do you want to borrow it?</div>
 
             {borrow ? 
-            <AddBorrow id={id}/> :
+            <AddBorrow book={book}/> :
             <ul className="list-none p-0 m-0">
             <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                 <div className="text-500 w-6 md:w-2 font-medium">Author</div>
