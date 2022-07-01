@@ -1,18 +1,16 @@
-import React, {Component, Fragment, useState} from "react";
-import Select from "react-select"
+import React, {useState} from "react";
 import { Dropdown } from 'primereact/dropdown';
 import 'primereact/resources/primereact.min.css';
 import useAddBorrow from './useAddBorrow'
 import { Calendar } from 'primereact/calendar';
 import { Button } from "primereact/button";
-import BorrowDto from "../../api/src/model/BorrowDto";
 import convertDate from "../../convertDate";
  
 
 const AddBorrow = (props) => {
     const book = props.book
     const {convertDatee} = convertDate()
-    const {getAllPersons, persons, handleSubmit, findAll, success} = useAddBorrow()
+    const {getAllPersons, persons, handleSubmit, success} = useAddBorrow()
     const [person, setPerson] = useState()
     const [date, setDate] = useState()
 
@@ -23,7 +21,7 @@ const AddBorrow = (props) => {
         <div>
 
             {success ? 
-                <div>{person.firstName} {person.lastName} have borrowed this book.</div> :
+                <div>{person.firstName} {person.lastName} has borrowed this book.</div> :
                 <div>
                     <label className="block text-900 font-medium mb-2">Email</label>
                         <Dropdown

@@ -41,8 +41,16 @@ public class Borrow {
         this.startTime = startTime;
         this.endTime = endTime;
     }
+    public Borrow(Long id, Person person, Book book, LocalDate startTime, LocalDate endTime) {
+        this.id = id;
+        this.person = person;
+        this.book = book;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
 
     // getters
+    public Long getId(){return id;}
     public Person getPerson() {
         return person;
     }
@@ -57,6 +65,7 @@ public class Borrow {
     }
 
     // setters
+    public void setId(Long id){this.id = id;}
     public void setStartTime(LocalDate startTime) {
         this.startTime = startTime;
     }
@@ -64,7 +73,5 @@ public class Borrow {
         this.endTime = endTime;
     }
 
-    public long getId() {
-        return id;
-    }
+
 }

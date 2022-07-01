@@ -27,8 +27,7 @@ public class BorrowServiceImp implements BorrowService{
 
     @Override
     public void returnBook(BorrowDto borrowDto){
-        LocalDate currentDate = LocalDate.ofEpochDay(System.currentTimeMillis());
-        borrowDto.setEndTime(currentDate);
+        borrowRepository.save(toEntity(borrowDto));
     }
 
     @Override
@@ -89,9 +88,19 @@ public class BorrowServiceImp implements BorrowService{
 
 
     public Borrow toEntity(BorrowDto borrow){
-        return new Borrow(toPersonEntity(borrow.getPerson()), toBookEntity(borrow.getBook()), borrow.getStartTime(), borrow.getEndTime());}
+        return new Borrow(
+                borrow.getId(),
+                toPersonEntity(borrow.getPerson()),
+                toBookEntity(borrow.getBook()),
+                borrow.getStartTime(),
+                borrow.getEndTime());}
     public BorrowDto toDto(Borrow borrow){
-        return new BorrowDto(toPersonDto(borrow.getPerson()), toBookDto(borrow.getBook()), borrow.getStartTime(),borrow.getEndTime());}
+        return new BorrowDto(
+                borrow.getId(),
+                toPersonDto(borrow.getPerson()),
+                toBookDto(borrow.getBook()),
+                borrow.getStartTime(),
+                borrow.getEndTime());}
     public List<BorrowDto> toDtos(List<Borrow> borrows){
         return borrows.stream().map(this::toDto).collect(Collectors.toList());
     }

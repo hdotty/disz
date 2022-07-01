@@ -32,7 +32,15 @@ public class BorrowDto {
         this.startTime = startTime;
         this.endTime = endTime;
     }
+    public BorrowDto(Long id, PersonDto person, BookDto book, LocalDate startTime, LocalDate endTime){
+        this.id = id;
+        this.person = person;
+        this.book = book;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
     //getters
+    public Long getId(){return id;}
     public PersonDto getPerson() {
         return person;}
     public BookDto getBook(){
@@ -43,6 +51,7 @@ public class BorrowDto {
         return endTime;}
 
     //setters
+    public void setId(Long id){this.id = id;}
     public void setPerson(@NonNull PersonDto personDto) {
         this.person = personDto;}
     public void setBook(@NonNull BookDto bookDto) {

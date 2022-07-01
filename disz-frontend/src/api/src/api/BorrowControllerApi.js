@@ -354,23 +354,17 @@ export default class BorrowControllerApi {
 
     /**
      * returnBook
-     * @param {Number} id id
      * @param {module:model/BorrowDto} borrowDto borrowDto
      * @param {module:api/BorrowControllerApi~returnBookUsingPUTCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    returnBookUsingPUT(id, borrowDto, callback) {
+    returnBookUsingPUT(borrowDto, callback) {
       let postBody = borrowDto;
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling returnBookUsingPUT");
-      }
       // verify the required parameter 'borrowDto' is set
       if (borrowDto === undefined || borrowDto === null) {
         throw new Error("Missing the required parameter 'borrowDto' when calling returnBookUsingPUT");
       }
 
       let pathParams = {
-        'id': id
       };
       let queryParams = {
       };
@@ -384,7 +378,7 @@ export default class BorrowControllerApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/borrows/{id}/return', 'PUT',
+        '/borrows/return', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

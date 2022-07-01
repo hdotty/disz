@@ -40,11 +40,11 @@ const AddBook = () => {
                     {!isPending && <Button type="submit" label="Add" icon="pi pi-user" className="w-full" /> }
                     {isPending && <Button label="loading" icon="pi pi-user" className="w-full" />}
                     <br></br> <br></br>
-                    <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/"> Back to home </Link> </Button>
+                    <Link className='nav-link' to="/"><Button icon="pi pi-user" className="w-full" label="Back to Home" /></Link>
                 </div>
             </form>
         </div>
     
     )
 }
-export {AddBook}
+export default AddBook

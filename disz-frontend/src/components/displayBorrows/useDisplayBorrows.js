@@ -12,10 +12,10 @@ const useDisplayBorrows = () => {
 
     const [runReturned, setRunReturned] = useState(true)
     const [returned, setReturned] = useState()
-    
 
-    const findAll = (e) => {
-        e.preventDefault()
+    const [editBorrowId, setEditBorrowId] = useState()    
+
+    const findAll = () => {
         if(runAll){
             BorrowController.findAllUsingGET(function(error, data){
                 if(error!==null){
@@ -28,8 +28,7 @@ const useDisplayBorrows = () => {
         }
     }
 
-    const findNotReturned = (e) => {
-        e.preventDefault()
+    const findNotReturned = () => {
         if(runNotReturned){
             BorrowController.findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET(function(error,data){
                 if(error!==null){
@@ -42,8 +41,7 @@ const useDisplayBorrows = () => {
         }
     }
 
-    const findReturned = (e) => {
-        e.preventDefault()
+    const findReturned = () => {
         if(runReturned){
             BorrowController.findBorrowByStartTimeAndEndTimeIsNotNullUsingGET(
                 function(error, data){
@@ -59,7 +57,28 @@ const useDisplayBorrows = () => {
 
     }
 
-    return {findAll, all, findNotReturned, notReturned, findReturned, returned}
+    const handleEdit = (e, id) => {
+        e.preventDefault()
+        setEditBorrowId(id)
+        console.log(id)
+    }
+
+    const handleSave = (e, borrow) => {
+        e.preventDefault()
+        BorrowController.returnBookUsingPUT(borrow, function(error){
+            if(error!==null){
+                console.log(error)
+            }else{
+                setEditBorrowId(null)
+            }
+        })
+    }
+
+    return {findAll, all,
+        findNotReturned, notReturned, 
+        findReturned, returned, 
+        handleEdit, editBorrowId,
+        handleSave}
 }
 
 export default useDisplayBorrows

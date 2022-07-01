@@ -3,17 +3,30 @@ import {Button} from "primereact/button";
 import useDisplayBorrows from "./useDisplayBorrows";
 import { Fragment } from "react";
 import convertDate from "../../convertDate";
+import { Calendar } from "primereact/calendar";
 
 const DisplayBorrows = () => {
 
-    const {findAll, all, findNotReturned, findReturned, notReturned, handleEdit, handleDelete} = useDisplayBorrows()
+    const {findAll, all, 
+        findNotReturned, notReturned,
+        findReturned, returned,
+        handleEdit, editBorrowId, 
+        handleSave} = useDisplayBorrows()
+
+
     const {convertDatee} = convertDate()
 
-    const [displayAll,  setDisplayAll] = useState(false)
-    const [displayNotReturned, setDisplayNotReturned] = useState(false)
-    const [displayReturned, setDisplayReturned] = useState(false)
+    const [display, setDisplay] = useState(false)
 
     const [borrows, setBorrows] = useState(all)
+
+
+    findAll()
+    findNotReturned()
+    findReturned()
+    //console.log("all", all)
+    //console.log("notREturned", notReturned)
+    //console.log("returned", returned)
 
 return (
 
@@ -27,31 +40,21 @@ return (
                 <td>
                     <Button label="All" type="button" 
                         onClick={(e)=>{
-                            setDisplayAll(true)
-                            setDisplayNotReturned(false)
-                            setDisplayReturned(false)
-                            findAll(e)
                             setBorrows(all)
-                            console.log(all)
+                            setDisplay(true)
                         }} />
                 </td>
                 <td>
                     <Button label="Not Returned" type="button"
                         onClick={(e)=>{
-                            setDisplayAll(false)
-                            setDisplayNotReturned(true)
-                            setDisplayReturned(false)
-                            findNotReturned(e)
-                            
+                            setBorrows(notReturned)
+                            setDisplay(true)
                         }}/>
                 </td>
                 <td><Button label="Returned" type="button" 
                         onClick={(e)=>{
-                            setDisplayAll(false)
-                            setDisplayNotReturned(false)
-                            setDisplayReturned(true)
-                            findReturned(e)
-                            setBorrows(notReturned)
+                            setBorrows(returned)
+                            setDisplay(true)
                         }}/>
                 </td>
             </tr>
@@ -59,17 +62,17 @@ return (
         </table><br/>
 
         <div className="flex align-items-center justify-content-center">
-        {(displayAll || displayNotReturned || displayReturned) &&
         <table className="table" >
             <thead>
+                {display && (
                 <tr>
                     <th>User</th>
                     <th>Book</th>
                     <th>From</th>
                     <th>To</th>
-                    <th>edit</th>
-                    <th>delete</th>
-                </tr>
+                    <th>Edit</th>
+                </tr>)}
+                
             </thead>
 
             <tbody>    
@@ -77,16 +80,25 @@ return (
 
                 {borrows?.map((borrow, index) =>(
                 <Fragment key={index}>
-                <tr>
-                    {console.log()}
-                    <td>{borrow.person.email}</td>
-                    <td>{borrow.book.title}</td>
-                    <td>{borrow.startTime && convertDatee(borrow.startTime)}</td>
-                    <td>{borrow.endTime && borrow.endTime.toString()}</td>
-                    <td><Button type="button" label="Edit" onClick={(e)=>handleEdit(e, borrow.email)}/></td>
-                    <td><Button type="button" label="Delete" onClick={(e)=>handleDelete(e, borrow.email)}/></td>
+                    {editBorrowId === borrow.id ?
+                    (<tr>
+                        <td>{borrow.person.email}</td>
+                        <td>{borrow.book.title}</td>
+                        <td><Calendar value={borrow.startTime} onChange={(e) => borrow.startTime = e.value}></Calendar></td>
+                        <td><Calendar value={borrow.endTime} onChange={(e) => borrow.endTime = e.value}></Calendar></td>
+                        <td><Button type="button" label="Save" onClick={(e)=>handleSave(e, borrow)} /></td>
+                    </tr>) :
+                    (<tr>
+                        {}
+                        <td>{borrow.person.email}</td>
+                        <td>{borrow.book.title}</td>
+                        <td>{borrow.startTime && convertDatee(borrow.startTime)}</td>
+                        <td>{borrow.endTime && convertDatee(borrow.endTime)}</td>
+                        <td><Button type="button" label="Edit" onClick={(e)=>handleEdit(e, borrow.id)}/></td>
+                    </tr>)
+                }
+
                 
-                </tr>
                     
                 </Fragment>
                 
@@ -95,7 +107,7 @@ return (
                
         </table>
         
-        }
+        
        
         </div>
 

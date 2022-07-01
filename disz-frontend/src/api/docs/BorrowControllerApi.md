@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET**](BorrowControllerApi.md#findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET) | **GET** /borrows/borrowed | findBorrowByStartTimeIsNotNullAndEndTimeIsNull
 [**findByAuthorOrTitleContainingUsingGET**](BorrowControllerApi.md#findByAuthorOrTitleContainingUsingGET) | **GET** /borrows/search | findByAuthorOrTitleContaining
 [**nowBorrowedBooksUsingGET**](BorrowControllerApi.md#nowBorrowedBooksUsingGET) | **GET** /borrows/borrowed/count | nowBorrowedBooks
-[**returnBookUsingPUT**](BorrowControllerApi.md#returnBookUsingPUT) | **PUT** /borrows/{id}/return | returnBook
+[**returnBookUsingPUT**](BorrowControllerApi.md#returnBookUsingPUT) | **PUT** /borrows/return | returnBook
 [**returnesBorrowesUsingGET**](BorrowControllerApi.md#returnesBorrowesUsingGET) | **GET** /borrows/returned/count | returnesBorrowes
 
 
@@ -347,7 +347,7 @@ No authorization required
 
 ## returnBookUsingPUT
 
-> returnBookUsingPUT(id, borrowDto)
+> returnBookUsingPUT(borrowDto)
 
 returnBook
 
@@ -357,9 +357,8 @@ returnBook
 import ApiDocumentation from 'api_documentation';
 
 let apiInstance = new ApiDocumentation.BorrowControllerApi();
-let id = 789; // Number | id
 let borrowDto = new ApiDocumentation.BorrowDto(); // BorrowDto | borrowDto
-apiInstance.returnBookUsingPUT(id, borrowDto, (error, data, response) => {
+apiInstance.returnBookUsingPUT(borrowDto, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -373,7 +372,6 @@ apiInstance.returnBookUsingPUT(id, borrowDto, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Number**| id | 
  **borrowDto** | [**BorrowDto**](BorrowDto.md)| borrowDto | 
 
 ### Return type

@@ -1,11 +1,13 @@
 package org.disz.demo.controller;
 
 
+import org.apache.tomcat.jni.Local;
 import org.disz.demo.dto.BorrowDto;
 import org.disz.demo.service.BorrowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -23,8 +25,9 @@ public class BorrowController {
         borrowService.addBorrow(borrowDto);
     }
 
-    @PutMapping("/{id}/return")
-    public void returnBook(final @RequestBody BorrowDto borrowDto, final @PathVariable long id){borrowService.returnBook(borrowDto);}
+    @PutMapping("/return")
+    public void returnBook(final @RequestBody BorrowDto borrowDto){
+        borrowService.returnBook(borrowDto);}
 
 
     @GetMapping
@@ -46,7 +49,7 @@ public class BorrowController {
 
     @GetMapping("/returned")
     public List<BorrowDto> findBorrowByStartTimeAndEndTimeIsNotNull(){
-        return borrowService.findBorrowByStartTimeIsNotNullAndEndTimeIsNull();}
+        return borrowService.findBorrowByStartTimeAndEndTimeIsNotNull();}
     @GetMapping("/returned/count")
     public int returnesBorrowes(){ return returnesBorrowes();}
 

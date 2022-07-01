@@ -60,8 +60,7 @@ const useAddBorrow = () => {
             borrow.person=person
             borrow.book = book
             borrow.startTime = date
-            console.log(date)
-
+            
             try{
                 BorrowController.addBorrowUsingPOST(borrow, function(error){
                     if(error!==null){
