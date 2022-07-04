@@ -24,9 +24,6 @@ const DisplayBorrows = () => {
     findAll()
     findNotReturned()
     findReturned()
-    //console.log("all", all)
-    //console.log("notREturned", notReturned)
-    //console.log("returned", returned)
 
 return (
 
@@ -74,10 +71,7 @@ return (
                 </tr>)}
                 
             </thead>
-
-            <tbody>    
-           
-
+            <tbody> 
                 {borrows?.map((borrow, index) =>(
                 <Fragment key={index}>
                     {editBorrowId === borrow.id ?
@@ -97,22 +91,11 @@ return (
                         <td><Button type="button" label="Edit" onClick={(e)=>handleEdit(e, borrow.id)}/></td>
                     </tr>)
                 }
-
-                
-                    
                 </Fragment>
-                
             ))}
             </tbody>
-               
         </table>
-        
-        
-       
         </div>
-
-                
-        
     </div>
     </div>
 )

@@ -13,6 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
+import AuthenticationDto from '../model/AuthenticationDto';
 
 /**
 * LoginController service.
@@ -37,33 +38,60 @@ export default class LoginControllerApi {
      * Callback function to receive the result of the loginUsingPOST operation.
      * @callback module:api/LoginControllerApi~loginUsingPOSTCallback
      * @param {String} error Error message, if any.
-     * @param {Object} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * login
-     * @param {String} email email
-     * @param {String} password password
+     * @param {module:model/AuthenticationDto} dto dto
      * @param {module:api/LoginControllerApi~loginUsingPOSTCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object}
      */
-    loginUsingPOST(email, password, callback) {
-      let postBody = null;
-      // verify the required parameter 'email' is set
-      if (email === undefined || email === null) {
-        throw new Error("Missing the required parameter 'email' when calling loginUsingPOST");
-      }
-      // verify the required parameter 'password' is set
-      if (password === undefined || password === null) {
-        throw new Error("Missing the required parameter 'password' when calling loginUsingPOST");
+    loginUsingPOST(dto, callback) {
+      let postBody = dto;
+      // verify the required parameter 'dto' is set
+      if (dto === undefined || dto === null) {
+        throw new Error("Missing the required parameter 'dto' when calling loginUsingPOST");
       }
 
       let pathParams = {
       };
       let queryParams = {
-        'email': email,
-        'password': password
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/login', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the logoutUsingPOST operation.
+     * @callback module:api/LoginControllerApi~logoutUsingPOSTCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * logout
+     * @param {module:api/LoginControllerApi~logoutUsingPOSTCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    logoutUsingPOST(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
       };
       let headerParams = {
       };
@@ -72,10 +100,10 @@ export default class LoginControllerApi {
 
       let authNames = [];
       let contentTypes = [];
-      let accepts = ['*/*'];
-      let returnType = Object;
+      let accepts = [];
+      let returnType = null;
       return this.apiClient.callApi(
-        '/login', 'POST',
+        '/logout', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

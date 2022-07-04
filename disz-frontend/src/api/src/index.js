@@ -13,6 +13,7 @@
 
 
 import ApiClient from './ApiClient';
+import AuthenticationDto from './model/AuthenticationDto';
 import BookDto from './model/BookDto';
 import BorrowDto from './model/BorrowDto';
 import ModelAndView from './model/ModelAndView';
@@ -62,6 +63,12 @@ export {
      * @property {module:ApiClient}
      */
     ApiClient,
+
+    /**
+     * The AuthenticationDto model constructor.
+     * @property {module:model/AuthenticationDto}
+     */
+    AuthenticationDto,
 
     /**
      * The BookDto model constructor.

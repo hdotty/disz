@@ -34,38 +34,29 @@ const App = () => {
   const [loggedInUser, setLoggedInUser] = useState(true);
   const [isAdmin, setIsadmin] = useState(true)
 
-  //const {person} = useLogin()
-  //console.log(person)
-  const user = {
-  loggedIn: true,
-  admin: true
-  }
-
-
-
   return (
     <div>
       <h1></h1>
       <Router>
-        <Header user={user} /><br/>
+        <Header /><br/>
         
           
         <Routes>
-          <Route exact path='/' element={ <Home user={user} /> }/>
-          <Route exact path='/components/books' element={ <Book/> }/>
+          <Route exact path='/' element={ <Home  /> }/>
+          <Route exact path='/components/books' element={ <Book  /> }/>
 
-          {!user.loggedIn && <Route exact path='/components/signup/signup' element={ <Signup /> }/>}
-          {!user.loggedIn && <Route exact path='/components/login/login' element={ <Login/> }/>}
+          { <Route exact path='/components/signup/signup' element={ <Signup /> }/>}
+          { <Route exact path='/components/login/login' element={ <Login/> }/>}
 
-          {user.loggedIn && <Route exact path='/components/personPage' element={ <PersonPage /> }/>}
-          {user.loggedIn && <Route exact path='/components/forgotPsw' element={ <ForgotPsw /> }/>}
-          {user.loggedIn && <Route exact path='/components/bookPage/bookPage' element={ <BookPage /> }/>}
-          {user.loggedIn && <Route exact path='6components/changePsw' element={ <ChangePsw/> }/>}
+          { <Route exact path='/components/personPage' element={ <PersonPage /> }/>}
+          { <Route exact path='/components/forgotPsw' element={ <ForgotPsw /> }/>}
+          { <Route exact path='/components/bookPage/bookPage' element={ <BookPage /> }/>}
+          { <Route exact path='6components/changePsw' element={ <ChangePsw/> }/>}
 
-          {(user.loggedIn && user.admin) && <Route exact path='components/addBook/addBook' element={ <AddBook /> }/>}
-          {(user.loggedIn && user.admin) && <Route exact path='components/displayPersons/displayPersons' element={ <DisplayPersons/> }/>} 
-          {(user.loggedIn && user.admin) && <Route exact path='components/addBorrow' element={ <AddBorrow/> }/>}
-          {(user.loggedIn && user.admin) && <Route exact path='components/displayBorrows/displayBorrows' element={ <DisplayBorrows/> }/>}
+          { <Route exact path='components/addBook/addBook' element={ <AddBook /> }/>}
+          { <Route exact path='components/displayPersons/displayPersons' element={ <DisplayPersons/> }/>} 
+          { <Route exact path='components/addBorrow' element={ <AddBorrow/> }/>}
+          { <Route exact path='components/displayBorrows/displayBorrows' element={ <DisplayBorrows/> }/>}
         </Routes>
       </Router>
         

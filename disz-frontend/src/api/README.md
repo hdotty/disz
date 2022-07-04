@@ -109,7 +109,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.errorHtmlUsingDELETE(callback);
+api.errorUsingDELETE(callback);
 
 ```
 
@@ -119,13 +119,13 @@ All URIs are relative to *http://localhost:8080*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ApiDocumentation.BasicErrorControllerApi* | [**errorHtmlUsingDELETE**](docs/BasicErrorControllerApi.md#errorHtmlUsingDELETE) | **DELETE** /error | errorHtml
-*ApiDocumentation.BasicErrorControllerApi* | [**errorHtmlUsingGET**](docs/BasicErrorControllerApi.md#errorHtmlUsingGET) | **GET** /error | errorHtml
-*ApiDocumentation.BasicErrorControllerApi* | [**errorHtmlUsingHEAD**](docs/BasicErrorControllerApi.md#errorHtmlUsingHEAD) | **HEAD** /error | errorHtml
-*ApiDocumentation.BasicErrorControllerApi* | [**errorHtmlUsingOPTIONS**](docs/BasicErrorControllerApi.md#errorHtmlUsingOPTIONS) | **OPTIONS** /error | errorHtml
-*ApiDocumentation.BasicErrorControllerApi* | [**errorHtmlUsingPATCH**](docs/BasicErrorControllerApi.md#errorHtmlUsingPATCH) | **PATCH** /error | errorHtml
-*ApiDocumentation.BasicErrorControllerApi* | [**errorHtmlUsingPOST**](docs/BasicErrorControllerApi.md#errorHtmlUsingPOST) | **POST** /error | errorHtml
-*ApiDocumentation.BasicErrorControllerApi* | [**errorHtmlUsingPUT**](docs/BasicErrorControllerApi.md#errorHtmlUsingPUT) | **PUT** /error | errorHtml
+*ApiDocumentation.BasicErrorControllerApi* | [**errorUsingDELETE**](docs/BasicErrorControllerApi.md#errorUsingDELETE) | **DELETE** /error | error
+*ApiDocumentation.BasicErrorControllerApi* | [**errorUsingGET**](docs/BasicErrorControllerApi.md#errorUsingGET) | **GET** /error | error
+*ApiDocumentation.BasicErrorControllerApi* | [**errorUsingHEAD**](docs/BasicErrorControllerApi.md#errorUsingHEAD) | **HEAD** /error | error
+*ApiDocumentation.BasicErrorControllerApi* | [**errorUsingOPTIONS**](docs/BasicErrorControllerApi.md#errorUsingOPTIONS) | **OPTIONS** /error | error
+*ApiDocumentation.BasicErrorControllerApi* | [**errorUsingPATCH**](docs/BasicErrorControllerApi.md#errorUsingPATCH) | **PATCH** /error | error
+*ApiDocumentation.BasicErrorControllerApi* | [**errorUsingPOST**](docs/BasicErrorControllerApi.md#errorUsingPOST) | **POST** /error | error
+*ApiDocumentation.BasicErrorControllerApi* | [**errorUsingPUT**](docs/BasicErrorControllerApi.md#errorUsingPUT) | **PUT** /error | error
 *ApiDocumentation.BookControllerApi* | [**addBookUsingPOST**](docs/BookControllerApi.md#addBookUsingPOST) | **POST** /books | addBook
 *ApiDocumentation.BookControllerApi* | [**deleteBookUsingDELETE**](docs/BookControllerApi.md#deleteBookUsingDELETE) | **DELETE** /books/{id} | deleteBook
 *ApiDocumentation.BookControllerApi* | [**findBooksUsingGET**](docs/BookControllerApi.md#findBooksUsingGET) | **GET** /books/search | findBooks
@@ -144,6 +144,7 @@ Class | Method | HTTP request | Description
 *ApiDocumentation.BorrowControllerApi* | [**returnBookUsingPUT**](docs/BorrowControllerApi.md#returnBookUsingPUT) | **PUT** /borrows/return | returnBook
 *ApiDocumentation.BorrowControllerApi* | [**returnesBorrowesUsingGET**](docs/BorrowControllerApi.md#returnesBorrowesUsingGET) | **GET** /borrows/returned/count | returnesBorrowes
 *ApiDocumentation.LoginControllerApi* | [**loginUsingPOST**](docs/LoginControllerApi.md#loginUsingPOST) | **POST** /login | login
+*ApiDocumentation.LoginControllerApi* | [**logoutUsingPOST**](docs/LoginControllerApi.md#logoutUsingPOST) | **POST** /logout | logout
 *ApiDocumentation.PersonControllerApi* | [**addPersonUsingPOST**](docs/PersonControllerApi.md#addPersonUsingPOST) | **POST** /person | addPerson
 *ApiDocumentation.PersonControllerApi* | [**deletePersonUsingDELETE**](docs/PersonControllerApi.md#deletePersonUsingDELETE) | **DELETE** /person/{id} | deletePerson
 *ApiDocumentation.PersonControllerApi* | [**findPersonUsingGET**](docs/PersonControllerApi.md#findPersonUsingGET) | **GET** /person/search | findPerson
@@ -156,6 +157,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [ApiDocumentation.AuthenticationDto](docs/AuthenticationDto.md)
  - [ApiDocumentation.BookDto](docs/BookDto.md)
  - [ApiDocumentation.BorrowDto](docs/BorrowDto.md)
  - [ApiDocumentation.ModelAndView](docs/ModelAndView.md)

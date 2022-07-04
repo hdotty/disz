@@ -5,12 +5,13 @@ All URIs are relative to *http://localhost:8080*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**loginUsingPOST**](LoginControllerApi.md#loginUsingPOST) | **POST** /login | login
+[**logoutUsingPOST**](LoginControllerApi.md#logoutUsingPOST) | **POST** /logout | logout
 
 
 
 ## loginUsingPOST
 
-> Object loginUsingPOST(email, password)
+> loginUsingPOST(dto)
 
 login
 
@@ -20,13 +21,12 @@ login
 import ApiDocumentation from 'api_documentation';
 
 let apiInstance = new ApiDocumentation.LoginControllerApi();
-let email = "email_example"; // String | email
-let password = "password_example"; // String | password
-apiInstance.loginUsingPOST(email, password, (error, data, response) => {
+let dto = new ApiDocumentation.AuthenticationDto(); // AuthenticationDto | dto
+apiInstance.loginUsingPOST(dto, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 });
 ```
@@ -36,12 +36,50 @@ apiInstance.loginUsingPOST(email, password, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| email | 
- **password** | **String**| password | 
+ **dto** | [**AuthenticationDto**](AuthenticationDto.md)| dto | 
 
 ### Return type
 
-**Object**
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+
+## logoutUsingPOST
+
+> logoutUsingPOST()
+
+logout
+
+### Example
+
+```javascript
+import ApiDocumentation from 'api_documentation';
+
+let apiInstance = new ApiDocumentation.LoginControllerApi();
+apiInstance.logoutUsingPOST((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 
@@ -50,5 +88,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: Not defined
 

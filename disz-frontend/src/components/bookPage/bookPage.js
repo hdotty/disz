@@ -3,15 +3,12 @@ import {Button} from "primereact/button"
 import useBookPage from "./useBookPage"
 import AddBorrow from "../addBorrow/addBorrow"
 
-//ide kell egy POST borrow
-//meg egy GET book
 
 function BookPage(props){
     const id = props.editBookId
     const {book, getBook, handleBorrow, borrow} = useBookPage()
     
     getBook(id)
-
 
     return(
 
@@ -38,7 +35,7 @@ function BookPage(props){
             <li>
                 <div>
                     <br></br>
-                    <Button label="Borrow It" icon="pi pi-user" className="w-full" onClick={(e)=>(handleBorrow(e))} /> 
+                    <Button label="Borrow It" icon="pi pi-user" className="w-full" onClick={(e)=>(handleBorrow(e))} />
                 </div>
             </li>
             <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
@@ -54,19 +51,12 @@ function BookPage(props){
                         <tbody></tbody>
                     </table>
                 </div>
-            </li>
-                
-            
-                
+            </li> 
         </ul>
-        
         }
-
-            
         </div>
     )
 }
 
 
-//csak az admin láthatja a "Borrow It" gombot => ez át fogja irányítani a Borrow oldalra
 export default BookPage

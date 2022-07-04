@@ -7,15 +7,14 @@ import { InputText } from "primereact/inputtext";
 import { useBooks } from "./useDisplayBooks";
 import BookPage from "../bookPage/bookPage";
 
-const Book = () => {
-
+const Book = (props) => {
+    const user = props.user
     const [editAuthor, setEditAuthor] = useState('')
     const [editTitle, setEditTitle] = useState('')
     const {books, editBookId, displayBooks, handleEditClick, handleSaveClick, handleCancelClick, handleDeleteClick, handleViewClick, view} = useBooks()
 
     displayBooks()
     
-
     return (
         <div className="flex align-items-center justify-content-center">
             <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6 ">
@@ -34,7 +33,6 @@ const Book = () => {
                 <tbody>
                     {books.map((book, id)=>(
                         <Fragment key={id}>
-                            
                             {editBookId === book.bookId ? 
                             (<tr>
                                 <td><InputText onChange={(e)=>setEditAuthor(e.target.value)} id="author" value={editAuthor} type="text" placeholder={book.author}/></td>
@@ -47,8 +45,8 @@ const Book = () => {
                             (<tr>
                                 <td>{book.author}</td>
                                 <td>{book.title}</td>
-                                <td><Button type="button" onClick={(e)=>handleEditClick(e, book)}>Edit</Button></td>
-                                <td><Button type="button" onClick={(e)=>{handleDeleteClick(e, book); displayBooks();}}>Delete</Button></td>
+                                { <td><Button type="button" onClick={(e)=>handleEditClick(e, book)}>Edit</Button></td>}
+                                { <td><Button type="button" onClick={(e)=>{handleDeleteClick(e, book); displayBooks();}}>Delete</Button></td>}
                                 <td><Button type="button" onClick={(e)=>handleViewClick(e,book)} >View</Button></td>
                             </tr>
                             )}
@@ -57,7 +55,6 @@ const Book = () => {
                 </tbody>
             </table>
             }
-           
             </div>
         </div>
     )

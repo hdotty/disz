@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoginControllerApi from "../../api/src/api/LoginControllerApi";
 import PersonControllerApi from "../../api/src/api/PersonControllerApi";
+import AuthenticationDto from "../../api/src/model/AuthenticationDto";
 import PersonDto from "../../api/src/model/PersonDto";
 
 const useLogin = () => {
@@ -9,15 +10,16 @@ const useLogin = () => {
 
     const handleSubmit = (e, email, password) => {
         e.preventDefault();
-        LoginController.loginUsingPOST(email, password, function(error,data,response){
+        const login = new AuthenticationDto()
+        login.email = email
+        login.password = password
+        LoginController.loginUsingPOST(login, function(error){
             if(error !== null){
                 console.log(error)
             }else{
-                setPerson(data)
-                
+                console.log("hey ya")                
             }
         })
-        console.log(person)
     }
 
     

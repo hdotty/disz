@@ -2,6 +2,7 @@
 .gitignore
 .travis.yml
 README.md
+docs/AuthenticationDto.md
 docs/BasicErrorControllerApi.md
 docs/BookControllerApi.md
 docs/BookDto.md
@@ -22,8 +23,10 @@ src/api/BorrowControllerApi.js
 src/api/LoginControllerApi.js
 src/api/PersonControllerApi.js
 src/index.js
+src/model/AuthenticationDto.js
 src/model/BookDto.js
 src/model/BorrowDto.js
 src/model/ModelAndView.js
 src/model/PersonDto.js
 src/model/View.js
+test/model/AuthenticationDto.spec.js
