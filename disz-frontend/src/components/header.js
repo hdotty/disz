@@ -1,9 +1,5 @@
 import { Link } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
-import App from "./App"
-import { Button } from "bootstrap"
-
-
 
 function Header(props){
     return (
