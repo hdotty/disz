@@ -4,6 +4,7 @@ spring:
     username: diszinventory
     password: diszinventory
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
 logging:

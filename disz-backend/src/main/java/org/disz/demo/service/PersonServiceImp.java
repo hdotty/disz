@@ -5,6 +5,7 @@ import org.disz.demo.dto.PersonDto;
 import org.disz.demo.entity.Person;
 import org.disz.demo.repository.BorrowRepository;
 import org.disz.demo.repository.PersonRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +17,14 @@ public class PersonServiceImp implements PersonService{
     public final PersonRepository personRepository;
     public final BorrowRepository borrowRepository;
     public final BorrowServiceImp borrowServiceImp; //TODO ez itt nagyon csúnya?
+    private final PasswordEncoder passwordEncoder;
 
-    public PersonServiceImp(PersonRepository personRepository, BorrowRepository borrowRepository, BorrowServiceImp borrowServiceImp) {
+    public PersonServiceImp(PersonRepository personRepository, BorrowRepository borrowRepository, BorrowServiceImp borrowServiceImp,
+                            PasswordEncoder passwordEncoder) {
         this.personRepository = personRepository;
         this.borrowRepository = borrowRepository;
         this.borrowServiceImp = borrowServiceImp;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -81,7 +85,8 @@ public class PersonServiceImp implements PersonService{
 
 
     private Person toEntity(PersonDto personDto) {
-        return new Person(personDto.getPersonId(), personDto.getFirstName(), personDto.getLastName(), personDto.getEmail(), personDto.getPassword());
+        final String encodedPassword = passwordEncoder.encode(personDto.getPassword());
+        return new Person(personDto.getPersonId(), personDto.getFirstName(), personDto.getLastName(), personDto.getEmail(), encodedPassword);
     }
 
     private <S extends PersonDto> PersonDto toDto(Person person) {

@@ -1,57 +1,46 @@
 package org.disz.demo.controller;
 
-import org.disz.demo.dto.PersonDto;
-import org.disz.demo.service.PersonService;
+import org.disz.demo.dto.AuthenticationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Objects;
-import java.util.Optional;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/login")
 public class LoginController {
-
-    public final PersonService personService;
+    private final AuthenticationManager authenticationManager;
 
     @Autowired
-    public LoginController(PersonService personService) {
-        this.personService = personService;
+    public LoginController(final AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Void> login(final @RequestBody AuthenticationDto dto) {
+        final UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(dto.getEmail(), dto.getPassword());
 
-
-
-    @PostMapping
-    public ResponseEntity<?> login (@RequestParam String email, @RequestParam String password) {
-        if (personService.existsByEmail(email)){
-            PersonDto personDto = personService.getByEmail(email);
-            String psw = personDto.getPassword();
-            if (Objects.equals(password, psw)) {
-                personDto.setLoggedIn(true);
-                return ResponseEntity.ok(personDto);
-            }else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-        }else{
-            return ResponseEntity.badRequest().body("bad request");
-
+        final Authentication authentication;
+        try {
+            authentication = authenticationManager.authenticate(authenticationToken);
+        } catch (BadCredentialsException exception) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return ResponseEntity.ok().build();
     }
 
-
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout() {
+        SecurityContextHolder.getContext().setAuthentication(null);
+        return ResponseEntity.ok().build();
+    }
 }
-
-//    @GetMapping
-//    public ResponseEntity<?> loginGet (@PathVariable String email, String password){
-//        PersonDto personDto = personService.getByEmail(email);
-//        if(password == personDto.getPassword()){
-//            personDto.setLoggedIn(true);
-//            return ResponseEntity.ok("Logged in");
-//        }else{
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-//        }
-//    }
