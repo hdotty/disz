@@ -4,6 +4,7 @@ import {Button} from "primereact/button"
 import { useState } from "react"
 import { Link } from "react-router-dom";
 import useLogin from "./useLogin";
+import LoginControllerApi from "../../api/src/api/LoginControllerApi";
 
 function Login(){
 
@@ -11,7 +12,17 @@ function Login(){
     const [email, setEmail] = useState('')
     const [psw, setPsw] = useState('')
 
-    console.log(person)
+    console.log("data: ", person )
+
+    const LoginController = new LoginControllerApi()
+    const handleLogOut = (e) => {
+        e.preventDefault()
+        LoginController.logoutUsingPOST(function(error){
+            if(error!==null){
+                console.log(error)
+            }
+        })
+    }
     
     return(
         
@@ -41,6 +52,7 @@ function Login(){
                     </div>
 
                     <Button label="Sign In" icon="pi pi-user" className="w-full" type="submit" />
+                    <Button label="Sign Out" icon="pi pi-user" className="w-full" type="button" onClick={(e)=>handleLogOut(e)} />
                 </div>
             </div>
         </form>
