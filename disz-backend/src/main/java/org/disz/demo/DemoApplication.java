@@ -22,8 +22,11 @@ public class DemoApplication {
 			@Override
 			public void addCorsMappings(final @NonNull CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedMethods("*")
-						.allowedOrigins("http://localhost:3000");
+ 						.allowedMethods("*")
+						.allowedOrigins("http://localhost:3000")
+						.allowedHeaders("Origin", "Access-control-Request-Method", "Access-Control-Request-Headers")
+						.exposedHeaders("Access-Control-Request-Origin")
+						.allowCredentials(true);
 
 			}
 		};

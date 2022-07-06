@@ -29,4 +29,3 @@ src/model/BorrowDto.js
 src/model/ModelAndView.js
 src/model/PersonDto.js
 src/model/View.js
-test/model/AuthenticationDto.spec.js

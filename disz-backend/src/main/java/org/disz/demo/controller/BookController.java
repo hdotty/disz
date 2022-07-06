@@ -5,6 +5,7 @@ import org.disz.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -17,6 +18,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
+    @RolesAllowed("ADMIN")
     @PostMapping
     public void addBook(final @RequestBody BookDto book){bookService.addBook(book);
     }

@@ -20,7 +20,8 @@ public class PersonController {
     @PostMapping("/person")
     public void addPerson(final @RequestBody @Valid PersonDto personDto) {personService.addPerson(personDto);}
     @PutMapping("/person")
-    public void updatePerson(final @RequestBody PersonDto personDto, String firstName, String lastName, String email){personService.updatePerson(personDto, firstName, lastName, email);}
+    public void updatePerson(final @RequestBody PersonDto personDto, String firstName, String lastName, String email){
+        personService.updatePerson(personDto, firstName, lastName, email);}
     @DeleteMapping("/person/{id}")
     public void deletePerson(final @PathVariable Long id){ personService.deletePerson(id); }
     @GetMapping("/person")
