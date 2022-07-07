@@ -5,6 +5,9 @@ import org.disz.demo.dto.PersonDto;
 import org.disz.demo.entity.Person;
 import org.disz.demo.repository.BorrowRepository;
 import org.disz.demo.repository.PersonRepository;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -82,6 +85,20 @@ public class PersonServiceImp implements PersonService{
     @Override
     public List<BorrowDto> personsBooks(PersonDto personDto) {return personDto.getBorrows();}
 
+    @Override
+    public PersonDto getLoggedInPerson() {
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null) {
+            return null;
+        }
+
+        final Person person = personRepository.getByEmail(authentication.getName());
+        if (person == null) {
+            return null;
+        }
+
+        return toDto(person);
+    }
 
 
     private Person toEntity(PersonDto personDto) {

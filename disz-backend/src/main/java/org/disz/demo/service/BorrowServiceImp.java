@@ -31,6 +31,11 @@ public class BorrowServiceImp implements BorrowService{
     }
 
     @Override
+    public void deleteBorrowByPerson(Long personId){
+        borrowRepository.deleteByPerson(personId);
+    }
+
+    @Override
     public List<BorrowDto> findAll() { return toDtos(borrowRepository.findAll());}
 
     @Override

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import BorrowControllerApi from "../../api/src/api/BorrowControllerApi";
 import PersonControllerApi from "../../api/src/api/PersonControllerApi";
 
 const useDisplayPersons = () => {
     const PersonController = new PersonControllerApi()
+    const BorrowController = new BorrowControllerApi()
     const [persons, setPersons] = useState([])
     const [isRunning, setRunning] = useState(true)
     const [currentId, setCurrentId] = useState(125)
@@ -29,14 +31,25 @@ const useDisplayPersons = () => {
         
     }
 
-    const handleDelete = (e, id) => {
+    const handleDelete = (e, person) => {
         e.preventDefault()
-        PersonController.deletePersonUsingDELETE(id, function(error){
-            if(error===null){
-                setRunning(true)
-                displayPerson()
-            }
-        })
+        if(person.borrows === null) {
+            PersonController.deletePersonUsingDELETE(person.personId , function(error){
+                if(error===null){
+                    setRunning(true)
+                    displayPerson()
+                }
+            })
+        }else{
+            BorrowController.deleteBorrowByPersonUsingDELETE(person.personId, function(error){
+                if(error === null){
+                    console.log("done")
+                }else{
+                    console.log(error)
+                }
+            })
+        }
+        
     }
     return {displayPerson, persons, handleView, currentId, view, handleDelete}
 }

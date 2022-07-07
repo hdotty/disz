@@ -134,6 +134,7 @@ Class | Method | HTTP request | Description
 *ApiDocumentation.BookControllerApi* | [**getBooksUsingGET**](docs/BookControllerApi.md#getBooksUsingGET) | **GET** /books | getBooks
 *ApiDocumentation.BookControllerApi* | [**updateBookUsingPUT**](docs/BookControllerApi.md#updateBookUsingPUT) | **PUT** /books | updateBook
 *ApiDocumentation.BorrowControllerApi* | [**addBorrowUsingPOST**](docs/BorrowControllerApi.md#addBorrowUsingPOST) | **POST** /borrows | addBorrow
+*ApiDocumentation.BorrowControllerApi* | [**deleteBorrowByPersonUsingDELETE**](docs/BorrowControllerApi.md#deleteBorrowByPersonUsingDELETE) | **DELETE** /borrows | deleteBorrowByPerson
 *ApiDocumentation.BorrowControllerApi* | [**findAllUsingGET**](docs/BorrowControllerApi.md#findAllUsingGET) | **GET** /borrows | findAll
 *ApiDocumentation.BorrowControllerApi* | [**findBorrowByBookIdUsingGET**](docs/BorrowControllerApi.md#findBorrowByBookIdUsingGET) | **GET** /borrows/books/{bookId} | findBorrowByBookId
 *ApiDocumentation.BorrowControllerApi* | [**findBorrowByPersonIdUsingGET**](docs/BorrowControllerApi.md#findBorrowByPersonIdUsingGET) | **GET** /borrows/person/{personId} | findBorrowByPersonId
@@ -148,6 +149,7 @@ Class | Method | HTTP request | Description
 *ApiDocumentation.PersonControllerApi* | [**addPersonUsingPOST**](docs/PersonControllerApi.md#addPersonUsingPOST) | **POST** /person | addPerson
 *ApiDocumentation.PersonControllerApi* | [**deletePersonUsingDELETE**](docs/PersonControllerApi.md#deletePersonUsingDELETE) | **DELETE** /person/{id} | deletePerson
 *ApiDocumentation.PersonControllerApi* | [**findPersonUsingGET**](docs/PersonControllerApi.md#findPersonUsingGET) | **GET** /person/search | findPerson
+*ApiDocumentation.PersonControllerApi* | [**getLoggedInPersonUsingGET**](docs/PersonControllerApi.md#getLoggedInPersonUsingGET) | **GET** /person/loggedIn | getLoggedInPerson
 *ApiDocumentation.PersonControllerApi* | [**getPersonUsingGET**](docs/PersonControllerApi.md#getPersonUsingGET) | **GET** /person/{id} | getPerson
 *ApiDocumentation.PersonControllerApi* | [**getPersonsUsingGET**](docs/PersonControllerApi.md#getPersonsUsingGET) | **GET** /person | getPersons
 *ApiDocumentation.PersonControllerApi* | [**personsBooksUsingGET**](docs/PersonControllerApi.md#personsBooksUsingGET) | **GET** /persons | personsBooks

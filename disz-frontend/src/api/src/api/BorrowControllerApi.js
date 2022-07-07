@@ -75,6 +75,45 @@ export default class BorrowControllerApi {
     }
 
     /**
+     * Callback function to receive the result of the deleteBorrowByPersonUsingDELETE operation.
+     * @callback module:api/BorrowControllerApi~deleteBorrowByPersonUsingDELETECallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * deleteBorrowByPerson
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.personId personId
+     * @param {module:api/BorrowControllerApi~deleteBorrowByPersonUsingDELETECallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deleteBorrowByPersonUsingDELETE(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'personId': opts['personId']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/borrows', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the findAllUsingGET operation.
      * @callback module:api/BorrowControllerApi~findAllUsingGETCallback
      * @param {String} error Error message, if any.

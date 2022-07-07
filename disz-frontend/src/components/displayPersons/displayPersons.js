@@ -47,7 +47,7 @@ const DisplayPerson = () => {
                                         type="button" 
                                         label="Delete"
                                         onClick={(e)=>{
-                                        handleDelete(e, person.personId)
+                                        handleDelete(e, person)
                                         }}
 
                                     />

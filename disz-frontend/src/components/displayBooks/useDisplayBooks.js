@@ -52,10 +52,13 @@ const useBooks = () => {
 
     const handleDeleteClick = (e, book) => {
         e.preventDefault()
+        console.log("book: ",book)
         BookController.deleteBookUsingDELETE(book.bookId, function(error){
             if(error === null){
                 setReRenderBooks(true)
                 displayBooks()
+            }else{
+                console.log(error)
             }
         })
     }

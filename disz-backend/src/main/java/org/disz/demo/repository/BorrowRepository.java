@@ -10,6 +10,7 @@ import java.util.List;
 public interface BorrowRepository extends JpaRepository<Borrow, Long> {
     List<Borrow> findAllByBookId(Long bookId);
     List<Borrow> findAllByPersonId(Long personId);
+    void deleteByPerson(Long person);
 
     //hány könyv van épp kölcsönözve
     List<Borrow> findAllByEndTimeIsNull();

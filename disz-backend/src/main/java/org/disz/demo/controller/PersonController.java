@@ -17,6 +17,11 @@ public class PersonController {
     public PersonController(final PersonService personService) {
         this.personService = personService;
     }
+    @GetMapping("/person/loggedIn")
+    public PersonDto getLoggedInPerson() {
+        return personService.getLoggedInPerson();
+    }
+
     @PostMapping("/person")
     public void addPerson(final @RequestBody @Valid PersonDto personDto) {personService.addPerson(personDto);}
     @PutMapping("/person")

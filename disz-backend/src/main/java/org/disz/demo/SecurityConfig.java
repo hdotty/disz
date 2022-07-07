@@ -51,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/logout/**").permitAll()
                 .antMatchers("/books/**").permitAll()
                 .antMatchers("/person/**").permitAll()
+                .antMatchers("/borrows/**").permitAll()
                 .anyRequest().authenticated()
                 .and().logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.NO_CONTENT));
     }

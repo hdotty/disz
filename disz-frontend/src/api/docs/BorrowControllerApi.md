@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost:8080*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addBorrowUsingPOST**](BorrowControllerApi.md#addBorrowUsingPOST) | **POST** /borrows | addBorrow
+[**deleteBorrowByPersonUsingDELETE**](BorrowControllerApi.md#deleteBorrowByPersonUsingDELETE) | **DELETE** /borrows | deleteBorrowByPerson
 [**findAllUsingGET**](BorrowControllerApi.md#findAllUsingGET) | **GET** /borrows | findAll
 [**findBorrowByBookIdUsingGET**](BorrowControllerApi.md#findBorrowByBookIdUsingGET) | **GET** /borrows/books/{bookId} | findBorrowByBookId
 [**findBorrowByPersonIdUsingGET**](BorrowControllerApi.md#findBorrowByPersonIdUsingGET) | **GET** /borrows/person/{personId} | findBorrowByPersonId
@@ -57,6 +58,51 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: Not defined
+
+
+## deleteBorrowByPersonUsingDELETE
+
+> deleteBorrowByPersonUsingDELETE(opts)
+
+deleteBorrowByPerson
+
+### Example
+
+```javascript
+import ApiDocumentation from 'api_documentation';
+
+let apiInstance = new ApiDocumentation.BorrowControllerApi();
+let opts = {
+  'personId': 789 // Number | personId
+};
+apiInstance.deleteBorrowByPersonUsingDELETE(opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **personId** | **Number**| personId | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: Not defined
 
 

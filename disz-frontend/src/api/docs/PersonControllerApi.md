@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**addPersonUsingPOST**](PersonControllerApi.md#addPersonUsingPOST) | **POST** /person | addPerson
 [**deletePersonUsingDELETE**](PersonControllerApi.md#deletePersonUsingDELETE) | **DELETE** /person/{id} | deletePerson
 [**findPersonUsingGET**](PersonControllerApi.md#findPersonUsingGET) | **GET** /person/search | findPerson
+[**getLoggedInPersonUsingGET**](PersonControllerApi.md#getLoggedInPersonUsingGET) | **GET** /person/loggedIn | getLoggedInPerson
 [**getPersonUsingGET**](PersonControllerApi.md#getPersonUsingGET) | **GET** /person/{id} | getPerson
 [**getPersonsUsingGET**](PersonControllerApi.md#getPersonsUsingGET) | **GET** /person | getPersons
 [**personsBooksUsingGET**](PersonControllerApi.md#personsBooksUsingGET) | **GET** /persons | personsBooks
@@ -133,6 +134,45 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[PersonDto]**](PersonDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+
+## getLoggedInPersonUsingGET
+
+> PersonDto getLoggedInPersonUsingGET()
+
+getLoggedInPerson
+
+### Example
+
+```javascript
+import ApiDocumentation from 'api_documentation';
+
+let apiInstance = new ApiDocumentation.PersonControllerApi();
+apiInstance.getLoggedInPersonUsingGET((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**PersonDto**](PersonDto.md)
 
 ### Authorization
 

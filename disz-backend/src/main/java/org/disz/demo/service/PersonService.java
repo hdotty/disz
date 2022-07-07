@@ -19,4 +19,5 @@ public interface PersonService {
     void changePsw(PersonDto personDto, String oldPsw, String newPsw);
     List<BorrowDto> personsBooks(PersonDto personDto);
 
+    PersonDto getLoggedInPerson();
 }

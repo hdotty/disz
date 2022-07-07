@@ -3,6 +3,8 @@ package org.disz.demo.controller;
 
 import org.apache.tomcat.jni.Local;
 import org.disz.demo.dto.BorrowDto;
+import org.disz.demo.dto.PersonDto;
+import org.disz.demo.entity.Person;
 import org.disz.demo.service.BorrowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,9 @@ public class BorrowController {
     public void addBorrow(final @RequestBody BorrowDto borrowDto) {
         borrowService.addBorrow(borrowDto);
     }
+
+    @DeleteMapping
+    public void deleteBorrowByPerson(Long personId){borrowService.deleteBorrowByPerson(personId);}
 
     @PutMapping("/return")
     public void returnBook(final @RequestBody BorrowDto borrowDto){
