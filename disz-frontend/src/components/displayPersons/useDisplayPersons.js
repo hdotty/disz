@@ -33,23 +33,31 @@ const useDisplayPersons = () => {
 
     const handleDelete = (e, person) => {
         e.preventDefault()
-        if(person.borrows === null) {
-            PersonController.deletePersonUsingDELETE(person.personId , function(error){
-                if(error===null){
-                    setRunning(true)
-                    displayPerson()
-                }
-            })
-        }else{
-            BorrowController.deleteBorrowByPersonUsingDELETE(person.personId, function(error){
-                if(error === null){
-                    console.log("done")
-                }else{
+        if(person.borrow !== null){
+            BorrowController.deleteAllByPersonUsingDELETE(person.personId, function(error){
+                if(error!==null){
                     console.log(error)
+                }else{
+                    PersonController.deletePersonUsingDELETE(person.personId , function(error){
+                        if(error===null){
+                            setRunning(true)
+                            displayPerson()
+                        }else{
+                            console.log(error)
+                        }
+                    })
+                    console.log("sikerult")
                 }
             })
         }
-        
+        PersonController.deletePersonUsingDELETE(person.personId , function(error){
+            if(error===null){
+                setRunning(true)
+                displayPerson()
+            }else{
+                console.log(error)
+            }
+        })        
     }
     return {displayPerson, persons, handleView, currentId, view, handleDelete}
 }

@@ -1,15 +1,12 @@
 package org.disz.demo.controller;
 
 
-import org.apache.tomcat.jni.Local;
 import org.disz.demo.dto.BorrowDto;
-import org.disz.demo.dto.PersonDto;
-import org.disz.demo.entity.Person;
 import org.disz.demo.service.BorrowService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -26,14 +23,15 @@ public class BorrowController {
     public void addBorrow(final @RequestBody BorrowDto borrowDto) {
         borrowService.addBorrow(borrowDto);
     }
-
-    @DeleteMapping
-    public void deleteBorrowByPerson(Long personId){borrowService.deleteBorrowByPerson(personId);}
-
     @PutMapping("/return")
-    public void returnBook(final @RequestBody BorrowDto borrowDto){
-        borrowService.returnBook(borrowDto);}
+    public void returnBook(final @RequestBody BorrowDto borrowDto){borrowService.returnBook(borrowDto);}
+    @Transactional
+    @DeleteMapping("/{personId}")
+    public void deleteAllByPerson(final @PathVariable long personId){borrowService.deleteAllByPersonId(personId);}
 
+    @Transactional
+    @DeleteMapping("/{bookId}")
+    public void deleteAllByBook(final @PathVariable long bookId){borrowService.deleteAllByBookId(bookId);}
 
     @GetMapping
     public List<BorrowDto> findAll(){return borrowService.findAll();}

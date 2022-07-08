@@ -134,7 +134,8 @@ Class | Method | HTTP request | Description
 *ApiDocumentation.BookControllerApi* | [**getBooksUsingGET**](docs/BookControllerApi.md#getBooksUsingGET) | **GET** /books | getBooks
 *ApiDocumentation.BookControllerApi* | [**updateBookUsingPUT**](docs/BookControllerApi.md#updateBookUsingPUT) | **PUT** /books | updateBook
 *ApiDocumentation.BorrowControllerApi* | [**addBorrowUsingPOST**](docs/BorrowControllerApi.md#addBorrowUsingPOST) | **POST** /borrows | addBorrow
-*ApiDocumentation.BorrowControllerApi* | [**deleteBorrowByPersonUsingDELETE**](docs/BorrowControllerApi.md#deleteBorrowByPersonUsingDELETE) | **DELETE** /borrows | deleteBorrowByPerson
+*ApiDocumentation.BorrowControllerApi* | [**deleteAllByBookUsingDELETE**](docs/BorrowControllerApi.md#deleteAllByBookUsingDELETE) | **DELETE** /borrows/{bookId} | deleteAllByBook
+*ApiDocumentation.BorrowControllerApi* | [**deleteAllByPersonUsingDELETE**](docs/BorrowControllerApi.md#deleteAllByPersonUsingDELETE) | **DELETE** /borrows/{personId} | deleteAllByPerson
 *ApiDocumentation.BorrowControllerApi* | [**findAllUsingGET**](docs/BorrowControllerApi.md#findAllUsingGET) | **GET** /borrows | findAll
 *ApiDocumentation.BorrowControllerApi* | [**findBorrowByBookIdUsingGET**](docs/BorrowControllerApi.md#findBorrowByBookIdUsingGET) | **GET** /borrows/books/{bookId} | findBorrowByBookId
 *ApiDocumentation.BorrowControllerApi* | [**findBorrowByPersonIdUsingGET**](docs/BorrowControllerApi.md#findBorrowByPersonIdUsingGET) | **GET** /borrows/person/{personId} | findBorrowByPersonId

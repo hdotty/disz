@@ -2,16 +2,14 @@ package org.disz.demo.service;
 
 import org.disz.demo.dto.BorrowDto;
 import org.disz.demo.dto.PersonDto;
-import org.disz.demo.entity.Borrow;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface  BorrowService {
     void addBorrow(BorrowDto borrowDto);
     void returnBook(BorrowDto borrowDto);
-    void deleteBorrowByPerson(Long personId);
-
+    void deleteAllByPersonId(long personId);
+    void deleteAllByBookId(long bookId);
     List<BorrowDto> findAll();
     List<BorrowDto> findBorrowByBookId(Long bookId); // WhoBorrowedTheBook
     List<BorrowDto> findBorrowByPersonId(Long personId); // WhatAPersonBorrowed
@@ -23,6 +21,7 @@ public interface  BorrowService {
     long notBorrowedYet();
 
     List<BorrowDto> findByAuthorOrTitleContaining(String search);
+
 
 
 

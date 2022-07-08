@@ -75,27 +75,29 @@ export default class BorrowControllerApi {
     }
 
     /**
-     * Callback function to receive the result of the deleteBorrowByPersonUsingDELETE operation.
-     * @callback module:api/BorrowControllerApi~deleteBorrowByPersonUsingDELETECallback
+     * Callback function to receive the result of the deleteAllByBookUsingDELETE operation.
+     * @callback module:api/BorrowControllerApi~deleteAllByBookUsingDELETECallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * deleteBorrowByPerson
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.personId personId
-     * @param {module:api/BorrowControllerApi~deleteBorrowByPersonUsingDELETECallback} callback The callback function, accepting three arguments: error, data, response
+     * deleteAllByBook
+     * @param {Number} bookId bookId
+     * @param {module:api/BorrowControllerApi~deleteAllByBookUsingDELETECallback} callback The callback function, accepting three arguments: error, data, response
      */
-    deleteBorrowByPersonUsingDELETE(opts, callback) {
-      opts = opts || {};
+    deleteAllByBookUsingDELETE(bookId, callback) {
       let postBody = null;
+      // verify the required parameter 'bookId' is set
+      if (bookId === undefined || bookId === null) {
+        throw new Error("Missing the required parameter 'bookId' when calling deleteAllByBookUsingDELETE");
+      }
 
       let pathParams = {
+        'bookId': bookId
       };
       let queryParams = {
-        'personId': opts['personId']
       };
       let headerParams = {
       };
@@ -107,7 +109,48 @@ export default class BorrowControllerApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/borrows', 'DELETE',
+        '/borrows/{bookId}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteAllByPersonUsingDELETE operation.
+     * @callback module:api/BorrowControllerApi~deleteAllByPersonUsingDELETECallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * deleteAllByPerson
+     * @param {Number} personId personId
+     * @param {module:api/BorrowControllerApi~deleteAllByPersonUsingDELETECallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deleteAllByPersonUsingDELETE(personId, callback) {
+      let postBody = null;
+      // verify the required parameter 'personId' is set
+      if (personId === undefined || personId === null) {
+        throw new Error("Missing the required parameter 'personId' when calling deleteAllByPersonUsingDELETE");
+      }
+
+      let pathParams = {
+        'personId': personId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/borrows/{personId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

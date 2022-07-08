@@ -84,5 +84,6 @@ public class Person {
     public void setPassword(String password){
         this.password = password;
     }
+    public void setBorrows(List borrows){this.borrows = borrows;}
 }
 

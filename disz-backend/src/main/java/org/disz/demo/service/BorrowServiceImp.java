@@ -9,7 +9,6 @@ import org.disz.demo.entity.Person;
 import org.disz.demo.repository.BorrowRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,8 +30,13 @@ public class BorrowServiceImp implements BorrowService{
     }
 
     @Override
-    public void deleteBorrowByPerson(Long personId){
-        borrowRepository.deleteByPerson(personId);
+    public void deleteAllByPersonId(long personId){
+        borrowRepository.deleteAllByPersonId(personId);
+    }
+
+    @Override
+    public void deleteAllByBookId(long bookId){
+        borrowRepository.deleteAllByBookId(bookId);
     }
 
     @Override
@@ -72,8 +76,6 @@ public class BorrowServiceImp implements BorrowService{
     public List<BorrowDto> findByAuthorOrTitleContaining(String search) {
         return toDtos(borrowRepository.findByBookAuthorContainingOrBookTitleContaining(search, search));
     }
-
-
 
     private Person toPersonEntity(PersonDto personDto) {
         return new Person(personDto.getPersonId(), personDto.getFirstName(), personDto.getLastName(), personDto.getEmail(), personDto.getPassword(), personDto.isAdmin());
