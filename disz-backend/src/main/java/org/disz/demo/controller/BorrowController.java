@@ -26,11 +26,11 @@ public class BorrowController {
     @PutMapping("/return")
     public void returnBook(final @RequestBody BorrowDto borrowDto){borrowService.returnBook(borrowDto);}
     @Transactional
-    @DeleteMapping("/{personId}")
+    @DeleteMapping("/person/{personId}")
     public void deleteAllByPerson(final @PathVariable long personId){borrowService.deleteAllByPersonId(personId);}
 
     @Transactional
-    @DeleteMapping("/{bookId}")
+    @DeleteMapping("/book/{bookId}")
     public void deleteAllByBook(final @PathVariable long bookId){borrowService.deleteAllByBookId(bookId);}
 
     @GetMapping
@@ -40,7 +40,7 @@ public class BorrowController {
     public List<BorrowDto> findBorrowByBookId(@PathVariable final Long bookId){
         return borrowService.findBorrowByBookId(bookId);}
 
-    @GetMapping("/person/{personId}")
+    @GetMapping("/persons/{personId}")
     public List<BorrowDto> findBorrowByPersonId(@PathVariable final Long personId) {
         return borrowService.findBorrowByPersonId(personId);}
 

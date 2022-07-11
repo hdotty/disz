@@ -57,9 +57,12 @@ const useAddBorrow = () => {
         e.preventDefault()
         if(run3){
             const borrow = new BorrowDto()
-            borrow.person=person
+            borrow.person = person
             borrow.book = book
             borrow.startTime = date
+            console.log("book: ",book)
+            console.log("person: ",person)
+            console.log(borrow)
             
             try{
                 BorrowController.addBorrowUsingPOST(borrow, function(error){

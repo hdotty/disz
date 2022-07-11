@@ -33,7 +33,6 @@ public class BorrowServiceImp implements BorrowService{
     public void deleteAllByPersonId(long personId){
         borrowRepository.deleteAllByPersonId(personId);
     }
-
     @Override
     public void deleteAllByBookId(long bookId){
         borrowRepository.deleteAllByBookId(bookId);

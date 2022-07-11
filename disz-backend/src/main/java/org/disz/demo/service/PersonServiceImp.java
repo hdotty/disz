@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class PersonServiceImp implements PersonService{
     public final PersonRepository personRepository;
     public final BorrowRepository borrowRepository;
-    public final BorrowServiceImp borrowServiceImp; //TODO ez itt nagyon csúnya?
+    public final BorrowServiceImp borrowServiceImp;
     private final PasswordEncoder passwordEncoder;
 
     public PersonServiceImp(PersonRepository personRepository, BorrowRepository borrowRepository, BorrowServiceImp borrowServiceImp,

@@ -46,18 +46,19 @@ const useDisplayPersons = () => {
                             console.log(error)
                         }
                     })
-                    console.log("sikerult")
+                }
+            })
+        }else{
+            PersonController.deletePersonUsingDELETE(person.personId , function(error){
+                if(error===null){
+                    setRunning(true)
+                    displayPerson()
+                }else{
+                    console.log(error)
                 }
             })
         }
-        PersonController.deletePersonUsingDELETE(person.personId , function(error){
-            if(error===null){
-                setRunning(true)
-                displayPerson()
-            }else{
-                console.log(error)
-            }
-        })        
+                
     }
     return {displayPerson, persons, handleView, currentId, view, handleDelete}
 }

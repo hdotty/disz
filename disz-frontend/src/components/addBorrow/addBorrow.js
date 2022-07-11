@@ -41,5 +41,3 @@ const AddBorrow = (props) => {
     )
 }
 export default AddBorrow
-
-//"text-500 mb-5"

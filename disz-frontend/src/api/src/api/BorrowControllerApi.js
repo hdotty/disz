@@ -109,7 +109,7 @@ export default class BorrowControllerApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/borrows/{bookId}', 'DELETE',
+        '/borrows/book/{bookId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -150,7 +150,7 @@ export default class BorrowControllerApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/borrows/{personId}', 'DELETE',
+        '/borrows/person/{personId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -270,7 +270,7 @@ export default class BorrowControllerApi {
       let accepts = ['*/*'];
       let returnType = [BorrowDto];
       return this.apiClient.callApi(
-        '/borrows/person/{personId}', 'GET',
+        '/borrows/persons/{personId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

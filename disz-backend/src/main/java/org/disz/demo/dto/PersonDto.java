@@ -54,6 +54,7 @@ public class PersonDto {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.admin = admin;
     }
 
     public Long getPersonId() {return personId;}

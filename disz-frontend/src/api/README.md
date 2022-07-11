@@ -134,11 +134,11 @@ Class | Method | HTTP request | Description
 *ApiDocumentation.BookControllerApi* | [**getBooksUsingGET**](docs/BookControllerApi.md#getBooksUsingGET) | **GET** /books | getBooks
 *ApiDocumentation.BookControllerApi* | [**updateBookUsingPUT**](docs/BookControllerApi.md#updateBookUsingPUT) | **PUT** /books | updateBook
 *ApiDocumentation.BorrowControllerApi* | [**addBorrowUsingPOST**](docs/BorrowControllerApi.md#addBorrowUsingPOST) | **POST** /borrows | addBorrow
-*ApiDocumentation.BorrowControllerApi* | [**deleteAllByBookUsingDELETE**](docs/BorrowControllerApi.md#deleteAllByBookUsingDELETE) | **DELETE** /borrows/{bookId} | deleteAllByBook
-*ApiDocumentation.BorrowControllerApi* | [**deleteAllByPersonUsingDELETE**](docs/BorrowControllerApi.md#deleteAllByPersonUsingDELETE) | **DELETE** /borrows/{personId} | deleteAllByPerson
+*ApiDocumentation.BorrowControllerApi* | [**deleteAllByBookUsingDELETE**](docs/BorrowControllerApi.md#deleteAllByBookUsingDELETE) | **DELETE** /borrows/book/{bookId} | deleteAllByBook
+*ApiDocumentation.BorrowControllerApi* | [**deleteAllByPersonUsingDELETE**](docs/BorrowControllerApi.md#deleteAllByPersonUsingDELETE) | **DELETE** /borrows/person/{personId} | deleteAllByPerson
 *ApiDocumentation.BorrowControllerApi* | [**findAllUsingGET**](docs/BorrowControllerApi.md#findAllUsingGET) | **GET** /borrows | findAll
 *ApiDocumentation.BorrowControllerApi* | [**findBorrowByBookIdUsingGET**](docs/BorrowControllerApi.md#findBorrowByBookIdUsingGET) | **GET** /borrows/books/{bookId} | findBorrowByBookId
-*ApiDocumentation.BorrowControllerApi* | [**findBorrowByPersonIdUsingGET**](docs/BorrowControllerApi.md#findBorrowByPersonIdUsingGET) | **GET** /borrows/person/{personId} | findBorrowByPersonId
+*ApiDocumentation.BorrowControllerApi* | [**findBorrowByPersonIdUsingGET**](docs/BorrowControllerApi.md#findBorrowByPersonIdUsingGET) | **GET** /borrows/persons/{personId} | findBorrowByPersonId
 *ApiDocumentation.BorrowControllerApi* | [**findBorrowByStartTimeAndEndTimeIsNotNullUsingGET**](docs/BorrowControllerApi.md#findBorrowByStartTimeAndEndTimeIsNotNullUsingGET) | **GET** /borrows/returned | findBorrowByStartTimeAndEndTimeIsNotNull
 *ApiDocumentation.BorrowControllerApi* | [**findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET**](docs/BorrowControllerApi.md#findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET) | **GET** /borrows/borrowed | findBorrowByStartTimeIsNotNullAndEndTimeIsNull
 *ApiDocumentation.BorrowControllerApi* | [**findByAuthorOrTitleContainingUsingGET**](docs/BorrowControllerApi.md#findByAuthorOrTitleContainingUsingGET) | **GET** /borrows/search | findByAuthorOrTitleContaining

@@ -5,11 +5,11 @@ All URIs are relative to *http://localhost:8080*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addBorrowUsingPOST**](BorrowControllerApi.md#addBorrowUsingPOST) | **POST** /borrows | addBorrow
-[**deleteAllByBookUsingDELETE**](BorrowControllerApi.md#deleteAllByBookUsingDELETE) | **DELETE** /borrows/{bookId} | deleteAllByBook
-[**deleteAllByPersonUsingDELETE**](BorrowControllerApi.md#deleteAllByPersonUsingDELETE) | **DELETE** /borrows/{personId} | deleteAllByPerson
+[**deleteAllByBookUsingDELETE**](BorrowControllerApi.md#deleteAllByBookUsingDELETE) | **DELETE** /borrows/book/{bookId} | deleteAllByBook
+[**deleteAllByPersonUsingDELETE**](BorrowControllerApi.md#deleteAllByPersonUsingDELETE) | **DELETE** /borrows/person/{personId} | deleteAllByPerson
 [**findAllUsingGET**](BorrowControllerApi.md#findAllUsingGET) | **GET** /borrows | findAll
 [**findBorrowByBookIdUsingGET**](BorrowControllerApi.md#findBorrowByBookIdUsingGET) | **GET** /borrows/books/{bookId} | findBorrowByBookId
-[**findBorrowByPersonIdUsingGET**](BorrowControllerApi.md#findBorrowByPersonIdUsingGET) | **GET** /borrows/person/{personId} | findBorrowByPersonId
+[**findBorrowByPersonIdUsingGET**](BorrowControllerApi.md#findBorrowByPersonIdUsingGET) | **GET** /borrows/persons/{personId} | findBorrowByPersonId
 [**findBorrowByStartTimeAndEndTimeIsNotNullUsingGET**](BorrowControllerApi.md#findBorrowByStartTimeAndEndTimeIsNotNullUsingGET) | **GET** /borrows/returned | findBorrowByStartTimeAndEndTimeIsNotNull
 [**findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET**](BorrowControllerApi.md#findBorrowByStartTimeIsNotNullAndEndTimeIsNullUsingGET) | **GET** /borrows/borrowed | findBorrowByStartTimeIsNotNullAndEndTimeIsNull
 [**findByAuthorOrTitleContainingUsingGET**](BorrowControllerApi.md#findByAuthorOrTitleContainingUsingGET) | **GET** /borrows/search | findByAuthorOrTitleContaining

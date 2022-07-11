@@ -11,9 +11,11 @@ import java.util.stream.Collectors;
 @Service
 public class BookServiceImp implements BookService {
     public final BookRepository bookRepository;
+    public final BorrowServiceImp borrowServiceImp;
 
-    public BookServiceImp(BookRepository bookRepository){
+    public BookServiceImp(BookRepository bookRepository, BorrowServiceImp borrowServiceImp){
         this.bookRepository = bookRepository;
+        this.borrowServiceImp = borrowServiceImp;
     }
     @Override
     public void addBook(BookDto book) {bookRepository.save(toEntity(book));}
@@ -45,7 +47,7 @@ public class BookServiceImp implements BookService {
     }
 
     public <S extends BookDto> BookDto toDto(Book book) {
-        return new BookDto(book.getId(), book.getAuthor(), book.getTitle());
+        return new BookDto(book.getId(), book.getAuthor(), book.getTitle(),  borrowServiceImp.toDtos(book.getBorrows()));
     }
 
 

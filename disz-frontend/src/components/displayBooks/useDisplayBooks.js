@@ -54,16 +54,11 @@ const useBooks = () => {
 
     const handleDeleteClick = (e, book) => {
         e.preventDefault()
-        console.log(book)
-        if(book.borrows.length !== 0){
-            console.log('1')
+        if(book.borrows !== null){
             BorrowController.deleteAllByBookUsingDELETE(book.bookId, function(error){
-                console.log('2')
                 if(error!==null){
-                    console.log('3')
                     console.log(error)
                 }else{
-                    console.log('4')
                     BookController.deleteBookUsingDELETE(book.bookId, function(error){
                         if(error === null){
                             setReRenderBooks(true)
@@ -74,15 +69,17 @@ const useBooks = () => {
                     })
                 }
             })
+        }else{
+            BookController.deleteBookUsingDELETE(book.bookId, function(error){
+                if(error === null){
+                    setReRenderBooks(true)
+                    displayBooks()
+                }else{
+                    console.log(error)
+                }
+            })
         }
-        BookController.deleteBookUsingDELETE(book.bookId, function(error){
-            if(error === null){
-                setReRenderBooks(true)
-                displayBooks()
-            }else{
-                console.log(error)
-            }
-        })
+        
     }
 
     const handleViewClick = (e, book) => {

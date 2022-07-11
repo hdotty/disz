@@ -1,6 +1,7 @@
 package org.disz.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.disz.demo.entity.Borrow;
 import org.springframework.lang.NonNull;
 
 import javax.validation.constraints.NotBlank;
@@ -28,6 +29,12 @@ public class BookDto {
         this.author = author;
         this.title = title;
     }
+    public BookDto(Long bookID, String author, String title, List<BorrowDto> borrows) {
+        this.bookId = bookID;
+        this.author = author;
+        this.title = title;
+        this.borrows = borrows;
+    }
 
     // getters
     public Long getBookId() {
@@ -39,6 +46,7 @@ public class BookDto {
     public String getTitle() {
         return title;
     }
+    public List<BorrowDto> getBorrows(){return borrows;}
 
     //setters
     public void setAuthor(String author) {this.author = author;}

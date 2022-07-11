@@ -30,7 +30,12 @@ public class Book {
         this.author = author;
         this.title = title;
     }
-
+    public Book(Long id, String author, String title, List<Borrow> borrows) {
+        this.id = Optional.ofNullable(id).orElse(0L);
+        this.author = author;
+        this.title = title;
+        this.borrows = borrows;
+    }
     // getters
     public Long getId() {
         return id;
@@ -52,4 +57,5 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
+    public void setBorrows(List borrows){this.borrows = borrows;}
 }
