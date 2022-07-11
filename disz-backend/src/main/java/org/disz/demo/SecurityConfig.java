@@ -49,9 +49,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/swagger-resources/**").permitAll()
                 .antMatchers("/login/**").permitAll()
                 .antMatchers("/logout/**").permitAll()
-                .antMatchers("/books/**").permitAll()
-                .antMatchers("/person/**").permitAll()
-                .antMatchers("/borrows/**").permitAll()
                 .anyRequest().authenticated()
                 .and().logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.NO_CONTENT));
     }

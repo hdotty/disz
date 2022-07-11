@@ -29,9 +29,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         final Collection<String> roles;
         if (person.isAdmin()) {
-            roles = List.of("ADMIN", "USER");
+            roles = List.of("ROLE_ADMIN", "ROLE_USER");
         } else {
-            roles = List.of("USER");
+            roles = List.of("ROLE_USER");
         }
 
         return new User(person.getEmail(), person.getPassword(), toAuthorities(roles));

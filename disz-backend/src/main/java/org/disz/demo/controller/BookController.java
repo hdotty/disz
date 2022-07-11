@@ -3,6 +3,7 @@ package org.disz.demo.controller;
 import org.disz.demo.dto.BookDto;
 import org.disz.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
@@ -29,6 +30,7 @@ public class BookController {
 
     @DeleteMapping("/{id}")
     public void deleteBook(final @PathVariable Long id) {bookService.deleteBook(id);}
+    @RolesAllowed("ROLE_ADMIN")
     @GetMapping
     public List<BookDto> getBooks() {return bookService.findAllBooks();} //összes könyv kilistázása
     @GetMapping("/{id}")

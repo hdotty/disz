@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -19,6 +20,7 @@ public class BorrowController {
         this.borrowService = borrowService;
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @PostMapping
     public void addBorrow(final @RequestBody BorrowDto borrowDto) {
         borrowService.addBorrow(borrowDto);
