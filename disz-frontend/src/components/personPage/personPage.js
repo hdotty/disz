@@ -9,14 +9,12 @@ import ChangePsw from "../changePsw/changePsw";
 
 const PersonPage = (props) => {
     const id = props.currentId
-
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [changePsw, setChangePsw] = useState(false)
 
     const {person, getPerson, handleEdit, edit, handleSave} = UsePerson()
-    const [done, setDone] = useState(false)
 
     const displayPerson = (id, bool) => {
         if(bool){
@@ -25,17 +23,15 @@ const PersonPage = (props) => {
             //setDone(true)
         }
     }
-    
+
     displayPerson(id, true)
 
     return (
         
         <div>
 
-            {changePsw ?
-                <ChangePsw person={person}/> :
-                <div className="text-center mb-5">
             
+                <div className="text-center mb-5">
             
                 <div>
                 <div className="text-900 text-3xl font-medium mb-3">Personal Data</div>
@@ -57,7 +53,6 @@ const PersonPage = (props) => {
                                 }}
                             /><br/><br/></div>
                     }
-                    
                     
                 </div>
                 
@@ -82,7 +77,6 @@ const PersonPage = (props) => {
                     </li>
                     <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                         <div className="text-500 w-6 md:w-2 font-medium">Password</div>
-                        <Button type="button" className="p-button-text" label="Change password" onClick={(e)=>setChangePsw(true)} />
                     </li>
 
                     <li className="flex align-items-center py-3 px-2 border-top-1 border-bottom-1 border-300 flex-wrap">
@@ -91,15 +85,11 @@ const PersonPage = (props) => {
                         
                     </li>
 
-
                 </ul>
                 </div>
                 </div>
-            }
-
             
         </div>
-        
     )
 }
 
