@@ -9,7 +9,6 @@ import './App.css'
 import Login from './components/login/login'
 import Signup from "./components/signUp/signup";
 import PersonPage from "./components/personPage/personPage";
-import ForgotPsw from "./components/forgotPsw";
 import Header from "./components/header"
 import Home from "./components/home"
 import ChangePsw from "./components/changePsw/changePsw"
@@ -21,15 +20,11 @@ import AddBorrow from "./components/addBorrow/addBorrow"
 import Book from "./components/displayBooks/displayBook"
 import MyPage from "./components/personPage/myPage"
 
-import useGetLoggedInUser from "./components/getLoggedInUser"
-
-
 import {
   BrowserRouter as Router,
   Route,
   Routes,
 }from 'react-router-dom'  
-import { useState } from "react"
 
 
 const App = () => {
@@ -47,7 +42,6 @@ const App = () => {
           { <Route exact path='/components/login/login' element={ <Login /> }/>}
 
           { <Route exact path='/components/personPage/myPage' element={ <MyPage /> }/>}
-          { <Route exact path='/components/forgotPsw' element={ <ForgotPsw /> }/>}
           { <Route exact path='/components/bookPage/bookPage' element={ <BookPage  /> }/>}
           { <Route exact path='/components/changePsw' element={ <ChangePsw /> }/>}
 

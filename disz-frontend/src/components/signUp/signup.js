@@ -19,7 +19,6 @@ function Singup(){
         addUser(firstName, lastName, email, password1, password2)
         e.preventDefault()
         clear()
-
     }
 
     const handleOnClick = (e) => {
@@ -43,16 +42,15 @@ function Singup(){
                     <img src="assets/images/blocks/logos/hyper.svg" alt="hyper" height={50} className="mb-3" />
                     <div className="text-900 text-3xl font-medium mb-3">Welcome!</div>
                     <span className="text-600 font-medium line-height-3">Do you already have an account?</span>
-                    <div className="font-medium no-underline ml-2 text-blue-500 cursor-pointer"><Link to='/components/login'>  Log In! </Link> </div>
+                    <div className="font-medium no-underline ml-2 text-blue-500 cursor-pointer"><Link to='/components/login/login'>  Log In! </Link> </div>
                 </div>
 
-                <div>
+                {!registered && <div>
                     <label htmlFor="firsName" className="block text-900 font-medium mb-2">First Name</label>
                     <InputText onChange={(e)=>setFirstName(e.target.value)} id="firsName" value={firstName} type="text" className="w-full mb-3" />
 
                     <label htmlFor="lastName" className="block text-900 font-medium mb-2">Last Name</label>
                     <InputText onChange={(e)=>setLastName(e.target.value)} id="lastName" value={lastName} type="text" className="w-full mb-3" />
-
 
                     <label htmlFor="email" className="block text-900 font-medium mb-2">Email</label>
                     <InputText onChange={(e)=>setEmail(e.target.value)} id="email" value={email} type="email" className="w-full mb-3" />
@@ -62,16 +60,22 @@ function Singup(){
 
                     <label htmlFor="password2" className="block text-900 font-medium mb-2">Password Again </label>
                     <InputText onChange={(e)=>setPassword2(e.target.value)} id="password2" value={password2} type="password" className="w-full mb-3" />
+                
                     {error!==null && <p>{error}</p>}
-                    {registered===true && <p>Your registration was successful!</p>}
-                 
+                    {registered && <p>Your registration was successful!</p>}
+                
                     {!isPending && <Button type="submit" label="Sign Up" icon="pi pi-user" className="w-full" />}
                     {isPending && <Button label="loading..." icon="pi pi-user" className="w-full" />}
                     <br></br> <br></br>
                     <Button onClick={(e)=>handleOnClick(e)} icon="pi pi-user" className="w-full"> Clear </Button>
                     <br></br> <br></br>
                     <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/"> Back to Home </Link> </Button>
-                </div>
+                </div>}
+                    
+                {registered && <div>
+                    <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/components/login/login"> Sign In </Link> </Button> <br/><br/>
+                    <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/"> Back to Home </Link> </Button>
+                </div>}
             </form>
         </div>
     

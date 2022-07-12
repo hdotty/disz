@@ -28,6 +28,10 @@ const MyPage = () => {
     
     return(
     <div>
+    {user===undefined && <h3>Something went wrong!</h3>}
+
+    { (user!==undefined) && 
+        <div>
 
         {changePsw ?
             <ChangePsw user={user}/> :
@@ -42,7 +46,8 @@ const MyPage = () => {
                 {edit ? 
                     <div><Button type="button" className="w-full" label="Save" 
                             onClick={(e)=>{
-                                handleSave(e, user.id, user, firstName,lastName,email)
+                                handleSave(e, user.id, user, firstName,lastName,email);
+                                getLoggedInUser()
                             }}/><br/></div> :
 
                     <div><Button className="w-full" label="Edit" type="button" 
@@ -89,7 +94,8 @@ const MyPage = () => {
             </div>
             </div>
         }
-    </div>
+        </div>}
+        </div>
     )
 }
 export default MyPage

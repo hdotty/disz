@@ -19,20 +19,22 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @RolesAllowed("ADMIN")
+    @RolesAllowed("ROLE_ADMIN")
     @PostMapping
     public void addBook(final @RequestBody BookDto book){bookService.addBook(book);
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @PutMapping
     public void updateBook(final @RequestBody BookDto bookDto, String author, String title) {bookService.updateBook(bookDto, author, title);}
 
-
+    @RolesAllowed("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     public void deleteBook(final @PathVariable Long id) {bookService.deleteBook(id);}
-    @RolesAllowed("ROLE_ADMIN")
+
     @GetMapping
     public List<BookDto> getBooks() {return bookService.findAllBooks();} //összes könyv kilistázása
+    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/{id}")
     public BookDto getBook(final @PathVariable Long id) { return bookService.getById(id);} // egy könyv
 
@@ -42,6 +44,7 @@ public class BookController {
         return bookService.find(query);
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/borrowed")
     public List<BookDto> findByPersonIdIsNotNull(){return bookService.findBorrowedBooks();}
 

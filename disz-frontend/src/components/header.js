@@ -1,25 +1,69 @@
 import { Link } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import useGetLoggedInUser from "./getLoggedInUser"
+import { Button } from "primereact/button"
+import useLogOut from "./useLogOut"
 
-function Header(props){
-    const user = props.user
+
+const Header = () => {
+
+    const {handleLogOut, user} = useLogOut()
+    const {getLoggedInUser} = useGetLoggedInUser()
+
+    getLoggedInUser()
     console.log(user)
+
     return (
         <nav className="navbar navbar-expand navbar-dark bg-dark">
             <ul className="navbar-nav mr-auto">
-                <li className="nav-item"> <Link to='/' className="nav-link"> Home </Link></li>
-                <li className="nav-item"> <Link to='/components/books' className="nav-link"> Books </Link> </li>
+                <li className="nav-item"> 
+                <Link to='/' className="nav-link"> Home </Link>
+                </li>
 
-                {!user && <li className="nav-item"> <Link to='/components/signup/signup' className="nav-link"> Sign Up </Link> </li>}
-                {!user && <li className="nav-item"> <Link to='/components/login/login' className="nav-link"> Log In </Link> </li>}
+                <li className="nav-item"> 
+                <Link to='/components/books' className="nav-link"> Books </Link>
+                </li>
+
+
+                {!user && 
+                <li className="nav-item"> 
+                <Link to='/components/signup/signup' className="nav-link" > Sign Up </Link> 
+                </li>}
+
+                {!user && 
+                <li className="nav-item"> 
+                <Link to='/components/login/login' className="nav-link"> Log In </Link>
+                </li>}
                 
-                {user && <li className="nav-item"><Link to='/components/personPage/myPage' className='nav-link'>My Page</Link> </li>}
+
+                {user && 
+                <li className="nav-item">
+                    <Link to='/components/personPage/myPage' className='nav-link'>My Page</Link> 
+                </li>}
                 
-                { <li className="nav-item"> <Link to='/components/addBook/addBook' className="nav-link"> Add Book </Link> </li>}
-                { <li className="nav-item"> <Link to='/components/displayPersons/displayPersons' className="nav-link"> Persons </Link> </li>}
-                { <li className="nav-item"> <Link to='/components/displayPersons/displayPersons' className="nav-link"> Users </Link> </li>}
-                { <li className="nav-item"> <Link to='/components/displayBorrows/displayBorrows' className="nav-link"> Borrows </Link> </li>}
-                
+
+                {(user !== undefined && user.admin) && 
+                <li className="nav-item"> 
+                <Link to='/components/addBook/addBook' className="nav-link"> Add Book </Link> 
+                </li>}
+
+                {(user !== undefined && user.admin) && 
+                <li className="nav-item"> 
+                <Link to='/components/displayPersons/displayPersons' className="nav-link"> Users </Link> 
+                </li>}
+
+                {(user !== undefined && user.admin) && 
+                <li className="nav-item"> 
+                <Link to='/components/displayBorrows/displayBorrows' className="nav-link"> Borrows </Link> 
+                </li>}
+                <li>space</li>
+                {user && <li>
+                    <Button
+                    label="Sign Out"
+                    onClick={(e)=>{handleLogOut(e);window.location.reload()}}
+                    />
+                </li>}
+                 
             </ul>
         </nav>
     )

@@ -147,7 +147,7 @@ Class | Method | HTTP request | Description
 *ApiDocumentation.BorrowControllerApi* | [**returnesBorrowesUsingGET**](docs/BorrowControllerApi.md#returnesBorrowesUsingGET) | **GET** /borrows/returned/count | returnesBorrowes
 *ApiDocumentation.LoginControllerApi* | [**loginUsingPOST**](docs/LoginControllerApi.md#loginUsingPOST) | **POST** /login | login
 *ApiDocumentation.LoginControllerApi* | [**logoutUsingPOST**](docs/LoginControllerApi.md#logoutUsingPOST) | **POST** /logout | logout
-*ApiDocumentation.PersonControllerApi* | [**addPersonUsingPOST**](docs/PersonControllerApi.md#addPersonUsingPOST) | **POST** /person | addPerson
+*ApiDocumentation.PersonControllerApi* | [**addPersonUsingPOST**](docs/PersonControllerApi.md#addPersonUsingPOST) | **POST** /signIn | addPerson
 *ApiDocumentation.PersonControllerApi* | [**deletePersonUsingDELETE**](docs/PersonControllerApi.md#deletePersonUsingDELETE) | **DELETE** /person/{id} | deletePerson
 *ApiDocumentation.PersonControllerApi* | [**findPersonUsingGET**](docs/PersonControllerApi.md#findPersonUsingGET) | **GET** /person/search | findPerson
 *ApiDocumentation.PersonControllerApi* | [**getLoggedInPersonUsingGET**](docs/PersonControllerApi.md#getLoggedInPersonUsingGET) | **GET** /person/loggedIn | getLoggedInPerson

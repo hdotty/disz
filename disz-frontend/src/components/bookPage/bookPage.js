@@ -2,12 +2,16 @@ import React from "react"
 import {Button} from "primereact/button"
 import useBookPage from "./useBookPage"
 import AddBorrow from "../addBorrow/addBorrow"
+import useGetLoggedInUser from "../getLoggedInUser"
 
 
 function BookPage(props){
     const id = props.editBookId
+
+    const {getLoggedInUser, user} = useGetLoggedInUser()
     const {book, getBook, handleBorrow, borrow} = useBookPage()
     
+    getLoggedInUser()
     getBook(id)
 
     return(
@@ -28,17 +32,13 @@ function BookPage(props){
                 <div className="text-500 w-6 md:w-2 font-medium">Title</div>
                 <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{book.title}</div>
             </li>
-            <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
-                <div className="text-500 w-6 md:w-2 font-medium">Available</div>
-                <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">yes or no</div>
-            </li>
             <li>
                 <div>
                     <br></br>
-                    <Button label="Borrow It" icon="pi pi-user" className="w-full" onClick={(e)=>(handleBorrow(e))} />
+                    { user.admin && <Button label="Borrow It" icon="pi pi-user" className="w-full" onClick={(e)=>(handleBorrow(e))} />}
                 </div>
             </li>
-            <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
+            { user.admin && <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                 <div className="text-500 w-6 md:w-2 font-medium">Who borrowed it?
                     <table className="table table-striped">
                         <thead>
@@ -51,7 +51,7 @@ function BookPage(props){
                         <tbody></tbody>
                     </table>
                 </div>
-            </li> 
+            </li> }
         </ul>
         }
         </div>

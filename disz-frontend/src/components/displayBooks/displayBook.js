@@ -6,13 +6,17 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { useBooks } from "./useDisplayBooks";
 import BookPage from "../bookPage/bookPage";
+import useGetLoggedInUser from "../getLoggedInUser";
 
-const Book = (props) => {
-    const user = props.user
+const Book = () => {
+
+    const {getLoggedInUser, user} = useGetLoggedInUser()
+
     const [editAuthor, setEditAuthor] = useState('')
     const [editTitle, setEditTitle] = useState('')
     const {books, editBookId, displayBooks, handleEditClick, handleSaveClick, handleCancelClick, handleDeleteClick, handleViewClick, view} = useBooks()
 
+    getLoggedInUser()
     displayBooks()
     
     return (
@@ -33,7 +37,7 @@ const Book = (props) => {
                 <tbody>
                     {books.map((book, id)=>(
                         <Fragment key={id}>
-                            {editBookId === book.bookId ? 
+                            {user.admin && (editBookId === book.bookId) ? 
                             (<tr>
                                 <td><InputText onChange={(e)=>setEditAuthor(e.target.value)} id="author" value={editAuthor} type="text" placeholder={book.author}/></td>
                                 <td><InputText onChange={(e)=>setEditTitle(e.target.value)} id="title" value={editTitle} type="text" placeholder={book.title}/></td>
@@ -45,8 +49,8 @@ const Book = (props) => {
                             (<tr>
                                 <td>{book.author}</td>
                                 <td>{book.title}</td>
-                                { <td><Button type="button" onClick={(e)=>handleEditClick(e, book)}>Edit</Button></td>}
-                                { <td><Button type="button" onClick={(e)=>{handleDeleteClick(e, book); displayBooks();}}>Delete</Button></td>}
+                                {user.admin && <td><Button type="button" onClick={(e)=>handleEditClick(e, book)}>Edit</Button></td>}
+                                {user.admin && <td><Button type="button" onClick={(e)=>{handleDeleteClick(e, book); displayBooks();}}>Delete</Button></td>}
                                 <td><Button type="button" onClick={(e)=>handleViewClick(e,book)} >View</Button></td>
                             </tr>
                             )}

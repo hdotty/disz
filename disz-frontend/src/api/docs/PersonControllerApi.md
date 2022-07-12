@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addPersonUsingPOST**](PersonControllerApi.md#addPersonUsingPOST) | **POST** /person | addPerson
+[**addPersonUsingPOST**](PersonControllerApi.md#addPersonUsingPOST) | **POST** /signIn | addPerson
 [**deletePersonUsingDELETE**](PersonControllerApi.md#deletePersonUsingDELETE) | **DELETE** /person/{id} | deletePerson
 [**findPersonUsingGET**](PersonControllerApi.md#findPersonUsingGET) | **GET** /person/search | findPerson
 [**getLoggedInPersonUsingGET**](PersonControllerApi.md#getLoggedInPersonUsingGET) | **GET** /person/loggedIn | getLoggedInPerson

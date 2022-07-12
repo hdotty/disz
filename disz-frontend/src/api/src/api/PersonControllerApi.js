@@ -69,7 +69,7 @@ export default class PersonControllerApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/person', 'POST',
+        '/signIn', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

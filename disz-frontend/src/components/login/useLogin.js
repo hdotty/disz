@@ -5,9 +5,7 @@ import AuthenticationDto from "../../api/src/model/AuthenticationDto";
 
 const useLogin = () => {
     const LoginController = new LoginControllerApi()
-    const PersonController = new PersonControllerApi()
 
-    const [person, setPerson] = useState()
 
     const handleSubmit = (e, email, password) => {
         e.preventDefault();
@@ -18,23 +16,17 @@ const useLogin = () => {
         LoginController.loginUsingPOST(login, function(error){
             if(error !== null){
                 console.log(error)
+                console.log("itt vagyok")
             }else{
                 console.log("hey ya")
-                PersonController.getLoggedInPersonUsingGET(function(error,data){
-                    if(error!==null){
-                        console.log(error)
-                    }else{
-                        console.log(data)
-                        setPerson(data)
-                    }
-                })
+
             }
         })
         
         
 
     }
-    return {handleSubmit, person}
+    return {handleSubmit}
 }
 
 export default useLogin
