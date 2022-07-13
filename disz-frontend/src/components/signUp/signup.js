@@ -4,6 +4,7 @@ import {Button} from "primereact/button"
 import { Link } from "react-router-dom";
 import { UseSignUp } from "./useSignUp";
 import { useState } from "react";
+import Header from "../header";
 
 
 function Singup(){
@@ -35,7 +36,8 @@ function Singup(){
     }
 
     return(
-        
+    <div>
+        <Header /><br/>
         <div className="flex align-items-center justify-content-center">
             <form onSubmit={(e=>handleSubmit(e))} className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
                 <div className="text-center mb-5">
@@ -73,10 +75,11 @@ function Singup(){
                 </div>}
                     
                 {registered && <div>
-                    <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/components/login/login"> Sign In </Link> </Button> <br/><br/>
-                    <Button icon="pi pi-user" className="w-full"> <Link className='nav-link' to="/"> Back to Home </Link> </Button>
+                    <Link className='nav-link' to="/components/login/login"><Button icon="pi pi-user" className="w-full" label="Log In" /> </Link> <br/>
+                    <Link className='nav-link' to="/"> <Button icon="pi pi-user" className="w-full" label="Back to Home" /> </Link>
                 </div>}
             </form>
+        </div>
         </div>
     
     )

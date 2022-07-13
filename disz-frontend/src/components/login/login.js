@@ -5,24 +5,25 @@ import { useState } from "react"
 import { Link } from "react-router-dom";
 import useLogin from "./useLogin";
 import useGetLoggedInUser from "../getLoggedInUser";
+import Header from "../header";
 
 const Login = () => {
 
-    const {getLoggedInUser, user} = useGetLoggedInUser()
-    const {handleSubmit} = useLogin()
+    const {handleSubmit, user} = useLogin()
     const [email, setEmail] = useState('')
     const [psw, setPsw] = useState('')
 
-    getLoggedInUser()
     console.log(user)
 
     return(
-        <form className="flex align-items-center justify-content-center" onSubmit={(e)=>{handleSubmit(e,email,psw);window.location.reload();}}>
+    <div>
+        <Header user={user} /><br/>
+        <form className="flex align-items-center justify-content-center" onSubmit={(e)=>{handleSubmit(e,email,psw);}}>
             <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
                 <div className="text-center mb-5">
                     <img src="assets/images/blocks/logos/hyper.svg" alt="hyper" height={50} className="mb-3" />
                     {!user ?
-                    <div className="text-900 text-3xl font-medium mb-3">Welcome Back</div> :
+                    <div className="text-900 text-3xl font-medium mb-3">Welcome Back!</div> :
                     <div className="text-900 text-3xl font-medium mb-3">Welcome {user.firstName}!</div>}
                     {!user && <span className="text-600 font-medium line-height-3">Don't have an account?</span>}
                     {!user && <div className="font-medium no-underline ml-2 text-blue-500 cursor-pointer"><Link to='/components/signup/signup'>Create today!</Link></div>}
@@ -58,6 +59,7 @@ const Login = () => {
                 </div>}
             </div>
         </form>
+        </div>
     )
 }
 

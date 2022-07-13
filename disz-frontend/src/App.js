@@ -25,15 +25,21 @@ import {
   Route,
   Routes,
 }from 'react-router-dom'  
+import useGetLoggedInUser from "./components/getLoggedInUser"
+
 
 
 const App = () => {
+
+
+  const {getLoggedInUser, user} = useGetLoggedInUser()
+  getLoggedInUser()
 
   return (
     <div>
       <h1></h1>
       <Router>
-        <Header /><br/>
+        
         <Routes>
           <Route exact path='/' element={ <Home /> }/>
           <Route exact path='/components/books' element={ <Book /> }/>

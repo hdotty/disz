@@ -5,6 +5,8 @@ import useAddBorrow from './useAddBorrow'
 import { Calendar } from 'primereact/calendar';
 import { Button } from "primereact/button";
 import convertDate from "../../convertDate";
+import useGetLoggedInUser from "../getLoggedInUser";
+import Header from "../header";
  
 
 const AddBorrow = (props) => {
@@ -14,12 +16,12 @@ const AddBorrow = (props) => {
     const [person, setPerson] = useState()
     const [date, setDate] = useState()
 
+    const {getLoggedInUser, user} = useGetLoggedInUser()
+    getLoggedInUser()
+
     getAllPersons();
     return(
-
- 
         <div>
-
             {success ? 
                 <div>{person.firstName} {person.lastName} has borrowed this book.</div> :
                 <div>

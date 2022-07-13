@@ -4,14 +4,20 @@ import useDisplayPersons from "./useDisplayPersons"
 import { Button } from "primereact/button";
 import { useState } from "react";
 import PersonPage from "../personPage/personPage";
+import useGetLoggedInUser from "../getLoggedInUser";
+import Header from "../header";
 
 
 const DisplayPerson = () => {
     const {displayPerson, persons, handleView, currentId, view, handleDelete} = useDisplayPersons()
+    const {getLoggedInUser, user} = useGetLoggedInUser()
 
+    getLoggedInUser()
     displayPerson()
 
     return (
+        <div>
+            <Header user={user} />
         <div className="flex align-items-center justify-content-center">
         <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6 ">
             {view ? 
@@ -62,6 +68,7 @@ const DisplayPerson = () => {
                 </table>
             }
             
+        </div>
         </div>
         </div>
     )

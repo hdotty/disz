@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Button } from 'primereact/button'
 import LoginControllerApi from '../api/src/api/LoginControllerApi'
 import useGetLoggedInUser from './getLoggedInUser'
+import Header from './header'
 
 function Home(){
 
@@ -21,6 +22,8 @@ function Home(){
     }
 
     return(
+        <div>
+            <Header user={user} /><br/> 
         <div className="flex align-items-center justify-content-center">
             <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
                 <div className="text-center mb-5">
@@ -59,6 +62,7 @@ function Home(){
                     </Link>}
                 </div>
             </div>
+        </div>
         </div>
     )
 }

@@ -10,7 +10,7 @@ const UseSignUp = () => {
 
     const PersonController = new PersonControllerApi()
 
-    function addUser(firstName, lastName, email, psw, psw2) {
+    const addUser = (firstName, lastName, email, psw, psw2) => {
         var person = new PersonDto()
         person.firstName = firstName
         person.lastName = lastName

@@ -5,6 +5,7 @@ import UsePerson from "./usePerson";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import useGetLoggedInUser from "../getLoggedInUser";
+import Header from "../header";
 
 const MyPage = () => {
 
@@ -28,6 +29,7 @@ const MyPage = () => {
     
     return(
     <div>
+        <Header user={user} />
     {user===undefined && <h3>Something went wrong!</h3>}
 
     { (user!==undefined) && 

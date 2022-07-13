@@ -3,11 +3,16 @@ import {Button} from "primereact/button"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {useAddBook} from "./useAddBook.js"
+import Header from "../header.js";
+import useGetLoggedInUser from "../getLoggedInUser.js";
 
 const AddBook = () => {
     const [author, setAuthor] = useState ('')
     const [title, setTitle] = useState('')  
     const {addbook, isPending, error, posted} = useAddBook()
+
+    const {getLoggedInUser, user} = useGetLoggedInUser()
+    getLoggedInUser()
 
     const handleSubmit = (e) => {
         addbook(author, title)
@@ -17,7 +22,8 @@ const AddBook = () => {
     }
 
     return(
-        
+        <div>
+            <Header user={user} />
         <div className="flex align-items-center justify-content-center">
             <form onSubmit={(e)=>handleSubmit(e)} className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
                 <div className="text-center mb-5">
@@ -44,7 +50,7 @@ const AddBook = () => {
                 </div>
             </form>
         </div>
-    
+        </div>
     )
 }
 export default AddBook

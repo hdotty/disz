@@ -7,6 +7,7 @@ import { InputText } from "primereact/inputtext";
 import { useBooks } from "./useDisplayBooks";
 import BookPage from "../bookPage/bookPage";
 import useGetLoggedInUser from "../getLoggedInUser";
+import Header from "../header";
 
 const Book = () => {
 
@@ -20,6 +21,8 @@ const Book = () => {
     displayBooks()
     
     return (
+        <div>
+            <Header user={user} /><br/>
         <div className="flex align-items-center justify-content-center">
             <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6 ">
             {view ? 
@@ -37,7 +40,7 @@ const Book = () => {
                 <tbody>
                     {books.map((book, id)=>(
                         <Fragment key={id}>
-                            {user.admin && (editBookId === book.bookId) ? 
+                            {user!==undefined && user.admin && (editBookId === book.bookId) ? 
                             (<tr>
                                 <td><InputText onChange={(e)=>setEditAuthor(e.target.value)} id="author" value={editAuthor} type="text" placeholder={book.author}/></td>
                                 <td><InputText onChange={(e)=>setEditTitle(e.target.value)} id="title" value={editTitle} type="text" placeholder={book.title}/></td>
@@ -49,8 +52,8 @@ const Book = () => {
                             (<tr>
                                 <td>{book.author}</td>
                                 <td>{book.title}</td>
-                                {user.admin && <td><Button type="button" onClick={(e)=>handleEditClick(e, book)}>Edit</Button></td>}
-                                {user.admin && <td><Button type="button" onClick={(e)=>{handleDeleteClick(e, book); displayBooks();}}>Delete</Button></td>}
+                                {user!==undefined && user.admin && <td><Button type="button" onClick={(e)=>handleEditClick(e, book)}>Edit</Button></td>}
+                                {user!==undefined && user.admin && <td><Button type="button" onClick={(e)=>{handleDeleteClick(e, book); displayBooks();}}>Delete</Button></td>}
                                 <td><Button type="button" onClick={(e)=>handleViewClick(e,book)} >View</Button></td>
                             </tr>
                             )}
@@ -61,6 +64,8 @@ const Book = () => {
             }
             </div>
         </div>
+        </div>
+
     )
 }
 

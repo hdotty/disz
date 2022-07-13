@@ -5,13 +5,14 @@ import { Button } from "primereact/button"
 import useLogOut from "./useLogOut"
 
 
-const Header = () => {
+const Header = (props) => {
 
-    const {handleLogOut, user} = useLogOut()
-    const {getLoggedInUser} = useGetLoggedInUser()
+    const user = props.user
+    const {handleLogOut} = useLogOut()
+    /*const {getLoggedInUser,user} = useGetLoggedInUser()
 
     getLoggedInUser()
-    console.log(user)
+    console.log(user)*/
 
     return (
         <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -60,7 +61,7 @@ const Header = () => {
                 {user && <li>
                     <Button
                     label="Sign Out"
-                    onClick={(e)=>{handleLogOut(e);window.location.reload()}}
+                    onClick={(e)=>{handleLogOut(e);window.location.reload();}}
                     />
                 </li>}
                  

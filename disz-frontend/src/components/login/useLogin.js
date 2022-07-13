@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import LoginControllerApi from "../../api/src/api/LoginControllerApi";
-import PersonControllerApi from "../../api/src/api/PersonControllerApi";
 import AuthenticationDto from "../../api/src/model/AuthenticationDto";
+import useGetLoggedInUser from "../getLoggedInUser";
 
 const useLogin = () => {
     const LoginController = new LoginControllerApi()
 
+    const {getLoggedInUser, user} = useGetLoggedInUser()
 
     const handleSubmit = (e, email, password) => {
         e.preventDefault();
@@ -19,14 +20,12 @@ const useLogin = () => {
                 console.log("itt vagyok")
             }else{
                 console.log("hey ya")
+                getLoggedInUser()
 
             }
         })
-        
-        
-
     }
-    return {handleSubmit}
+    return {handleSubmit, user}
 }
 
 export default useLogin

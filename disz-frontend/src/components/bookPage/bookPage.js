@@ -3,6 +3,7 @@ import {Button} from "primereact/button"
 import useBookPage from "./useBookPage"
 import AddBorrow from "../addBorrow/addBorrow"
 import useGetLoggedInUser from "../getLoggedInUser"
+import Header from "../header"
 
 
 function BookPage(props){
@@ -16,6 +17,8 @@ function BookPage(props){
 
     return(
 
+        <div>
+            
         <div className="surface-0 ">
             <div className="font-medium text-3xl text-900 mb-3">{book.author}</div>
             <div className="font-medium text-3xl text-900 mb-3">{book.title}</div>
@@ -35,10 +38,10 @@ function BookPage(props){
             <li>
                 <div>
                     <br></br>
-                    { user.admin && <Button label="Borrow It" icon="pi pi-user" className="w-full" onClick={(e)=>(handleBorrow(e))} />}
+                    {user!==undefined && user.admin && <Button label="Borrow It" icon="pi pi-user" className="w-full" onClick={(e)=>(handleBorrow(e))} />}
                 </div>
             </li>
-            { user.admin && <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
+            {user!==undefined && user.admin && <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
                 <div className="text-500 w-6 md:w-2 font-medium">Who borrowed it?
                     <table className="table table-striped">
                         <thead>
@@ -54,6 +57,7 @@ function BookPage(props){
             </li> }
         </ul>
         }
+        </div>
         </div>
     )
 }

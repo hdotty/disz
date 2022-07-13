@@ -4,6 +4,8 @@ import useDisplayBorrows from "./useDisplayBorrows";
 import { Fragment } from "react";
 import convertDate from "../../convertDate";
 import { Calendar } from "primereact/calendar";
+import useGetLoggedInUser from "../getLoggedInUser";
+import Header from "../header";
 
 const DisplayBorrows = () => {
 
@@ -15,18 +17,19 @@ const DisplayBorrows = () => {
 
 
     const {convertDatee} = convertDate()
-
     const [display, setDisplay] = useState(false)
-
     const [borrows, setBorrows] = useState(all)
 
+    const {getLoggedInUser, user} =useGetLoggedInUser()
+    getLoggedInUser()
 
     findAll()
     findNotReturned()
     findReturned()
 
 return (
-
+    <div>
+        <Header user={user} />
     <div className="flex align-items-center justify-content-center">
     <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6 ">
 
@@ -98,6 +101,7 @@ return (
         </div>
     </div>
     </div>
+    </div>
 )
 
 
@@ -105,18 +109,3 @@ return (
 export default DisplayBorrows
 
 
-/*
-{displayAll && <AllBorrows borrows={all} /> }
-{displayNotReturned && <AllBorrows borrows={notReturned} /> }
-{displayReturned && <AllBorrows borrows={returned} /> }
-*/
-
-
-/*
-<td>{borrow.person.email}</td>
-                    <td>{borrow.book.title}</td>
-                    
-                    <td> <Button type="button" label="Edit" onClick={(e)=>handleEdit(e, borrow.email)} /></td>
-                    <td> <Button type="button" label="Delete" onClick={(e)=>handleDelete(e, borrow.email)} /></td>
-                
-*/
