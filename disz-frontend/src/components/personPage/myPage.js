@@ -6,6 +6,8 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import useGetLoggedInUser from "../getLoggedInUser";
 import Header from "../header";
+import convertDate from "../../convertDate";
+import { Fragment } from "react";
 
 const MyPage = () => {
 
@@ -15,17 +17,20 @@ const MyPage = () => {
     const [changePsw, setChangePsw] = useState(false)
 
     const {getLoggedInUser, user} = useGetLoggedInUser()
-    const {handleEdit, edit, handleSave} = UsePerson()
+    const {handleEdit, edit, handleSave, getBorrows, borrows} = UsePerson()
+    const {convertDatee} = convertDate()
 
     var bool = true
     
     const displayPage = (bool) => {
         if(bool){
             getLoggedInUser()
+            console.log(user)
             bool = false
         }
     } 
     displayPage(true)
+    user && getBorrows(user.personId)
     
     return(
     <div>
@@ -33,7 +38,8 @@ const MyPage = () => {
     {user===undefined && <h3>Something went wrong!</h3>}
 
     { (user!==undefined) && 
-        <div>
+        <div className="flex align-items-center justify-content-center">
+        <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6 ">
 
         {changePsw ?
             <ChangePsw user={user}/> :
@@ -50,14 +56,16 @@ const MyPage = () => {
                             onClick={(e)=>{
                                 handleSave(e, user.id, user, firstName,lastName,email);
                                 getLoggedInUser()
-                            }}/><br/></div> :
+                            }}/><br/>
+                    </div> :
 
                     <div><Button className="w-full" label="Edit" type="button" 
                             onClick={(e)=>{
                                 handleEdit(e, user, firstName, lastName, email)
                                 
                             }}
-                        /><br/><br/></div>
+                        /><br/><br/>
+                    </div>
                 }
                 
             </div>
@@ -88,16 +96,39 @@ const MyPage = () => {
 
                 <li className="flex align-items-center py-3 px-2 border-top-1 border-bottom-1 border-300 flex-wrap">
                     <div className="text-500 w-6 md:w-2 font-medium">Your Books</div>
-                    <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 line-height-3">borrowed books</div>
-                    
                 </li>
-
             </ul>
             </div>
+            <table className="table lg:w-12 flex align-items-center justify-content-center w-full">
+                            
+                <tbody>
+                    {borrows.length!==0 && 
+                        <tr>
+                            <th>Title </th>
+                            <th>Author </th>
+                            <th>Start Date</th>
+                            <th>End Time </th>
+                        </tr>
+                    }
+                    {borrows.map((borrow, index) => (
+                        <Fragment key={index}>
+                            <tr>
+                                <td>{borrow.book.title}</td>
+                                <td>{borrow.book.author}</td>
+                                <td>{convertDatee(borrow.startTime)}</td>
+                                <td>{borrow.endTime && convertDatee(borrow.endTime)}</td>
+                            </tr>
+                        </Fragment>
+                    ))}
+                </tbody>
+            </table>
+
             </div>
         }
+        </div>
         </div>}
         </div>
+        
     )
 }
 export default MyPage

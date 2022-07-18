@@ -21,9 +21,6 @@ const useAddBorrow = () => {
 
     const [success, setSuccess] = useState(false)
 
-
-
-
     const getAllPersons = () => {
         if(run1){
             PersonController.getPersonsUsingGET(function(error, data){
@@ -60,9 +57,6 @@ const useAddBorrow = () => {
             borrow.person = person
             borrow.book = book
             borrow.startTime = date
-            console.log("book: ",book)
-            console.log("person: ",person)
-            console.log(borrow)
             
             try{
                 BorrowController.addBorrowUsingPOST(borrow, function(error){
@@ -81,10 +75,7 @@ const useAddBorrow = () => {
         }
     }
 
-
     const findAll = () => {
-
-
         if(run4){
             BorrowController.findAllUsingGET(function(error, data, response){
                 console.log("response: ", response)
@@ -97,7 +88,6 @@ const useAddBorrow = () => {
             })
         }
     }
-
 
     return{getAllPersons, persons, handleSubmit, findAll, success}
 }

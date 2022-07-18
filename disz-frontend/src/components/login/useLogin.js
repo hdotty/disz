@@ -13,13 +13,10 @@ const useLogin = () => {
         const login = new AuthenticationDto()
         login.email = email
         login.password = password
-        console.log(login)
         LoginController.loginUsingPOST(login, function(error){
             if(error !== null){
                 console.log(error)
-                console.log("itt vagyok")
             }else{
-                console.log("hey ya")
                 getLoggedInUser()
 
             }

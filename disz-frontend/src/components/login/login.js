@@ -13,8 +13,6 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [psw, setPsw] = useState('')
 
-    console.log(user)
-
     return(
     <div>
         <Header user={user} /><br/>

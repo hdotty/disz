@@ -1,10 +1,8 @@
-import {  useState } from "react";
+import {  Fragment, useState } from "react";
 import { Button } from 'primereact/button';
 import UsePerson from "./usePerson";
-import { Link } from "react-router-dom";
-import useDisplayPersons from "../displayPersons/useDisplayPersons";
 import { InputText } from "primereact/inputtext";
-import ChangePsw from "../changePsw/changePsw";
+import convertDate from "../../convertDate";
 
 
 const PersonPage = (props) => {
@@ -14,7 +12,8 @@ const PersonPage = (props) => {
     const [email, setEmail] = useState('')
     const [changePsw, setChangePsw] = useState(false)
 
-    const {person, getPerson, handleEdit, edit, handleSave} = UsePerson()
+    const {person, getPerson, handleEdit, edit, handleSave, getBorrows, borrows} = UsePerson()
+    const {convertDatee} = convertDate()
 
     const displayPerson = (id, bool) => {
         if(bool){
@@ -25,6 +24,8 @@ const PersonPage = (props) => {
     }
 
     displayPerson(id, true)
+    getBorrows(id)
+    console.log(borrows)
 
     return (
         
@@ -76,19 +77,35 @@ const PersonPage = (props) => {
                             <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{person.email}</div>}
                     </li>
                     <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
-                        <div className="text-500 w-6 md:w-2 font-medium">Password</div>
+                        <div className="text-500 w-6 md:w-2 font-medium">Books</div>
                     </li>
-
-                    <li className="flex align-items-center py-3 px-2 border-top-1 border-bottom-1 border-300 flex-wrap">
-                        <div className="text-500 w-6 md:w-2 font-medium">Your Books</div>
-                        <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 line-height-3">borrowed books</div>
-                        
-                    </li>
-
-                </ul>
+                    </ul></div>
+                    <div className="">
+                        <table className="table lg:w-12 flex align-items-center justify-content-center w-full">
+                            
+                            <tbody>
+                            {borrows.length!==0 && 
+                                <tr>
+                                    <th>Title </th>
+                                    <th>Author </th>
+                                    <th>Start Date</th>
+                                    <th>End Time </th>
+                                </tr>
+                            }
+                                {borrows.map((borrow, index) => (
+                                    <Fragment key={index}>
+                                        <tr>
+                                            <td>{borrow.book.title}</td>
+                                            <td>{borrow.book.author}</td>
+                                            <td>{convertDatee(borrow.startTime)}</td>
+                                            <td>{borrow.endTime && convertDatee(borrow.endTime)}</td>
+                                        </tr>
+                                    </Fragment>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                </div>
-            
         </div>
     )
 }

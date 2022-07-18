@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+import BorrowControllerApi from "../../api/src/api/BorrowControllerApi";
 import PersonControllerApi from "../../api/src/api/PersonControllerApi";
 import PersonDto from "../../api/src/model/PersonDto";
 
 
 const UsePerson = () => {
     const PersonController = new PersonControllerApi()
+    const BorrowController = new BorrowControllerApi()
     const [isCanceled, setIsCanceled] = useState(false)
     const [person, setPerson] = useState(new PersonDto())
     const [edit, setEdit] = useState(false)
     const [saving, setSaving] = useState(true)
+    const [runBorrow, setRunBorrow] = useState(true)
+    const [borrows, setBorrows] = useState([])
 
     const getPerson = (id) => {
         try{
@@ -55,12 +59,24 @@ const UsePerson = () => {
                 }
             })
         }
-        
-        
-        
     }
 
-    return {getPerson, person, handleEdit, edit, handleSave}
+    const getBorrows = (id) => {
+        if(runBorrow){
+            BorrowController.findBorrowByPersonIdUsingGET(id, function(error, data){
+                if(error===null){
+                    console.log("sikerult")
+                    setBorrows(data)
+                    setRunBorrow(false)
+                }else{
+                    console.log(error)
+                    setRunBorrow(false)
+                }
+            })
+        }
+    }
+
+    return {getPerson, person, handleEdit, edit, handleSave, getBorrows, borrows}
 }
 
 export default UsePerson
