@@ -28,9 +28,7 @@ import {
 import useGetLoggedInUser from "./components/getLoggedInUser"
 
 
-
 const App = () => {
-
 
   const {getLoggedInUser, user} = useGetLoggedInUser()
   getLoggedInUser()
@@ -66,4 +64,3 @@ const App = () => {
 }
 
 export default App
-
